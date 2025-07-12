@@ -1,0 +1,109 @@
+/* Blog Detail Page */
+.blog-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.blog-detail-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 127, 0, 0.3);
+}
+
+.blog-detail-header h1 {
+    font-family: 'Orbitron', monospace;
+    color: #ff7f00;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: #aaaaaa;
+    margin-bottom: 1rem;
+}
+
+.blog-detail-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cccccc;
+}
+
+.blog-detail-content h2 {
+    color: #ff7f00;
+    font-family: 'Orbitron', monospace;
+    margin: 2rem 0 1rem 0;
+}
+
+.blog-detail-content h3 {
+    color: #ffb366;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.blog-detail-content p {
+    margin-bottom: 1rem;
+}
+
+.blog-detail-content ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.blog-detail-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Project detail page */
+.project-detail {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.project-detail-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.project-detail-header h1 {
+    font-family: 'Orbitron', monospace;
+    color: #ff7f00;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.project-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 127, 0, 0.3);
+}
+
+.project-info h3 {
+    color: #ff7f00;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 1rem;
+}
+
+.project-image-placeholder {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 127, 0, 0.5);
+    border-radius: 12px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff7f00;
+    font-family: 'Orbitron', monospace;
+}

@@ -1,1675 +1,1552 @@
-<!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Viduranga Landers</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viduranga Landers - Quantum Computing & Satellite Innovation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <div class="space-bg"></div>
+    <div class="stars"></div>
+    
+    <!-- Advanced Satellite Animation Background -->
+    <div class="satellite-canvas-container">
+        <div id="satellite-animation"></div>
+    </div>
+    
+    <header>
+        <nav>
+            <div class="logo">VL_QUANTUM</div>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('research')">Research</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+                <li><a href="#" onclick="showPage('skills')">Skills</a></li>
+                <li><a href="#" onclick="showPage('cv')">CV</a></li>
+                <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+                <li><a href="#" onclick="showPage('arts')">Arts</a></li>
+                <li><a href="#" onclick="showPage('awards')">Awards</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>VIDURANGA SHENAL LANDERS</h1>
+                    <p class="subtitle">Quantum Computing Researcher • Satellite Innovator • Cryptanalyst</p>
+                    <p class="description">
+                        CS Undergraduate at University of Colombo, pioneering quantum cryptographic protocols 
+                        and developing next-generation satellite computing architectures for space exploration.
+                        Faculty Award recipient and Asia Pacific Space Leader.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#" onclick="showPage('research')" class="btn btn-primary">Explore Research</a>
+                        <a href="#" onclick="showPage('contact')" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Research Page -->
+        <div id="research" class="page">
+            <section class="section">
+                <h2 class="section-title">Research Focus</h2>
+                <div class="research-grid">
+                    <div class="research-card">
+                        <span class="icon">🔐</span>
+                        <h3>Quantum Cryptography</h3>
+                        <p>Developing novel Quantum Key Distribution protocols using symmetrically entangled quantum oracles, including SEDJ and SESP protocols for enhanced cryptographic security. Published research on quantum e-voting systems and space communications security.</p>
+                    </div>
+                    <div class="research-card">
+                        <span class="icon">🛰️</span>
+                        <h3>Satellite Computing</h3>
+                        <p>Designing innovative satellite architectures and developing Soil Penetration Darts (SPDs) for lunar sampling missions with Nexus Aurora Corp. Leading mission design for NASA's GLEE Challenge with winning lunar deployment systems.</p>
+                    </div>
+                    <div class="research-card">
+                        <span class="icon">⚙️</span>
+                        <h3>Space Robotics</h3>
+                        <p>Creating autonomous systems like SAWS (Self-Adapting Wheel System) and SWORD drill for planetary exploration. Technical lead for Taprobane, Sri Lanka's first analog Mars rover, competing internationally.</p>
+                    </div>
+                    <div class="research-card">
+                        <span class="icon">🗳️</span>
+                        <h3>Quantum e-Voting</h3>
+                        <p>Developed Quantegrity - a quantum-enhanced e-voting system that combines quantum cryptography with traditional voting mechanisms for unprecedented security. Presented at ICGS3-24.</p>
+                    </div>
+                    <div class="research-card">
+                        <span class="icon">🪐</span>
+                        <h3>Space Mission Design</h3>
+                        <p>Led international teams in designing missions to Mercury (RAISE) and Uranian moons (HOPE) under SGAC. Specialized in systems engineering, thermal analysis, and mission operations for deep space exploration.</p>
+                    </div>
+                    <div class="research-card">
+                        <span class="icon">🔢</span>
+                        <h3>Mathematical Research</h3>
+                        <p>Research on generalized forms of the Collatz Conjecture and prime distribution patterns. Mathematical art publications featured at Joint Mathematics Meetings 2023 including Collatz Feather 2.0 and SpiraL.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Projects Page -->
+        <div id="projects" class="page">
+            <section class="section">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" onclick="showProjectDetail('spd')">
+                        <div class="project-header">
+                            <h3>Soil Penetration Darts</h3>
+                            <p>Deep Lunar Sampling Technology</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Revolutionary planetary penetrator for collecting soil samples from lunar surface's deep layers, developed with Nexus Aurora Corp. Presented at 73rd & 75th IAC.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Space Tech</span>
+                                <span class="project-tag">CAD/FEM</span>
+                                <span class="project-tag">Mission Design</span>
+                                <span class="project-tag">IAC Published</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('sedj')">
+                        <div class="project-header">
+                            <h3>SEDJ QKD Protocol</h3>
+                            <p>Quantum Cryptographic Innovation</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Novel Quantum Key Distribution protocol based on Symmetrically Entangled Deutsch-Jozsa algorithm with enhanced security features. Preprint published on ResearchGate.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Quantum Computing</span>
+                                <span class="project-tag">Cryptography</span>
+                                <span class="project-tag">Qiskit</span>
+                                <span class="project-tag">Research</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('glee')">
+                        <div class="project-header">
+                            <h3>GLEE Mission</h3>
+                            <p>NASA Artemis Challenge</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Leading development of LunaSats for NASA's Global Lunar Expedition for Everyone, including winning design for Lunar Deployment Module (L-SPyDer) - Overall Category Winner.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">NASA</span>
+                                <span class="project-tag">Lunar Tech</span>
+                                <span class="project-tag">Mission Ops</span>
+                                <span class="project-tag">Winner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('taprobane')">
+                        <div class="project-header">
+                            <h3>Taprobane Rover</h3>
+                            <p>Sri Lanka's First Mars Rover</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Technical Lead for Sri Lanka's first analog Mars rover with autonomous navigation, robotic arm, and soil sampling capabilities. 5th place ERC 2023, 17th place ERC 2022.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Mars Rover</span>
+                                <span class="project-tag">Robotics</span>
+                                <span class="project-tag">Autonomous Systems</span>
+                                <span class="project-tag">Competition</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('saws')">
+                        <div class="project-header">
+                            <h3>SAWS Wheel System</h3>
+                            <p>Self-Adapting Space Technology</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Innovative wheel system that autonomously adjusts grousers for optimal traction on various planetary terrains. Sri Lankan Patent LK21653, tested in Arctic conditions.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Space Robotics</span>
+                                <span class="project-tag">Patent</span>
+                                <span class="project-tag">Innovation</span>
+                                <span class="project-tag">Arctic Tested</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('quantegrity')">
+                        <div class="project-header">
+                            <h3>Quantegrity</h3>
+                            <p>Quantum e-Voting System</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Quantum-enhanced e-voting system combining Scantegrity methodology with SEDJ QKD protocol for unprecedented election security. Presented at ICGS3-24 Conference.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Quantum Security</span>
+                                <span class="project-tag">e-Voting</span>
+                                <span class="project-tag">Cryptography</span>
+                                <span class="project-tag">Conference</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('sword')">
+                        <div class="project-header">
+                            <h3>SWORD Drill</h3>
+                            <p>Autonomous Extendable Drill</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Selenography and Water Observatory Regolith Drill - fully autonomous extendable drilling mechanism for deep lunar drilling operations. Sri Lankan Patent LK21652.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Drilling Tech</span>
+                                <span class="project-tag">Patent</span>
+                                <span class="project-tag">Lunar Ops</span>
+                                <span class="project-tag">Autonomous</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('hope')">
+                        <div class="project-header">
+                            <h3>HOPE Mission</h3>
+                            <p>Uranian Moon Exploration</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Co-led international team designing CubeSat mission to Uranian moons under SGAC. Innovative in-depth study of Uranian satellites with impactor technology.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">SGAC</span>
+                                <span class="project-tag">Deep Space</span>
+                                <span class="project-tag">CubeSat</span>
+                                <span class="project-tag">IAC Published</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="showProjectDetail('owlbert')">
+                        <div class="project-header">
+                            <h3>Owlbert AI</h3>
+                            <p>STEM Learning Chatbot</p>
+                        </div>
+                        <div class="project-content">
+                            <p>AI-powered chatbot for interactive STEM learning, specifically astronomy education. NASA Space Apps Challenge 2020 Global Nominee Award winner.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">AI/ML</span>
+                                <span class="project-tag">Education</span>
+                                <span class="project-tag">NASA Award</span>
+                                <span class="project-tag">Chatbot</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Skills Page -->
+        <div id="skills" class="page">
+            <section class="section">
+                <h2 class="section-title">Technical Expertise</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Quantum Computing</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Qiskit</span>
+                            <span class="skill-tag">PennyLane</span>
+                            <span class="skill-tag">QNE-ADK</span>
+                            <span class="skill-tag">Quantum Algorithms</span>
+                            <span class="skill-tag">QKD Protocols</span>
+                            <span class="skill-tag">Quantum ML</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Programming</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C/C++</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Scala</span>
+                            <span class="skill-tag">VHDL</span>
+                            <span class="skill-tag">Arduino</span>
+                            <span class="skill-tag">Octave</span>
+                            <span class="skill-tag">R</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Space Technology</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">CAD/FEM</span>
+                            <span class="skill-tag">MBSE</span>
+                            <span class="skill-tag">Mission Design</span>
+                            <span class="skill-tag">GMAT</span>
+                            <span class="skill-tag">Capella</span>
+                            <span class="skill-tag">SolidWorks</span>
+                            <span class="skill-tag">SolidEdge</span>
+                            <span class="skill-tag">DEM Simulation</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Development</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MERN Stack</span>
+                            <span class="skill-tag">AI/ML</span>
+                            <span class="skill-tag">Data Analysis</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">IoT</span>
+                            <span class="skill-tag">FPGA</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">LaTeX</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Simulation & Analysis</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Altair EDEM</span>
+                            <span class="skill-tag">PFC</span>
+                            <span class="skill-tag">Thermal Analysis</span>
+                            <span class="skill-tag">FEA</span>
+                            <span class="skill-tag">Terramechanics</span>
+                            <span class="skill-tag">Mission Analysis</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Languages</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">English (IELTS Band 8)</span>
+                            <span class="skill-tag">Sinhala (Native)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-		<!-- Wrapper -->
-		<div id="wrapper">
+        <!-- CV Page -->
+        <div id="cv" class="page">
+            <section class="section">
+                <h2 class="section-title">Curriculum Vitae</h2>
+                
+                <div class="cv-section">
+                    <h3>Education</h3>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">University of Colombo School of Computing</div>
+                            <div class="cv-item-date">2023 - Present</div>
+                        </div>
+                        <div class="cv-item-subtitle">B.Sc. (Hons) Computer Science - GPA: 3.95/4.00 (Highest)</div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Director's List (Semesters 1, 2), Faculty Award for best performing student (Year 1)</li>
+                                <li>Chairperson (ACM), Executive Committee Member (ISACA), Divisional Manager (SEDS), Member (IEEE)</li>
+                                <li>Course Projects: ERP system (microservices, miniReact, Java), Malloc emulator, Assembly emulator, Social media web-app (MERN)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">SGAC ACHIEVED Academy</div>
+                            <div class="cv-item-date">Mar - Aug 2024</div>
+                        </div>
+                        <div class="cv-item-subtitle">Space Systems Engineering & Mission Design</div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Systems Engineering (84%), Launch & Operations (87%), Space Mission Design & Analysis (97.5%), Payload Design (95%)</li>
+                                <li>MBSE model of lunar habitat using Arcadia method and Capella</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">QWorld & University of Latvia</div>
+                            <div class="cv-item-date">2023 - 2024</div>
+                        </div>
+                        <div class="cv-item-subtitle">QClass 23/24 (6 ECTS, Graduate Level)</div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Elements of Quantum Computing and Programming (100%), Elementary Quantum Algorithms (81.4%)</li>
+                                <li>Quantum Computing based Card Game (QOmi) project</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-			<!-- Header -->
-				<header id="header">
-					<div class="logo">
-						<span class="image fit"><img src="images/VLimage.png"></span>
-					</div>
-					<div class="content">
-						<div class="inner">
-							<h1>VIDURANGA SHENAL LANDERS</h1>
-							<h5>Undergraduate @ University of Colombo School of Computing
-							<br><br>Project Lead @ Nexus Aurora
-							<br>NPoC @ SGAC</h5>
-						</div>
-					</div>
-					<nav>
-						<ul>
-							<li><a href="#intro">Intro</a></li>
-							<li><a href="#CV">CV</a></li>
-							<li><a href="#projects">Projects</a></li>
-							<li><a href="/fractal_art/">Math-Arts</a></li>
-							<li><a href="#contact">Contact</a></li>
-						</ul>
-					</nav>
-				</header>
+                <div class="cv-section">
+                    <h3>Research Experience</h3>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">Nexus Aurora Corporation - Project Lead</div>
+                            <div class="cv-item-date">Aug 2022 – Present</div>
+                        </div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Leading international research team developing Soil Penetration Darts (SPDs) for lunar sampling</li>
+                                <li>Hyper-velocity impact simulation, CAD design, mission analysis, prototyping, MBSE</li>
+                                <li>Presented at 73rd & 75th International Astronautical Congress</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">Lunarbot - Team Leader & Founder</div>
+                            <div class="cv-item-date">Feb 2020 – Present</div>
+                        </div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Developed SAWS (Self-Adapting Wheel System) and SWORD drill technologies</li>
+                                <li>Partnered with Nexus Aurora for Arctic testing of SAWS prototypes</li>
+                                <li>Patents: Sri Lankan Patent LK21653 (SAWS), LK21652 (SWORD)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">NASA GLEE Mission - Remote Student Team Lead</div>
+                            <div class="cv-item-date">May 2022 – Present</div>
+                        </div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Led development of two LunaSats for NASA Artemis Challenge</li>
+                                <li>Designed L-SPyDer Lunar Deployment Module - Overall Category Winner</li>
+                                <li>Mission operations planning, programming, power budget analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <div class="cv-item-title">SEDS Sri Lanka - Technical Lead</div>
+                            <div class="cv-item-date">2022 – Present</div>
+                        </div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Leading 50+ member team developing Taprobane, Sri Lanka's first analog Mars rover</li>
+                                <li>5th place ERC 2023 (Qualification A), 17th place ERC 2022 (Finalist)</li>
+                                <li>Currently competing in IRDC 2025 lunar mission</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-			<!-- Main -->
-				<div id="main">
+                <div class="cv-section">
+                    <h3>Honors and Awards</h3>
+                    <div class="cv-item">
+                        <div class="cv-item-description">
+                            <ul>
+                                <li><strong>Faculty Award</strong> - University of Colombo School of Computing (2024)</li>
+                                <li><strong>Asia Pacific Space Leader Award</strong> - Space Generation Advisory Council (2023)</li>
+                                <li><strong>Keynote Speaker</strong> - 15th International Conference on Global Security, Safety & Sustainability (2023)</li>
+                                <li><strong>Winner (Overall Category)</strong> - Lunar Deployment Challenge, NASA's GLEE Mission (2024)</li>
+                                <li><strong>1st Runner Up</strong> - Predicta Data Science Hackathon (2024)</li>
+                                <li><strong>2nd - Sri Lanka (75th Global)</strong> - IEEE Xtreme 18.0 (2024)</li>
+                                <li><strong>40th Global (AWS $500 Powerup)</strong> - QHack 2024 Quantum ML Hackathon (2024)</li>
+                                <li><strong>Global Nominee</strong> - NASA Space Apps Challenge 2020</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-					<!-- Intro -->
-						<article id="intro">
-							<section id="introduction">
-							<h1 class="major">Introduction</h1>
-							<p>I am currently pursuing my undergraduate degreee in Computer Science at the University of Colombo School of Computing. I am a huge fan of space exploration, 
-								quantum computing and cryptography. </p>
-							<p>I am a founder and leader of several Sri Lankan student research teams involved in space-related research. I currently serve as a project lead at Nexus Aurora 
-								Corp, DE, USA, working on the project Soil Penetration Darts, which has the potential to significantly lower the cost of Lunar sampling.
-								I am also leading the Lunarbot team, serve as the Technical Lead of Taprobane Rover project at SEDS Sri Lanka and am the National Point of Contact for the Space 
-								Generation Advisory Council representing Sri Lanka.</p>
-							<p>Beyond space research, I am actively involved in quantum computing research, developing two novel Quantum Key Distribution protocols and a quantum e-voting system.
-								I've also worked on a generalization of the Collatz semi-group which indirectly led me to create numerous amazing fractal arts.</p>
-							<p>My dedication to innovation has earned several recent accomplishments. Our team won first place in the Overall Category of NASA's GLEE Mission's Lunar Deployment 
-								Challenge (2024), secured multiple achievements in coding and computer science related competitions, and published multiple research papers and book chapters.
-								I was also honored with the Faculty Award from the University of Colombo School of Computing (2024) and the Asia Pacific Space Leader Award from the Space 
-								Generation Advisory Council (2023).</p>
-							<p>In addition to research and competitions, I am actively involved in educational outreach and volunteer activities. As the NPoC for SGAC and 
-								Divisional Manager of SEDS Sri Lanka's Robotics and Rover Division, I work to promote space education and technology development in Sri Lanka.</p>
+                <div class="cv-section">
+                    <h3>Publications</h3>
+                    <div class="cv-item">
+                        <div class="cv-item-title">Conference Papers</div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Quantum e-voting system using QKD and enhanced quantum Oracles - ICGS3 (2024)</li>
+                                <li>Economical Lunar Sample Return Mission with Soil Penetration Darts - 75th IAC (2024)</li>
+                                <li>High-technology Operation for Planetary Exploration - HOPE-ROAR mission - 74th IAC (2023)</li>
+                                <li>Soil Penetration Darts (SPDs) for Deep Soil Sampling - 73rd IAC (2022)</li>
+                                <li>Mercury Sample Return Mission Design - 73rd IAC (2022)</li>
+                                <li>A Self Adapting Wheel System for Space Exploration Rovers - 72nd IAC (2021)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-title">Book Chapters (Springer)</div>
+                        <div class="cv-item-description">
+                            <ul>
+                                <li>Quantum Revolution in Space: Enhancing Space Technology - Space Law & Policy Series</li>
+                                <li>Quantum Technologies for Space and Aerial Vehicles - Space Law & Policy Series</li>
+                                <li>Planetary Penetrators for Space Mining - Space Law & Policy Series</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-							<p><a href="#projects">Check out my awesome projects here</a></p>
-							</section>
-							<!-- Awards Section Updates -->
-							<section id="honors">
-							<h2>Recent Honors and Awards</h2>
-							<ul>
-							<li>Faculty Award - University of Colombo School of Computing (2024)</li>
-							<li>Asia Pacific Space Leader Award - Space Generation Advisory Council (2023)</li>
-							<li>Keynote Speaker - 15th International Conference on Global Security, Safety & Sustainability (2023)</li>
-							<li>Winner (Overall Category) - Lunar Deployment Challenge, NASA's GLEE Mission (2024)</li>
-							</ul>
-							</section>
-							
-							<!-- Publications Section Updates -->
-							<section id="publications">
-							<h2>Recent Publications</h2>
-							<ul>
-							<li>Quantum e-voting system using QKD and enhanced quantum Oracles - 16th Annual International Conference on Global Security, Safety and Sustainability (2024)</li>
-							<li>Economical Lunar Sample Return Mission with Soil Penetration Darts - 75th International Astronautical Congress (2024)</li>
-							<li>Quantum Revolution in Space: Enhancing Space Technology - Space Law Principles and Sustainable Measures, Space Law & Policy Series, Springer (2024)</li>
-							<li>Quantum Technologies for Space and Aerial Vehicles - Space Governance, Space Law & Policy Series, Springer (2024)</li>
-							</ul>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					
-					<!-- CV-->
-						<article id="CV">							
-							<div style="max-width: 1000px; margin: 0 auto;">
-							<div style="text-align: center; margin-bottom: 2rem;">
-								<h1>VIDURANGA SHENAL LANDERS</h1>
-								<p>Wattala, Sri Lanka | 27/02/2002 | <a href="http://www.linkedin.com/in/viduranga-landers/">viduranga-landers</a> | 
-								<a href="https://vidurangalanders.github.io">vidurangalanders.github.io</a> | 
-								<a href="mailto:vidurangalanders@gmail.com">vidurangalanders@gmail.com</a></p>
-								<p style="font-style: italic; margin: 1rem 0;">
-								A highly motivated student with strong leadership qualities who is constantly seeking new challenges to push 
-								the limits of his knowledge. 
-								Actively seeking for academic opportunities in astronautics and quantum computing.
-								</p>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">EDUCATION</h2>
-								
-								<div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-									<strong>University of Colombo School of Computing</strong>
-									<span>2023 - Present</span>
-								</div>
-								<div style="display: flex; justify-content: space-between; align-items: top; margin-left: 1rem;">
-									<strong>Undergraduate Degree</strong>
-									<span>Colombo, Sri Lanka</span>
-								</div>
-								<div style="margin-left: 1rem;">
-									<br>
-									<ul>
-									<li>Pursuing B.Sc. program in Computer Science (GPA: 3.89/4.00, Class Rank: 1)</li>
-									<li>Course Projects: ERP system for educational institutes (microservices architecture, miniReact framework, 
-										Java backend, no libraries or frameworks used), Malloc emulator (python), Assembly emulator (python), 
-										Social media web-app (MERN)</li>
-									<li>Honors: Director's List (Semesters 1, 2), Faculty award for best performing student (Year 1)</li>
-									<li>Clubs: Executive Committee Member (ISACA), Meetup Coordinator (ACM), Divisional Manager (SEDS), Member (IEEE)</li>
-									</ul>
-								</div>
-								</div>
-						
-								<div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-									<strong>Education & Professional Development Platform, SGAC</strong>
-									<span>Mar - Aug 2024</span>
-								</div>
-								<div style="display: flex; justify-content: space-between; align-items: top; margin-left: 1rem;">
-									<strong>ACHIEVED Academy</strong>
-									<span>Remote</span>
-								</div>
-								<div style="margin-left: 1rem;">
-									<br>
-									<ul>
-									<li>Systems Engineering (84%), Launch & Operations (87%), Space Mission Design & Analysis (97.5%), Payload Design (95%)</li>
-									<li>Course Projects: MBSE model of a lunar habitat using Arcadia method and Capella</li>
-									</ul>
-								</div>
-								</div>
-						
-								<div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-									<strong>QWorld and Faculty of Computing, University of Latvia</strong>
-									<span>2023 - 2024</span>
-								</div>
-								<div style="display: flex; justify-content: space-between; align-items: top; margin-left: 1rem;">
-									<strong>QClass 23/24 (6 ECTS, Graduate Level)</strong>
-									<span>Remote</span>
-								</div>
-								<div style="margin-left: 1rem;">
-									<br>
-									<ul>
-									<li>Courses: Elements of Quantum Computing and Programming (100%), Elementary Quantum Algorithms (81.4%)</li>
-									<li>Course Projects: Quantum Computing based Card Game (QOmi)</li>
-									</ul>
-								</div>
-								</div>
-						
-								<div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-									<strong>D.S. Senanayake College</strong>
-									<span>2013 - 2022</span>
-								</div>
-								<div style="display: flex; justify-content: space-between; align-items: top; margin-left: 1rem;">
-									<strong>Secondary Education</strong>
-									<span>Colombo, Sri Lanka</span>
-								</div>
-								<div style="margin-left: 1rem;">
-									<br>
-									<ul>
-									<li>G.C.E. Advanced Level (Physical Science Stream): Chem: A, Phys: B, C.Maths: C, Eng: A, SAT: 1490 (790 M, 700 EBRW)</li>
-									<li>Clubs: President (Astronomy), Secretary (Social Services), Exec Member (Aeronautical), Quiz Captain (Science)</li>
-									</ul>
-								</div>
-								</div>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">RESEARCH EXPERIENCE</h2>
-								
-								<div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-									<strong>Nexus Aurora Corporation</strong>
-									<span>Aug 2022 – Present</span>
-								</div>
-								<div style="margin-left: 1rem;">
-									<p><strong>Project Lead</strong></p>
-									<ul>
-									<li>Leading an international research team in the development of a planetary penetrator (Soil Penetration Darts)</li>
-									<li>Work & Tools: Hyper-velocity impact simulation using DEM models (Altair EDEM, PFC); CAD (Solid Edge, Solidworks); 
-										Mission analysis (Python, GMAT); FEA (Solidworks); Prototyping (3D printing); MBSE (Capella)</li>
-									</ul>
-								</div>
-								</div>
-						
-								<div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-									<strong>Lunarbot</strong>
-									<span>Feb 2020 – Present</span>
-								</div>
-								<div style="margin-left: 1rem;">
-									<p><strong>Team Leader</strong></p>
-									<ul>
-									<li>Founder of Lunarbot, a local student team that develops innovative instruments for planetary rovers</li>
-									<li>Innovations: A grouser adjustable wheel system (SAWS); An extendable drilling mechanism for deep drilling (SWORD)</li>
-									<li>Partnered with Nexus Aurora to produce eight prototypes of the SAWS system, testing six prototypes on the SSAM rover 
-										in Arctic and two on an Axel rover configuration in Sri Lanka, with a possible funding opportunity from NASA JPL</li>
-									<li>Work & Tools: CAD (Adobe Inventor); Terramechanic simulations (Altair EDEM); FEA (Solidworks); Self-locking gear 
-										system design; Navigation and control algorithm design; System design & innovation</li>
-									</ul>
-								</div>
-								</div>
+                <div class="cv-section">
+                    <h3>Professional Training</h3>
+                    <div class="cv-item">
+                        <div class="cv-item-description">
+                            <ul>
+                                <li><strong>FPGA Embedded System Design</strong> - Arthur C Clarke Institute (2024)</li>
+                                <li><strong>QBronze, QZinc, QMercury, QNickel Diplomas</strong> - QWorld (2020-2024)</li>
+                                <li><strong>Quantum Hardware & Software Certificates</strong> - Womanium Quantum (2023)</li>
+                                <li><strong>Sagan Summer Workshop (3x)</strong> - NASA Exoplanet Science Institute, Caltech (2022-2024)</li>
+                                <li><strong>Qiskit Global Summer School (3x)</strong> - IBM (2021-2023)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-								<div style="margin: 1rem 0;">
-									<div style="display: flex; justify-content: space-between; align-items: top;">
-									  <strong>Great Lunar Expedition for Everyone</strong>
-									  <span>May 2022 – Present</span>
-									</div>
-									<div style="margin-left: 1rem;">
-									  <p><strong>Remote Student Team Lead</strong></p>
-									  <ul>
-										<li>Great Lunar Expedition is a NASA Artemis Challenge that aims to send student-developed ChipSats to the Moon</li>
-										<li>Led the mission operations planning and programming phases of two LunaSats and conducted several outreach activities</li>
-										<li>Designed a Lunar Deployment Module to disperse 100 LunaSats – L-SPyDer: Best proposal in the overall category</li>
-										<li>Work & Tools: Mission design; Power budget (python); Programming (Arduino); System design & innovation</li>
-									  </ul>
-									</div>
-								</div>
+                <div class="cv-section">
+                    <h3>Volunteering</h3>
+                    <div class="cv-item">
+                        <div class="cv-item-description">
+                            <ul>
+                                <li><strong>National Point of Contact</strong> - Space Generation Advisory Council (Oct 2023 – Present)</li>
+                                <li><strong>Divisional Manager</strong> - Robotics and Rover Division of SEDS Sri Lanka (Mar 2024 – Present)</li>
+                                <li><strong>Coordinator</strong> - SEDS Juniors of SEDS Sri Lanka (2020 – 2022)</li>
+                                <li><strong>Citizen Scientist</strong> - Provisional Asteroids discovered: 2021 CH23, 2020 TL54, 2020 QF3, 2020 PX12</li>
+                                <li><strong>Educational Outreach</strong> - Annual book donation to rural schools (1500+ students)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Blog Page -->
+        <div id="blog" class="page">
+            <section class="section">
+                <h2 class="section-title">Research Blog</h2>
+                <div class="blog-grid">
+                    <div class="blog-card" onclick="showBlogDetail('quantum-cryptography-future')">
+                        <div class="blog-header">
+                            <div class="date">July 10, 2025</div>
+                            <h3>The Future of Quantum Cryptography in Space</h3>
+                            <div class="category">Quantum Computing</div>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Exploring how quantum key distribution protocols can revolutionize secure communications between Earth and space missions, ensuring data integrity across vast distances using SEDJ and SESP protocols.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card" onclick="showBlogDetail('spd-development')">
+                        <div class="blog-header">
+                            <div class="date">July 5, 2025</div>
+                            <h3>Developing Soil Penetration Darts: A Journey</h3>
+                            <div class="category">Space Technology</div>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Behind the scenes of creating revolutionary deep lunar sampling technology with Nexus Aurora Corp, from initial concept to IAC presentations and international recognition.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card" onclick="showBlogDetail('mars-rover-challenges')">
+                        <div class="blog-header">
+                            <div class="date">June 28, 2025</div>
+                            <h3>Building Sri Lanka's First Mars Rover</h3>
+                            <div class="category">Robotics</div>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">The technical challenges and breakthroughs in developing the Taprobane rover, including autonomous navigation, robotic arm design, and international competition experiences.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card" onclick="showBlogDetail('quantum-voting-security')">
+                        <div class="blog-header">
+                            <div class="date">June 15, 2025</div>
+                            <h3>Quantum-Enhanced E-Voting: A Security Revolution</h3>
+                            <div class="category">Quantum Security</div>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">How Quantegrity combines quantum cryptography with traditional voting systems to create unprecedented election security and voter privacy through SEDJ QKD protocols.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card" onclick="showBlogDetail('nasa-glee-experience')">
+                        <div class="blog-header">
+                            <div class="date">June 1, 2025</div>
+                            <h3>Winning NASA's GLEE Challenge: Lessons Learned</h3>
+                            <div class="category">NASA Mission</div>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">Insights from leading the team that won NASA's Global Lunar Expedition challenge, including technical innovations in L-SPyDer design and project management strategies.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card" onclick="showBlogDetail('saws-innovation')">
+                        <div class="blog-header">
+                            <div class="date">May 20, 2025</div>
+                            <h3>SAWS: Self-Adapting Wheels for Space Exploration</h3>
+                            <div class="category">Innovation</div>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">The engineering process behind developing the patented Self-Adapting Wheel System and its applications in planetary exploration robotics, from concept to Arctic testing.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="blog-card" onclick="showBlogDetail('mathematical-art')">
+                        <div class="blog-header">
+                            <div class="date">May 1, 2025</div>
+                            <h3>From Collatz Conjecture to Mathematical Art</h3>
+                            <div class="category">Mathematics</div>
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-excerpt">How research into generalized forms of the Collatz Conjecture led to creating stunning mathematical art pieces featured at Joint Mathematics Meetings 2023, including Collatz Feather 2.0.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Blog Detail Pages -->
+        <div id="blog-quantum-cryptography-future" class="page">
+            <div class="blog-detail">
+                <a href="#" onclick="showPage('blog')" class="back-btn">← Back to Blog</a>
+                <div class="blog-detail-header">
+                    <h1>The Future of Quantum Cryptography in Space</h1>
+                    <div class="blog-meta">
+                        <span>July 10, 2025</span>
+                        <span>•</span>
+                        <span>Quantum Computing</span>
+                        <span>•</span>
+                        <span>8 min read</span>
+                    </div>
+                </div>
+                <div class="blog-detail-content">
+                    <p>As we stand on the precipice of a new era in space exploration, the need for secure communications between Earth and space missions has never been more critical. Quantum cryptography, particularly Quantum Key Distribution (QKD) protocols, offers unprecedented security for these vital communications.</p>
+                    
+                    <h2>The Challenge of Space Communications</h2>
+                    <p>Traditional cryptographic methods face unique challenges in space environments. The vast distances, radiation exposure, and the critical nature of space mission data require security solutions that go beyond conventional approaches.</p>
+                    
+                    <h3>Current Limitations</h3>
+                    <ul>
+                        <li>Vulnerability to quantum computing attacks</li>
+                        <li>Key distribution challenges across astronomical distances</li>
+                        <li>Signal degradation and interference</li>
+                        <li>Limited computational resources on spacecraft</li>
+                    </ul>
+                    
+                    <h2>Quantum Solutions for Space</h2>
+                    <p>Our research into symmetrically entangled quantum oracles, particularly the SEDJ (Symmetrically Entangled Deutsch-Jozsa) and SESP (Symmetrically Entangled Simon's Problem) protocols, addresses these challenges by providing:</p>
+                    
+                    <ul>
+                        <li>Unconditional security guaranteed by quantum mechanics</li>
+                        <li>Detection of any eavesdropping attempts</li>
+                        <li>Efficient key generation and distribution</li>
+                        <li>Resistance to future quantum computing threats</li>
+                    </ul>
+                    
+                    <h2>Implementation Challenges</h2>
+                    <p>Implementing quantum cryptography in space presents unique engineering challenges that we're actively working to solve through collaboration with space agencies and technology partners.</p>
+                    
+                    <p>The future of secure space communications lies in the marriage of quantum physics and space technology, creating an unbreakable shield for humanity's greatest explorations.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="blog-spd-development" class="page">
+            <div class="blog-detail">
+                <a href="#" onclick="showPage('blog')" class="back-btn">← Back to Blog</a>
+                <div class="blog-detail-header">
+                    <h1>Developing Soil Penetration Darts: A Journey</h1>
+                    <div class="blog-meta">
+                        <span>July 5, 2025</span>
+                        <span>•</span>
+                        <span>Space Technology</span>
+                        <span>•</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+                <div class="blog-detail-content">
+                    <p>The Soil Penetration Dart (SPD) project represents a paradigm shift in lunar sampling technology. When we first conceived this idea at Nexus Aurora Corp, we knew we were embarking on something revolutionary.</p>
+                    
+                    <h2>The Genesis of an Idea</h2>
+                    <p>Traditional lunar sampling methods are expensive, complex, and limited in their reach. We asked ourselves: what if we could sample from deep lunar layers without the need for complex drilling systems?</p>
+                    
+                    <h3>Design Philosophy</h3>
+                    <p>Our approach centers on three core principles:</p>
+                    <ul>
+                        <li>Simplicity in design, complexity in execution</li>
+                        <li>Cost-effectiveness without compromising scientific value</li>
+                        <li>Scalability for multiple deployment scenarios</li>
+                    </ul>
+                    
+                    <h2>Technical Challenges</h2>
+                    <p>Developing the SPD required solving multiple engineering challenges simultaneously:</p>
+                    
+                    <h3>Impact Dynamics</h3>
+                    <p>Calculating the precise impact velocity and angle needed for optimal penetration while ensuring sample integrity was one of our biggest hurdles.</p>
+                    
+                    <h3>Sample Collection Mechanism</h3>
+                    <p>Designing a system that could reliably collect and store samples during high-velocity impact required innovative thinking and extensive testing.</p>
+                    
+                    <h2>Presentations at IAC</h2>
+                    <p>Presenting our work at the 73rd and 75th International Astronautical Congress was both nerve-wracking and exhilarating. The feedback from the international space community has been invaluable in refining our approach.</p>
+                    
+                    <p>The SPD project continues to evolve, with potential applications extending beyond lunar exploration to Mars and other planetary bodies.</p>
+                </div>
+            </div>
+        </div>
 
-								<div style="margin: 1rem 0;">
-									<div style="display: flex; justify-content: space-between; align-items: top;">
-									  <strong>Robotics and Rover Division of SEDS Sri Lanka</strong>
-									  <span>2022 – Present</span>
-									</div>
-									<div style="margin-left: 1rem;">
-									  <p><strong>Technical Lead (2023) | Systems Engineering Lead (2022)</strong></p>
-									  <ul>
-										<li>The Robotics and Rover Division of SEDS Sri Lanka is developing Taprobane, Sri Lanka’s first ever analog Mars rover</li>
-										<li>Currently leading a 50+ member university student team in the development and renovation of Taprobane rover</li>
-										<li>Work & Tools: Mission design; System Design & Innovation; PDR & CDR report preparation</li>
-									  </ul>
-									</div>
-								</div>
-						
-								<div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-									<strong>Space Generation Advisory Council</strong>
-									<span>2022 – 2023</span>
-								</div>
-								<div style="margin-left: 1rem;">
-									<p><strong>Co-Lead - HOPE Team (2023) | Structures & Thermal Subsystem Lead - RAISE Team (2022)</strong></p>
-									<ul>
-									<li>Led an international research team in the design of a CubeSat mission to a Uranian moon (HOPE-2023)</li>
-									<li>Designed the mechanical and thermal subsystems of a sample return mission concept to Mercury (RAISE-2022)</li>
-									<li>Work & Tools: CAD (Solid Edge), MBSE (Capella), Thermal Analysis (python); Mission budgets; System design & innovation</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-							  <h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">WORK EXPERIENCE</h2>
-							  
-							  <div style="margin: 1rem 0;">
-								<div style="display: flex; justify-content: space-between; align-items: top;">
-								  <strong>iRentTech</strong>
-								  <span>Sep 2023 – Present</span>
-								</div>
-								<div style="margin-left: 1rem;">
-								  <p><strong>Technical Assistant - Part Time</strong></p>
-								  <ul>
-									<li>Overseeing delivery and repairs (software & hardware) of Laptops</li>
-								  </ul>
-								</div>
-							  </div>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">PUBLICATIONS</h2>
-								
-								<div style="margin: 1rem 0;">
-								<p><strong>Conference Papers</strong></p>
-								<ul>
-									<li>Quantum e-voting system using QKD and enhanced quantum Oracles - ICGS3 (Nov 25-27, 2024)</li>
-									<li>Economical Lunar Sample Return Mission with Soil Penetration Darts - 75th IAC (Oct 14-18, 2024)</li>
-									<li>High-technology Operation for Planetary Exploration - HOPE-ROAR mission - 74th IAC (Oct 2-6, 2023)</li>
-									<li>Soil Penetration Darts (SPDs) for Deep Soil Sampling - 73rd IAC (Sep 18-22, 2022)</li>
-									<li>Mercury Sample Return Mission Design Utilizing Innovative Systems and Technologies  - 73rd IAC (Sep 18-22, 2022)</li>
-									<li>A Self Adapting Wheel System for Space Exploration Rovers - 72nd IAC (Oct 25-29, 2021)</li>
-								</ul>
-								</div>
-						
-								<div style="margin: 1rem 0;">
-								<p><strong>Book Chapters</strong></p>
-								<ul>
-									<li>Quantum Revolution in Space: Enhancing Space Technology - Space Law & Policy Series, Springer</li>
-									<li>Quantum Technologies for Space and Aerial Vehicles - Space Law & Policy Series, Springer</li>
-									<li>Planetary Penetrators for Space Mining (abstract accepted) - Space Law & Policy Series, Springer</li>
-								</ul>
-								</div>
+        <div id="blog-mars-rover-challenges" class="page">
+            <div class="blog-detail">
+                <a href="#" onclick="showPage('blog')" class="back-btn">← Back to Blog</a>
+                <div class="blog-detail-header">
+                    <h1>Building Sri Lanka's First Mars Rover</h1>
+                    <div class="blog-meta">
+                        <span>June 28, 2025</span>
+                        <span>•</span>
+                        <span>Robotics</span>
+                        <span>•</span>
+                        <span>12 min read</span>
+                    </div>
+                </div>
+                <div class="blog-detail-content">
+                    <p>The journey of developing Taprobane, Sri Lanka's first analog Mars rover, has been filled with incredible challenges, breakthrough moments, and invaluable lessons that have shaped our approach to space robotics.</p>
+                    
+                    <h2>The Vision</h2>
+                    <p>When we started this project at SEDS Sri Lanka, we had a simple but ambitious goal: to put Sri Lanka on the map of international space robotics competitions. What we didn't anticipate was how much this project would teach us about engineering, teamwork, and perseverance.</p>
+                    
+                    <h2>Technical Challenges</h2>
+                    <h3>Autonomous Navigation</h3>
+                    <p>Developing a navigation system that could handle the diverse terrains of Mars analog environments required extensive testing and iteration. We implemented computer vision algorithms and sensor fusion techniques to achieve reliable autonomous movement.</p>
+                    
+                    <h3>Robotic Arm Design</h3>
+                    <p>The robotic arm needed to be precise enough for soil sampling while being robust enough to handle rough terrain. Our six-degree-of-freedom design went through multiple iterations before achieving the required precision.</p>
+                    
+                    <h3>Communication Systems</h3>
+                    <p>Ensuring reliable communication over long distances while maintaining low latency for real-time operations was crucial for competition success.</p>
+                    
+                    <h2>Competition Results</h2>
+                    <p>Our efforts paid off with impressive results: 5th place in ERC 2023 and 17th place in ERC 2022. Each competition taught us valuable lessons and drove improvements for the next iteration.</p>
+                    
+                    <p>Currently, we're preparing for IRDC 2025, where we'll tackle lunar mission challenges with the experience gained from our Mars rover development.</p>
+                </div>
+            </div>
+        </div>
 
-								<div style="margin: 1rem 0;">
-									<p><strong>Preprints</strong></p>
-									<ul>
-										<li>Symmetrically Entangled Quantum Oracles for Quantum Key Distribution (2023) </li>
-									</ul>
-								</div>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">HONORS AND AWARDS</h2>
-								
-								<div style="margin: 1rem 0;">
-								<ul>
-									<li>Faculty Award - University of Colombo School of Computing (2024)</li>
-									<li>Asia Pacific Space Leader Award - Space Generation Advisory Council (2023)</li>
-									<li>Keynote Speaker - 15th International Conference on Global Security, Safety & Sustainability (2023)</li>
-								</ul>
-								</div>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">PATENTS</h2>
-								
-								<div style="margin: 1rem 0;">
-								<ul>
-									<li>A Wheel that includes Autonomous Adjustable Grousers (Sri Lankan Patent No: LK21653 – Oct 2023)</li>
-									<li>A Fully Autonomous Extendable Drill and Method Thereof (Sri Lankan Patent No: LK21652 – July 2024)</li>
-								</ul>
-								</div>
-							</div>
+        <div id="blog-quantum-voting-security" class="page">
+            <div class="blog-detail">
+                <a href="#" onclick="showPage('blog')" class="back-btn">← Back to Blog</a>
+                <div class="blog-detail-header">
+                    <h1>Quantum-Enhanced E-Voting: A Security Revolution</h1>
+                    <div class="blog-meta">
+                        <span>June 15, 2025</span>
+                        <span>•</span>
+                        <span>Quantum Security</span>
+                        <span>•</span>
+                        <span>9 min read</span>
+                    </div>
+                </div>
+                <div class="blog-detail-content">
+                    <p>Democracy depends on secure, transparent, and verifiable elections. Quantegrity represents a breakthrough in e-voting security by combining quantum cryptography with proven voting methodologies.</p>
+                    
+                    <h2>The Security Challenge</h2>
+                    <p>Traditional e-voting systems face numerous security challenges, from vote tampering to voter privacy concerns. These issues become even more critical as cyber threats evolve and quantum computing threatens current cryptographic standards.</p>
+                    
+                    <h2>Quantum-Enhanced Solution</h2>
+                    <p>Quantegrity integrates the Scantegrity e-voting methodology with our SEDJ quantum oracle-based QKD protocol, creating a system that offers:</p>
+                    
+                    <ul>
+                        <li>Quantum-guaranteed voter privacy</li>
+                        <li>Tamper-evident ballot verification</li>
+                        <li>Post-quantum cryptographic security</li>
+                        <li>End-to-end verifiability</li>
+                    </ul>
+                    
+                    <h2>Technical Implementation</h2>
+                    <p>The system uses quantum entanglement to generate cryptographic keys that are fundamentally unbreakable by classical or quantum computers. Any attempt to intercept or modify the quantum states is immediately detectable.</p>
+                    
+                    <h2>Real-World Applications</h2>
+                    <p>We've presented Quantegrity at ICGS3-24, where it received significant interest from election security experts and government representatives. The potential for deployment in national elections represents a major step forward in democratic security.</p>
+                </div>
+            </div>
+        </div>
 
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">ACHIEVEMENTS</h2>
-								
-								<div style="margin: 1rem 0;">
-								<ul>
-									<li>Winner (Overall Category) - Lunar Deployment Challenge, NASA's GLEE Mission (2024)</li>
-									<li>1st Runner Up - Predicta Data Science Hackathon (2024)</li>
-									<li>1st University Rank (16th - Sri Lanka) - IEEE Xtreme 18.0 (2024)</li>
-									<li>40th Global (AWS $500 Powerup) - QHack 2024 Quantum Machine Learning Hackathon (2024)</li>
-								</ul>
-								</div>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">SKILLS</h2>
-								
-								<div style="margin: 1rem 0;">
-								<p><strong>Computer:</strong> Programming (C, C++, Python, Java, Scala, Arduino, VHDL) | Web Development (MERN, SQL, HTML, CSS) | LaTeX | Linux | Quantum Computing (Qiskit, QNE-ADK, Pennylane) | AI & ML | Data analysis</p>
-								<p><strong>Other Technical:</strong> CAD/FEM (SolidWorks, SolidEdge, Inventor) | DEM (EDEM, PFC) | MBSE (Capella) | FPGA | IoT</p>
-								<p><strong>Languages:</strong> Sinhala (Native) | English (IELTS Band 8)</p>
-								</div>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">PROFESSIONAL TRAINING</h2>
-								
-								<div style="margin: 1rem 0;">
-								<p><strong>Recent Certifications</strong></p>
-								<ul>
-									<li>FPGA Embedded System Design - Arthur C Clarke Institute for Modern Technologies (July 2024)</li>
-									<li>QBronze, QZinc, QMercury, QNickel Diplomas - QWorld (2020-2024)</li>
-									<li>Quantum Hardware Certificate, Quantum Software Certificate - Womanium Quantum (2023)</li>
-									<li>Introduction to Programming with Neutral Atoms - QuEra (Aug 2023)</li>
-								</ul>
-								</div>
-						
-								<div style="margin: 1rem 0;">
-								<p><strong>Summer Schools</strong></p>
-								<ul>
-									<li>Sagan Summer Workshop (x3) - NASA Exoplanet Science Institute, Caltech (2022-2024)</li>
-									<li>Qiskit Global Summer School (x3) - IBM (2021-2023)</li>
-								</ul>
-								</div>
-							</div>
-						
-							<div class="box" style="margin-bottom: 2rem;">
-								<h2 style="border-bottom: 1px solid #ffffff; padding-bottom: 0.5rem;">VOLUNTEERING</h2>
-								
-								<div style="margin: 1rem 0;">
-								<ul>
-									<li><strong>National Point of Contact</strong> - Space Generation Advisory Council (Oct 2023 – Present)</li>
-									<li><strong>Divisional Manager</strong> - Robotics and Rover Division of SEDS Sri Lanka (Mar 2024 – Present)</li>
-									<li><strong>Coordinator</strong> - SEDS Juniors of SEDS Sri Lanka (2020 – 2022)</li>
-									<li><strong>Citizen Scientist</strong> - Provisional Asteroids discovered: 2021 CH23, 2020 TL54, 2020 QF3, 2020 PX12</li>
-								</ul>
-								</div>
-							</div>
-						
-							<div style="text-align: center; margin: 2rem 0;">
-								<a href="CV/VidurangaLandersCV.pdf" class="button fit">Download Complete Resume</a>
-							</div>
-							</div>
-							
-							<ul class="icons">
-							<li><a href="mailto:vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-							<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
+        <div id="blog-nasa-glee-experience" class="page">
+            <div class="blog-detail">
+                <a href="#" onclick="showPage('blog')" class="back-btn">← Back to Blog</a>
+                <div class="blog-detail-header">
+                    <h1>Winning NASA's GLEE Challenge: Lessons Learned</h1>
+                    <div class="blog-meta">
+                        <span>June 1, 2025</span>
+                        <span>•</span>
+                        <span>NASA Mission</span>
+                        <span>•</span>
+                        <span>11 min read</span>
+                    </div>
+                </div>
+                <div class="blog-detail-content">
+                    <p>Leading our team to victory in NASA's Global Lunar Expedition for Everyone (GLEE) challenge was one of the most rewarding experiences of my career. Here are the key insights from our journey to developing the winning L-SPyDer Lunar Deployment Module.</p>
+                    
+                    <h2>The Challenge</h2>
+                    <p>NASA's GLEE mission aimed to deploy multiple small satellites (LunaSats) on the lunar surface to create a communication and scientific observation network. Our task was to design a deployment system that could reliably deliver these satellites to predetermined locations.</p>
+                    
+                    <h2>Our Solution: L-SPyDer</h2>
+                    <p>The Lunar Surface Payload Deployer (L-SPyDer) was our innovative solution for precise LunaSat deployment. Key features included:</p>
+                    
+                    <ul>
+                        <li>Precision landing system with hazard avoidance</li>
+                        <li>Automated deployment sequencing</li>
+                        <li>Real-time mission monitoring capabilities</li>
+                        <li>Robust communication protocols</li>
+                    </ul>
+                    
+                    <h2>Team Leadership Lessons</h2>
+                    <h3>Remote Collaboration</h3>
+                    <p>Managing an international team remotely taught us the importance of clear communication, structured workflows, and cultural sensitivity in engineering projects.</p>
+                    
+                    <h3>Iterative Design</h3>
+                    <p>Our success came from embracing rapid prototyping and continuous feedback loops with NASA mentors and team members.</p>
+                    
+                    <h2>Technical Innovations</h2>
+                    <p>The L-SPyDer's autonomous deployment system represented a significant advancement in lunar surface operations, incorporating lessons learned from previous lunar missions while introducing novel technologies for precision deployment.</p>
+                    
+                    <p>Winning the overall category validated our approach and opened doors for future collaborations with NASA and other space agencies.</p>
+                </div>
+            </div>
+        </div>
 
-					<!-- Projects -->
-						<article id="projects">
-							<h1 class="major">Research in<br>Astronautics</h1>
-							<section class="tiles">
-								<article2 class="style3">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a href="#Research1_1">
-										<h2>SPD</h2>
-										<div class="content">
-											<p>Soil Penetration Darts (SPDs) for Deep Soil Sampling<br>
-											<i>* Presented at the 73rd & 75th IAC
-											</i></p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style2">
-									<span class="image">
-										<img src="images/pic06.jpg" alt="" />
-									</span>
-									<a href="#Research1_2">
-										<h2>SAWS</h2>
-										<div class="content">
-											<p>Self Adapting Wheel System (SAWS) for Space Exploration Rovers<br>
-											<i>* Presented at the 72nd & 73rd IAC
-												<br>* Sri Lankan Patent: LK 21653
-											</i></p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style3">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a href="#Research1_5">
-										<h2>HOPE - SGAC</h2>
-										<div class="content">
-											<p>High-technology Operation for Planetary Exploration - uRanian mOons impActoR (HOPE-ROAR) mission: 
-												an innovative in-depth study of the Uranian satellites<br>
-											<i>* Presented at the 74th IAC</i></p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style3">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="#Research1_3">
-										<h2>RAISE - SGAC</h2>
-										<div class="content">
-											<p>Mercury Sample Return Mission Design Utilizing Innovative Systems and Technologies<br>
-											<i>* Presented the 73rd IAC</i></p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style2">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="#Research1_4">
-										<h2>Balloon Drones</h2>
-										<div class="content">
-											<p>Mini Space Expeditions for Venus, Mars and Titan using Affordable Balloon Drones<br>
-											<i>* Shortlisted for the finals of AAE-SEPG Dream Mission Call</i></p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p><br></p>
-							<h1 class="major">Research in<br>Mathematics</h1>
-							<p></p>
-							<section class="tiles">
-								<article2 class="style9">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="#Research2_1">
-										<h2>Collatz Conjecture</h2>
-										<div class="content">
-											<p>A Generalized Form with idnetical features to Collatz Conjecture<br>
-											<i>* Unpublished</i></p>
-										</div>
-									</a>
-								</article2>								
-								<article2 class="style9">
-									<span class="image">
-										<img src="images/pic08.jpg" alt="" />
-									</span>
-									<a href="#Research2_2">
-										<h2>Prime Distribution Pattern</h2>
-										<div class="content">
-											<p>A pattern in between intervals of prime numbers<br>
-											<i>* Unpublished</i></p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p><br></p>
-							<h1 class="major">Research in<br>Quantum <br>Computing</h1>
-							<p></p>
-							<section class="tiles">
-								<article2 class="style5">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="#Research3_3">
-										<h2>Quantegrity</h2>
-										<div class="content">
-											<p>Quantum enhanced e-voting system<br>
-											<i>* Presented at ICGS3-24</i></p>
-										</div>
-									</a>
-								</article2>	
-								<article2 class="style4">
-									<span class="image">
-										<img src="images/pic02.jpg" alt="" />
-									</span>
-									<a href="#Research3_1">
-										<h2>SEDJ</h2>
-										<div class="content">
-											<p>Symmetrically Entangled Deutsch-Jozsa Algorithm based QKD Protocol<br>
-											<i>* Preprint</i></p>
-										</div>
-									</a>
-								</article2>								
-								<article2 class="style6">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="#Research3_2">
-										<h2>SESP</h2>
-										<div class="content">
-											<p>Symmetrically Entangled Simon's Oracle based QKD Protocol<br>
-											<i>* Unpublished</i></p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p><br></p>
-							<h1 class="major">Space Related<br>Projects</h1>
-							<p></p>
-							<section class="tiles">
-								<article2 class="style1">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a href="#major_projects_1">
-										<h2>GLEE</h2>
-										<div class="content">
-											<p>Global Lunar Expedition for Everyone - NASA Artemis Challenge<br>
-												Remotely developing two LunaSats
-											<br><i>(Funded by Colorado Space Grant)</i></p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style1">
-									<span class="image">
-										<img src="images/pic12.jpg" alt="" />
-									</span>
-									<a href="#major_projects_4">
-										<h2>Taprobane</h2>
-										<div class="content">
-											<p>First ever Sri Lankan analog Mars rover developed by SEDS SL
-											<br><i>* 5th Place (Qualification A) - ERC2023 </i>
-											<br><i>* 17th Place (Finalist) - ERC2022</i>
-											</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style1">
-									<span class="image">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-									<a href="#major_projects_2">
-										<h2>SWORD</h2>
-										<div class="content">
-											<p>Selenography and Water Observatory Regolith Drill - A fully autonomous extendable lunar drill
-											<br><i>* Sri Lankan Patent: LK 21652</i>
-											</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style1">
-									<span class="image">
-										<img src="images/pic11.jpg" alt="" />
-									</span>
-									<a href="#major_projects_3">
-										<h2>SPIDER</h2>
-										<div class="content">
-											<p>Super Polar Investigative Drilling Exploration Rover
-											<br><i>* Runner's Up (Distinction Award) - Singapore Space Challenge 2021</i>
-											</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p><br></p>
-							<h1 class="major">Other Projects</h1>
-							<p></p>
-							<section class="tiles">
-								<article2 class="style7">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a href="#other_projects_1">
-										<h2>Owlbert</h2>
-										<div class="content">
-											<p>AI based chatbot for interactive STEM learning
-											<br><i>* Global Nominee - NASA Space Apps Challenge 2020</i>
-											</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style8">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a href="#other_projects_2">
-										<h2>ASSCR</h2>
-										<div class="content">
-											<p>Affordable Small Satellite Communication Relay concept
-											<br><i>* Participation - Act In Space by ESA</i></p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style8">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="#other_projects_3">
-										<h2>Particle Physics Project</h2>
-										<div class="content">
-											<p>A tool to identify characteristics of metal that decrease particle speed
-												<br><i>* Participation - BL4S by CERN</i>
-											</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style7">
-									<span class="image">
-										<img src="images/pic03.jpg" alt="" />
-									</span>
-									<a href="#other_projects_4">
-										<h2>International Astreroid Search Campaigns</h2>
-										<div class="content">
-											<p>NASA Citizen Science Project<br>
-											<i>* Provisional Asteroid Discoveries: 4</i></p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p><br></p>
-							<h1 class="major">Volunteering</h1>
-							<p></p>
-							<section class="tiles">
-								<article2 class="style12">
-									<span class="image">
-										<img src="images/pic05.jpg" alt="" />
-									</span>
-									<a>
-										<h2>University Clubs</h2>
-										<div class="content">
-											<p>Executive Committee Member - ISACA<br/>
-												Meetup Coordinator - ACM<br/>
-												Member - IEEE</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style9">
-									<span class="image">
-										<img src="images/pic01.jpg" alt="" />
-									</span>
-									<a>
-										<h2>School Clubs</h2>
-										<div class="content">
-											<p>Events Coordinator - OSAS<br/>
-												Mentor / Former President - ASSA<br/>
-												Former Secretary - SSA<br/>
-												Former Quiz Team Captain - SA<br/>
-												Former Executive Member - Aero</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style10">
-									<span class="image">
-										<img src="images/pic09.jpg" alt="" />
-									</span>
-									<a>
-										<h2>SEDS Sri Lanka</h2>
-										<div class="content">
-											<p>Divisional Manager - Rover & Robotics
-												<br>Technical Team Lead - Taprobane Project (v4.0)
-												<br>Former Systems Engineering Group Lead - Taprobane Project (v3.0)
-												<br>Former Coordinator - SEDS Juniors
-											</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style11">
-									<span class="image">
-										<img src="images/pic04.jpg" alt="" />
-									</span>
-									<a>
-										<h2>Educational Material Donation</h2>
-										<div class="content">
-											<p>Annual family project to donate books and educational materials to students of rural schools</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
+        <div id="blog-saws-innovation" class="page">
+            <div class="blog-detail">
+                <a href="#" onclick="showPage('blog')" class="back-btn">← Back to Blog</a>
+                <div class="blog-detail-header">
+                    <h1>SAWS: Self-Adapting Wheels for Space Exploration</h1>
+                    <div class="blog-meta">
+                        <span>May 20, 2025</span>
+                        <span>•</span>
+                        <span>Innovation</span>
+                        <span>•</span>
+                        <span>10 min read</span>
+                    </div>
+                </div>
+                <div class="blog-detail-content">
+                    <p>The Self-Adapting Wheel System (SAWS) represents a fundamental rethinking of how rovers navigate challenging planetary terrains. From initial concept to patent approval and Arctic testing, this journey has been filled with engineering breakthroughs.</p>
+                    
+                    <h2>The Problem</h2>
+                    <p>Traditional rover wheels face a constant trade-off between traction and efficiency. Smooth wheels are efficient on hard surfaces but struggle in loose regolith, while grouser wheels provide excellent traction but increase rolling resistance on firm terrain.</p>
+                    
+                    <h2>Our Innovation</h2>
+                    <p>SAWS solves this problem by automatically adjusting grouser configuration based on real-time terrain analysis. The system uses:</p>
+                    
+                    <ul>
+                        <li>Self-locking gear mechanisms for reliable grouser positioning</li>
+                        <li>Sensor feedback for terrain characterization</li>
+                        <li>Autonomous decision-making algorithms</li>
+                        <li>Fail-safe mechanical designs</li>
+                    </ul>
+                    
+                    <h2>Development Process</h2>
+                    <h3>Conceptual Design</h3>
+                    <p>The initial concept emerged from observing how different wheel configurations performed in various terrains during rover competitions.</p>
+                    
+                    <h3>Prototyping and Testing</h3>
+                    <p>Multiple iterations led to our current design, which was validated through extensive laboratory testing and field trials.</p>
+                    
+                    <h3>Arctic Validation</h3>
+                    <p>Partnership with Nexus Aurora enabled testing of six SAWS prototypes in Arctic conditions, providing valuable data on performance in extreme environments.</p>
+                    
+                    <h2>Patent and Recognition</h2>
+                    <p>Receiving Sri Lankan Patent LK21653 for SAWS was a significant milestone, validating the novelty and potential impact of our innovation. Presentations at IAC conferences have generated interest from major space agencies.</p>
+                    
+                    <p>The technology is now being integrated into Nexus Aurora's SSAM rover, with potential applications ranging from lunar exploration to Mars missions.</p>
+                </div>
+            </div>
+        </div>
 
-					<!-- Research1_1-->
-						<article id="Research1_1">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Soil Penetration Darts (SPD)</h2>
-							<p>A Soil Penetration Dart (SPD) is a planetary penetrator developed to collect soil samples from the lunar surface's deep layers. 
-								Nexus Aurora Corp, DE, USA, is actively developing the project with a team of six members. 
-								The research findings were presented during the 73rd and 75th International Astronautical Congresses and were published in the congress proceedings.
-							<br><br><a href="https://nexusaurora.org/projects/spd/"> Click to visit project website </a>
-							<br><br><a href="https://iac2024-iaf.ipostersessions.com/default.aspx?s=52-1D-1A-B3-8C-75-5D-82-E9-97-C1-1A-C3-2A-CF-4A"> IAC 2024 iPoster </a>
-							<br><a href="https://www.researchgate.net/publication/385423428_Economical_Lunar_Sample_Return_Mission_with_Soil_Penetration_Darts"> IAC 2024 Paper </a>
-							<br><br><a href="https://iac2022-iaf.ipostersessions.com/?s=B8-16-E7-F6-64-45-FE-1B-EE-47-25-5C-32-B6-BE-42"> IAC 2022 iPoster </a>
-							<br><a href="https://www.researchgate.net/publication/378040069_Soil_Penetration_Darts_SPDs_for_Deep_Soil_Sampling"> IAC 2022 Paper </a>
-							<br><br><a href="https://youtu.be/TAXAs4mlsO0"> Youtube Video 1 </a>
-							<br><a href="https://youtu.be/qW3udrr3ewY"> Youtube Video 2</a> </p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_1_1.gif" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SPD Exploded View GIF</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_1_2.jpg" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SPD Parts Breakdown</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_1_3.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SPD Mission ConOps</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research1_2-->
-						<article id="Research1_2">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Self Adapting Wheel System (SAWS)</h2>
-							<p>Lunarbot, a research team of four Sri Lankan students, created the Self-Adapting Wheel System. 
-								It was first conceptualized as part of the SPIDER lunar rover proposal for the Singapore Space Challenge 2021. 
-								It was later improved as a customizable wheel system for any space exploration rover. 
-								The outcomes of the research were presented at the 72nd International Astronautical Congress in Dubai and published in the congress proceedings. 
-								Local patents were applied for this concept in March 2021. (Application No. LKA21653)
-							</p>
-							<p> Lunarbot has collaborated with Nexus Aurora Corp., DE, USA, to physically construct and incorporate the wheel system into their Scout, Sample, and Map (SSAM) analog Mars rover. 
-								The SAWS integrated SSAM rover (SSAM v2.0) will be tested at the Mars Society's Mars Dessert Research Station in Utah during its test period in April 2023.
-							
-							<br><br><a href="https://teamlunarbot.github.io/index.html"> Click to visit Lunarbot website </a>
-							<br><a href="https://nexusaurora.org/projects/mdrs-ssam/"> Nexus Aurora MDRS-SSAM project website </a>
-							<br><br><a href="https://www.researchgate.net/publication/378039909_A_SELF_ADAPTING_WHEEL_SYSTEM_FOR_SPACE_EXPLORATION_ROVERS"> IAC 2021 Paper </a>
-							<br><a href="https://iac2022-iaf.ipostersessions.com/?s=D3-9A-17-89-70-7A-23-C5-62-1C-FC-29-9E-AD-D5-FF"> IAC 2022 iPoster (Nexus Aurora)</a>
-							<br><a href="https://iafastro.directory/iac/paper/id/72463/summary/"> IAC 2022 Paper (Nexus Aurora) </a></p>
+        <div id="blog-mathematical-art" class="page">
+            <div class="blog-detail">
+                <a href="#" onclick="showPage('blog')" class="back-btn">← Back to Blog</a>
+                <div class="blog-detail-header">
+                    <h1>From Collatz Conjecture to Mathematical Art</h1>
+                    <div class="blog-meta">
+                        <span>May 1, 2025</span>
+                        <span>•</span>
+                        <span>Mathematics</span>
+                        <span>•</span>
+                        <span>7 min read</span>
+                    </div>
+                </div>
+                <div class="blog-detail-content">
+                    <p>Mathematics and art have always been intertwined, but the journey from researching the Collatz Conjecture to creating visual art pieces has been unexpectedly rewarding and illuminating.</p>
+                    
+                    <h2>The Collatz Conjecture</h2>
+                    <p>Also known as the 3n+1 problem, the Collatz Conjecture is one of mathematics' most famous unsolved problems. While working on generalized forms of this conjecture, I discovered fascinating patterns that demanded visual representation.</p>
+                    
+                    <h2>Discovering Visual Patterns</h2>
+                    <p>As I explored different starting values and variations of the conjecture, certain sequences created stunning visual patterns when plotted. These weren't just mathematical curiosities—they were genuinely beautiful.</p>
+                    
+                    <h3>Collatz Feather 2.0</h3>
+                    <p>This piece visualizes the trajectory lengths of Collatz sequences as a feather-like structure, where each strand represents a different mathematical path through the conjecture's landscape.</p>
+                    
+                    <h3>SpiraL</h3>
+                    <p>Using spiral coordinates to plot Collatz sequences revealed hidden symmetries and created mesmerizing patterns that bridge the gap between pure mathematics and visual art.</p>
+                    
+                    <h2>Exhibition at Joint Mathematics Meetings</h2>
+                    <p>Having these pieces featured at the Joint Mathematics Meetings 2023 was incredibly rewarding. The intersection of mathematical research and artistic expression opened new avenues for communicating complex mathematical concepts.</p>
+                    
+                    <h2>The Broader Impact</h2>
+                    <p>This work demonstrates how mathematical research can transcend traditional boundaries, creating beauty while advancing our understanding of fundamental mathematical problems.</p>
+                    
+                    <p>The visual representations have also proven valuable for educational purposes, helping students grasp the complexity and beauty inherent in mathematical sequences.</p>
+                </div>
+            </div>
+        </div>
 
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_2_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SAWS Wheel</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_2_3.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Presentation at IAC 2021</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_2_6.jpeg" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SAWS Integrated SSAM Rover
-												<br>Credits: Nexus Aurora
-											</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research1_3-->
-						<article id="Research1_3">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Mercury Sample Return Mission Design</h2>
-							<p>This research was conducted under the guidance of the Space Exploration Project Group (SEPG) of the Space Generation Advisory Council (SGAC) as part of the ACHIEVED Initiative, 
-								which stands for Assembly for Concepts in Human Interplanetary Exploration with Various Extraterrestrial Designations. 
-								ACHIEVED is made up of two year-long mission design teams, one of which is named the RAISE team (Research Assembly for Innovative Projects in Space Exploration).
-								I was the Structures and Thermal Subsystems lead of the project.
-								The outcomes of the research were presented during the 73rd International Astronautical Congress in Paris and published in the congress proceedings. 
-							<br><br><a href="https://spacegeneration.org/projects/space-exploration/current-projects/achieved"> Click to visit ACHIEVED webpage </a>
-							<br><a href="https://iafastro.directory/iac/paper/id/69552/summary/"> IAC 2022 Paper </a></p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_3_4.jpg" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Mercury Lander with Ascent Segment</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_3_5.jpg" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Mercury Orbiter</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_3_6.jpg" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Spacecraft Exploded View</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research1_4-->
-						<article id="Research1_4">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Balloon Drones</h2>
-							<p>Balloon Drone is a novel concept that combines an expandable helium balloon with a CubeSat based spacecraft to reduce the cost of performing small scale planetary missions. 
-								The abstract was shortlisted for the second round of the AAE- SEPG Dream Mission Call 2023.
-								<br>
-							<br><a href="https://youtu.be/-5F-5JMMS64"> Youtube Video </a> </p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_4_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Balloon Drones</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_4_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Mission Overview</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research1_3-->
-						<article id="Research1_5">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Titania Impactor Mission Design</h2>
-							<p>This research was conducted under the guidance of the Space Exploration Project Group (SEPG) of the Space Generation Advisory Council (SGAC) as part of the ACHIEVED Initiative, 
-								which stands for Assembly for Concepts in Human Interplanetary Exploration with Various Extraterrestrial Designations. 
-								ACHIEVED is made up of two year-long mission design teams, one of which is named the HOPE team (High-technology Operations for Planetary Exploration).
-								I served as one of the two co-leads of the project.
-								The outcomes of the research was presented at the 74th International Astronautical Congress in Baku, Azerbaijan. 
-							<br><br><a href="https://spacegeneration.org/projects/space-exploration/current-projects/achieved"> Click to visit ACHIEVED webpage </a><br/>
-							<a href="https://www.researchgate.net/publication/375672005_High-technology_Operation_for_Planetary_Exploration_-Uranian_Moons_Impactor_HOPE-ROAR_mission_an_innovative_in-depth_study_of_the_Uranian_satellites"> IAC 2022 Paper </a></p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_5_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Mission ConOps</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_5_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Impactor Mission ConOps</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research1_5_3.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Impactor CAD Model</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research2_1-->
-						<article id="Research2_1">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Different Approach for A Generalization<br>of the Collatz Semi-Group</h2>
-							<p>The 3x+1 problem (Collatz Conjecture) inspired this research initiative. 
-								After playing around with the conjecture for a while, my first instinct was to generalize it and substitute the "3" and "1" in the "3x+1" equation with variables.
-								While a single error is not always good, two errors may be advantageous at times.
-								That's how I came across a generalization to the years old Collatz Conjecture. 
-								Later, I discovered that Prof. M. Bruschi had proposed a similar generalized form in 2008, with a challenge to disprove his idea.
-								While his approach was completely theoretical, mine was based on time sequence graphs, which are often used to visualize the Collatz Conjecture.
-								The intriguing result is that, while this approach provides another way to obtain Prof. M. Bruschi's conjecture, when applied to his generalized equation,
-								it produces various patterns that are difficult to define with my limited expertise.
-								<br><br><a href="https://vidurangalanders.github.io/collatz-explorer/"> Click to visit Collatz Visualizer </a></p>
-								<p>If you're interested and want to work together, don't hesitate to send me an <a href="mailto:vidurangalanders@gmail.com">email</a>.
-							</p>
-							<p></p><p><b>First set of equations</b></p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 1 (m=1)<br>(Collatz Conjecture)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 2 (m=1)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_3.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 3 (m=1)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_4.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 4 (m=1)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_5.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 5 (m=1)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_6.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 6 (m=1)</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-								<p></p><p><b>Second set of equations</b></p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_7.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 1 (m=2)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_8.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 2 (m=2)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_9.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 3 (m=2)</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-								<p></p><p><b>Third set of equations</b></p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_10.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 1 (m=3)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_11.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Equation 2 (m=3)</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-								<p></p><p><b>Random Graphs</b></p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_12.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Some Chaotic Graphs</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_13.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Some Chaotic Graphs</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_14.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Small Underlying Patterns of Chaotic Graphs</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_1_15.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Small Underlying Patterns of Chaotic Graphs</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research2_2-->
-						<article id="Research2_2">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">A Pattern Among the Intervals <br>Between Prime Numbers</h2>
-							<p>The goal of this project is to find the least number of primes in any given interval size at any place on the numberline. 
-								<br> So far, it has been established that this minimum number has a close linear connection with the number of primes and the size of the interval. 
-							</p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_2_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Min Prime count 20000+</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research2_2_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Actual & Min Prime count 10000</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research3_1-->
-						<article id="Research3_1">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">A novel Quantum Key Distribution Protocol<br>based on Symmetrically Entangled Deutsch-Jozsa Oracle</h2>
-							<p>This project is currently under-development. 
-								<br>A Quantum Key Distribution (QKD) protocol was implemented using two modified versions of the Deutsch-Jozsa algorithm.
-								Symmetric entanglement of qubits was utilized for the creation of this protocol and the two versions differs by the semi and fully symmetrical entanglement of 
-								Alice's and Bob's circuits.
-								<br><a href="https://www.researchgate.net/publication/378039775_Symmetrically_Entangled_Quantum_Oracles_for_Quantum_Key_Distribution">Preprint</a>
-							</p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research3_1_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Key Generation Results for Fully Entangled Oracle</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research3_1_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Key Generation Results for Semi Entangled Oracle</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research3_1_3.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>QKD Protocol Schematic for Fully Entangled Oracle Based on (Ampatzis & Andronikos, 2021)</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research3_1_4.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>QKD Protocol Schematic for Semi Entangled Oracle Based on (Ampatzis & Andronikos, 2021)</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research3_2-->
-						<article id="Research3_2">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">A novel Quantum Key Distribution Protocol<br>based on Symmetrically Entangled Simon's Oracle</h2>
-							<p>This project is currently under-development. 
-								<br>A Quantum Key Distribution (QKD) protocol was implemented using two modified versions of the SImon's problem oracle.
-								Symmetric entanglement of qubits was utilized for the creation of this protocol and the two versions differs by the semi and fully symmetrical entanglement of 
-								Alice's and Bob's circuits. 
-							</p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research3_2_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Key Generation Results for Fully Entangled Oracle</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Research3_2_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Key Generation Results for Semi Entangled Oracle</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- Research3_3-->
-					<article id="Research3_3">
-						<a href="#projects"><button>Back to Projects</button></a><p></p>
-						<h2 class="major">A novel Quantum Enhanced<br>E-Voting System (Quantegrity)</h2>
-						<p>This project is currently under-development. 
-							<br>A Quantum enhanced e-voting system based on the Scantegrity e-voting system and symmetrically entangled Deutsch-Jozsa quantum oracle based QKD protocol. 
-						</p>
-						<section class="tiles">
-							<article2 class="style20">
-								<span class="image">
-									<img src="images/Research3_3_1.png" alt="" />
-								</span>
-								<a>
-									<div class="content">
-										<p>Quantegrity Architecture</p>
-									</div>
-								</a>
-							</article2>
-							<article2 class="style20">
-								<span class="image">
-									<img src="images/Research3_3_2.png" alt="" />
-								</span>
-								<a>
-									<div class="content">
-										<p>Scantegrity e-voting ballot system</p>
-									</div>
-								</a>
-							</article2>
-							<article2 class="style20">
-								<span class="image">
-									<img src="images/Research3_3_3.png" alt="" />
-								</span>
-								<a>
-									<div class="content">
-										<p>SEDJ Oracle Based QKD</p>
-									</div>
-								</a>
-							</article2>
-						</section>
-						<p></p>
-						<ul class="icons">
-							<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-							<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						</ul>
-					</article>
-					<!-- major_projects_1-->
-						<article id="major_projects_1">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Global Lunar Expedition for Everyone</h2>
-							<p>GLEE is one of NASA's Artemis Student Challenges and is a fully funded project to remotely develop two LunaSats. 
-								213 teams were accepted for the remote edition, and I'm honored to lead one of two teams from Sri Lanka. 
-								Due to the Silicon shortage, LunaSat Kits were delivered in September 2022. Our team completed the initial workshop modules by 2023.
-								We took part in the Lunar Deployment Module Challenge in 2024 and our design was chosen as the overall winner.
-								<br>We are currently working with the GLEE team to evaluate their latest modules that explains how to develop our own LunaSat.
-								<p>Check out <a href="https://www.glee2023.org">GLEE website</a> for more information.</p>
-							</p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj1_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>LunaSat<br>Credit: GLEE</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj1_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Lunar Deployment Module - L-SPyDer</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- major_projects_4-->
-						<article id="major_projects_4">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Taprobane</h2>
-							<p>Taprobane is the first ever analog Mars rover that is being developed in Sri Lanka by SEDS Sri Lanka.
-								It is a six-wheeled autonomous rover with a rocker-boggie suspension, robotic arm, and a scoop to complete tasks
-								such as traversing on challenging terrains, gripping small objects, and obtaining soil samples. 
-								Taprobane team was able to secure the 4th place in the International Rover Design Challenge (IRDC) organized by the Mars Society South Asia, 
-								17th place in the on-site edition of the European Rover Challenge 2022 organized by Space Foundation. 
-								We secured the 5th place in the remote edition of the European Rover Challenge in 2023. Currently, we are taking part in the IRDC 2025
-								to design a lunar rover mission to the south polar region.
-							</p>
-							<p><a href="https://roverchallenge.eu/en/taprobane-v3-0/">European Rover Challenge 2022</a></p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj4_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Taprobane Mission Patch <br>Credit: SEDS SL</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj4_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Taprobane Team Leads <br>Credit: SEDS SL</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- major_projects_2-->
-						<article id="major_projects_2">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Selenography and Water <br>Observatory Regolith Drill</h2>
-							<p>Lunarbot, a research team of four Sri Lankan students, created the Selenography and Water Observatory Regolith Drill (SWORD). 
-								It was first conceptualized as part of the SPIDER lunar rover proposal for the Singapore Space Challenge 2021.
-								Local patents were applied for this concept in March 2021. (Application No. LKA21652)
-							</p>
-							<br><a href="https://teamlunarbot.github.io/index.html"> Click to visit Lunarbot website </a>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj2_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SWORD</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj2_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Extendable Drill Bits</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- major_projects_3-->
-						<article id="major_projects_3">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Super Polar Investigative <br>Drilling Exploration Rover</h2>
-							<p>SPIDER is a lunar rover concept capable of drilling and surface mapping proposed for the Singapore Space Challenge 2021, 
-								which was hosted by the Singapore Space Technologies Ltd. 
-								This was team Lunarbot's first major project, and we competed under the supervision of SEDS Sri Lanka. 
-								The design received the Distinction Award as one of two runner-up teams.</p>
-							<p> SPIDER is made up of two detachable independent systems. 
-								SPIDER is also where Lunarbot's future projects Self Adapting Wheel System(SAWS) and Selenography & Water Observatory Regolith Drill(SWORD) were born.
-							</p>
-							<br><a href="https://teamlunarbot.github.io/index.html"> Click to visit Lunarbot website </a>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj3_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SPIDER</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj3_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>SPIDER</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj3_3.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Rover Detaching</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- other_projects_1-->
-						<article id="other_projects_1">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Owlbert</h2>
-							<p>Owlbert is an AI-powered chatbot that helps people learn astronomy in a non-traditional way.
-								The concept was primarilly developed for the NASA Space Apps Challenge 2020 and was awarded with the Global Nominee Award.
-							</p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj5_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Owlbert Flyer</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj5_2.jpeg" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>Global Nominee Award</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- other_projects_2-->
-						<article id="other_projects_2">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Affordable Small Satellite <br>Communication Relay</h2>
-							<p>Affordable Small Satellite Communication Relay (ASSCR) was developed by the team Space_warriors for the Act In Space 2020 compeittion by ESA.
-								The notion was to utilize the Oneweb satellite system to create a reliable and safe communication relay for CubeSats and minimize the requirement for communication expertise and ground stations.
-							</p>
-							<section class="tiles">
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj6_1.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>ASSCR intro</p>
-										</div>
-									</a>
-								</article2>
-								<article2 class="style20">
-									<span class="image">
-										<img src="images/Proj6_2.png" alt="" />
-									</span>
-									<a>
-										<div class="content">
-											<p>ASSCR Mission objectives</p>
-										</div>
-									</a>
-								</article2>
-							</section>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- other_projects_3-->
-						<article id="other_projects_3">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">Beam Line <br>For Schools</h2>
-							<p>Beam Line For Schools (BL4S) is a high school competition organized by CERN and DESY to allow high school teams
-								to test their particle physics hypotheses using Large Hadron Collider (LHC) or DESY particle accelerators.
-								
-								Our project aimed to test the hypothesis: "The existence, momentum of electrons in a certain material would affect the stopping powers
-								for the positrons. Absence of electrons will minimize the annihilation making it a more
-								suitable decelerator target. Higher speeds and movements of electrons will increase the
-								probability of annihilation as well as the stopping powers. Further the density and the
-								intermolecular interactions can cause effects to make a material more or less suitable as a
-								decelerator target."</p>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>
-					<!-- other_projects_4-->
-						<article id="other_projects_4">
-							<a href="#projects"><button>Back to Projects</button></a><p></p>
-							<h2 class="major">International Asteroid Search Campaigns</h2>
-							<p>International Asteroid Search Campaign is a monthly citizen science project organized by the International Astronomical Search Colaboration (IASC) and Pan-STARRS. 
-								Each campaign enables dozens of small teams to participate in asteroid hunting by providing them with real data sets from Pan-STARRS telescopes.
-								A preliminary asteroid candidate list is published at the end of each campaign.
-								After a few months, the list of provisional asteroids is published, and the discoverers receive a certificate for their efforts. 
-								Provisional asteroids will remain provisional for several years until their orbits are confirmed.
-								<br>
-								<br>
-								My provisional discoveries:
-								<ul>
-									<li>2020PX12</li>
-									<li>2020QF3</li>
-									<li>2020TL54</li>
-									<li>2021CH23</li>
-								</ul>
-							<p></p>
-							<ul class="icons">
-								<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a></li>
-								<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							</ul>
-						</article>	
+        <!-- Project Detail Pages -->
+        <div id="project-spd" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>Soil Penetration Darts (SPD)</h1>
+                    <p>Revolutionary Deep Lunar Sampling Technology</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>A Soil Penetration Dart (SPD) is a planetary penetrator developed to collect soil samples from the lunar surface's deep layers. Nexus Aurora Corp, DE, USA, is actively developing the project with a team of six members.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Hyper-velocity impact capability for deep penetration</li>
+                            <li>Autonomous sample collection and storage</li>
+                            <li>Robust communication systems for data transmission</li>
+                            <li>Cost-effective alternative to traditional drilling</li>
+                        </ul>
+                        
+                        <h3>Publications & Recognition</h3>
+                        <ul>
+                            <li>Presented at 73rd & 75th International Astronautical Congress</li>
+                            <li>Published in IAC proceedings</li>
+                            <li>Featured in NASA mission concepts</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Arduino</span>
+                            <span class="project-tag">Mission Design</span>
+                            <span class="project-tag">Power Systems</span>
+                            <span class="project-tag">Programming</span>
+                            <span class="project-tag">System Design</span>
+                            <span class="project-tag">Altair EDEM</span>
+                            <span class="project-tag">CAD/FEM</span>
+                            <span class="project-tag">Python</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [SPD MISSION IMAGES]
+                        <br>Add your Soil Penetration Dart images here
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="project-sedj" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>SEDJ QKD Protocol</h1>
+                    <p>Symmetrically Entangled Deutsch-Jozsa Quantum Key Distribution</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>The SEDJ protocol represents a novel approach to Quantum Key Distribution using symmetrically entangled quantum oracles based on the Deutsch-Jozsa algorithm, providing enhanced security for cryptographic applications.</p>
+                        
+                        <h3>Key Innovations</h3>
+                        <ul>
+                            <li>Symmetrical quantum entanglement implementation</li>
+                            <li>Enhanced eavesdropping detection capabilities</li>
+                            <li>Optimized for long-distance quantum communication</li>
+                            <li>Resistance to quantum computing attacks</li>
+                            <li>Semi and fully symmetrical entanglement variants</li>
+                        </ul>
+                        
+                        <h3>Research Status</h3>
+                        <ul>
+                            <li>Published preprint on ResearchGate</li>
+                            <li>Implemented and tested on quantum simulators</li>
+                            <li>Security analysis completed</li>
+                            <li>Applications in space communications explored</li>
+                            <li>Integrated into Quantegrity e-voting system</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Qiskit</span>
+                            <span class="project-tag">Quantum Algorithms</span>
+                            <span class="project-tag">Cryptography</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Quantum Simulation</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [SEDJ PROTOCOL DIAGRAMS]
+                        <br>Add your quantum circuit diagrams here
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="project-glee" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>GLEE Mission</h1>
+                    <p>NASA Global Lunar Expedition for Everyone</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>Leading the development of LunaSats for NASA's Global Lunar Expedition for Everyone (GLEE), including the winning design for the Lunar Deployment Module in the overall category.</p>
+                        
+                        <h3>Mission Objectives</h3>
+                        <ul>
+                            <li>Deploy multiple LunaSats on lunar surface</li>
+                            <li>Establish communication network on the Moon</li>
+                            <li>Conduct scientific experiments and data collection</li>
+                            <li>Demonstrate low-cost lunar exploration technologies</li>
+                        </ul>
+                        
+                        <h3>Technical Achievements</h3>
+                        <ul>
+                            <li>Winner - Overall Category (Lunar Deployment Challenge)</li>
+                            <li>L-SPyDer deployment mechanism design</li>
+                            <li>Advanced power management systems</li>
+                            <li>Robust communication protocols</li>
+                            <li>Mission operations planning and programming</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">NASA Standards</span>
+                            <span class="project-tag">Lunar Engineering</span>
+                            <span class="project-tag">Mission Operations</span>
+                            <span class="project-tag">Systems Engineering</span>
+                            <span class="project-tag">Space Communications</span>
+                            <span class="project-tag">Arduino</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [GLEE MISSION IMAGES]
+                        <br>Add your LunaSat and L-SPyDer deployment module images here
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="project-taprobane" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>Taprobane Rover</h1>
+                    <p>Sri Lanka's First Analog Mars Rover</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>Taprobane is the first ever analog Mars rover developed in Sri Lanka by SEDS Sri Lanka. A six-wheeled autonomous rover with rocker-boggie suspension, robotic arm, and soil sampling capabilities.</p>
+                        
+                        <h3>Competition Results</h3>
+                        <ul>
+                            <li>5th Place - European Rover Challenge 2023 (Qualification A)</li>
+                            <li>17th Place - European Rover Challenge 2022 (Finalist)</li>
+                            <li>4th Place - International Rover Design Challenge</li>
+                            <li>Currently competing in IRDC 2025 lunar mission</li>
+                        </ul>
+                        
+                        <h3>Key Capabilities</h3>
+                        <ul>
+                            <li>Autonomous navigation on challenging terrains</li>
+                            <li>Precision robotic arm manipulation</li>
+                            <li>Soil sample collection and analysis</li>
+                            <li>Real-time communication and control</li>
+                            <li>Rocker-boggie suspension system</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Robotics</span>
+                            <span class="project-tag">Autonomous Systems</span>
+                            <span class="project-tag">Computer Vision</span>
+                            <span class="project-tag">Mechanical Design</span>
+                            <span class="project-tag">Control Systems</span>
+                            <span class="project-tag">Navigation</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [TAPROBANE ROVER IMAGES]
+                        <br>Add your rover images and competition photos here
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="project-saws" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>SAWS - Self-Adapting Wheel System</h1>
+                    <p>Innovative Space Exploration Technology</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>The Self-Adapting Wheel System (SAWS) is an innovative wheel technology that autonomously adjusts grousers for optimal traction on various planetary terrains. Developed by Team Lunarbot.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Autonomous grouser adjustment mechanism</li>
+                            <li>Self-locking gear system design</li>
+                            <li>Adaptable to various terrain conditions</li>
+                            <li>Lightweight and robust construction</li>
+                            <li>Real-time terrain analysis and adaptation</li>
+                        </ul>
+                        
+                        <h3>Recognition & Patents</h3>
+                        <ul>
+                            <li>Sri Lankan Patent No: LK21653 (October 2023)</li>
+                            <li>Presented at 72nd & 73rd IAC</li>
+                            <li>Integrated into Nexus Aurora's SSAM rover</li>
+                            <li>Tested in Arctic conditions (6 prototypes)</li>
+                            <li>Potential NASA JPL funding opportunity</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Mechanical Engineering</span>
+                            <span class="project-tag">CAD Design</span>
+                            <span class="project-tag">Terramechanics</span>
+                            <span class="project-tag">3D Printing</span>
+                            <span class="project-tag">FEA Analysis</span>
+                            <span class="project-tag">Self-locking Gears</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [SAWS WHEEL IMAGES]
+                        <br>Add your SAWS wheel designs and prototype images here
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="project-quantegrity" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>Quantegrity</h1>
+                    <p>Quantum-Enhanced e-Voting System</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>Quantegrity is a quantum-enhanced e-voting system that combines the Scantegrity e-voting methodology with the SEDJ quantum oracle-based QKD protocol for unprecedented election security.</p>
+                        
+                        <h3>Key Innovations</h3>
+                        <ul>
+                            <li>Integration of quantum cryptography with traditional voting</li>
+                            <li>Enhanced voter privacy through quantum protocols</li>
+                            <li>Tamper-evident ballot system</li>
+                            <li>Post-quantum cryptographic security</li>
+                            <li>Scantegrity methodology integration</li>
+                        </ul>
+                        
+                        <h3>Research Status</h3>
+                        <ul>
+                            <li>Presented at ICGS3-24 Conference</li>
+                            <li>System architecture completed</li>
+                            <li>Quantum protocol implementation tested</li>
+                            <li>Security analysis documented</li>
+                            <li>Keynote presentation delivered</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Quantum Computing</span>
+                            <span class="project-tag">Cryptography</span>
+                            <span class="project-tag">e-Voting Systems</span>
+                            <span class="project-tag">Security Protocols</span>
+                            <span class="project-tag">Qiskit</span>
+                            <span class="project-tag">SEDJ Protocol</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [QUANTEGRITY SYSTEM IMAGES]
+                        <br>Add your e-voting system architecture diagrams here
+                    </div>
+                </div>
+            </div>
+        </div>
 
-					<!-- Contact -->
-						<article id="contact">
-							<h2 class="major">Contact ...</h2>
-							<p></p>
-								<ul class="icons">
-									<li><a href="mailto: vidurangalanders@gmail.com" class="icon brands fa-google"><span class="label">Email</span></a>  Email: <strong>vidurangalanders@gmail.com</strong></li>
-								</ul>
-								<br>
-								<h2 class="major">Follow Me On ...</h2>
-								<ul class="icons">
-									<li><a href="http://www.linkedin.com/in/viduranga-landers/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>   LinkedIn: <strong>viduranga-landers</strong></li>
-								</ul>
-								<ul class="icons">
-									<li><a href="http://www.instagram.com/viduranga_landers/" class="icon brands fa-instagram"><span class="label">Instagram</span></a>   Instagram: <strong>viduranga_landers</strong></li>
-								</ul>
-						</article>
-				</div>
+        <div id="project-sword" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>SWORD - Selenography and Water Observatory Regolith Drill</h1>
+                    <p>Fully Autonomous Extendable Drill</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>SWORD is a fully autonomous extendable drilling mechanism designed for deep lunar drilling operations, developed by Team Lunarbot for water detection and regolith analysis.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Fully autonomous operation</li>
+                            <li>Extendable drill bit system</li>
+                            <li>Deep drilling capability for lunar regolith</li>
+                            <li>Water detection and analysis</li>
+                            <li>Modular design for rover integration</li>
+                        </ul>
+                        
+                        <h3>Recognition & Patents</h3>
+                        <ul>
+                            <li>Sri Lankan Patent No: LK21652 (July 2024)</li>
+                            <li>Originally designed for SPIDER lunar rover</li>
+                            <li>Singapore Space Challenge 2021 component</li>
+                            <li>Runners-up achievement (Distinction Award)</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Drilling Technology</span>
+                            <span class="project-tag">Autonomous Systems</span>
+                            <span class="project-tag">Mechanical Design</span>
+                            <span class="project-tag">Lunar Operations</span>
+                            <span class="project-tag">Water Detection</span>
+                            <span class="project-tag">Regolith Analysis</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [SWORD DRILL IMAGES]
+                        <br>Add your SWORD drill designs and mechanism images here
+                    </div>
+                </div>
+            </div>
+        </div>
 
-			<!-- Footer -->
-				<footer id="footer">
-					<p align="center" class="copyright"> &copy; VIDURANGA LANDERS. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-				</footer>
+        <div id="project-hope" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>HOPE Mission</h1>
+                    <p>High-technology Operation for Planetary Exploration</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>HOPE-ROAR mission is an innovative in-depth study of the Uranian satellites, developed under SGAC's ACHIEVED Initiative. Co-led international team designing CubeSat mission to Uranian moons.</p>
+                        
+                        <h3>Mission Objectives</h3>
+                        <ul>
+                            <li>In-depth study of Uranian satellites</li>
+                            <li>Innovative impactor technology demonstration</li>
+                            <li>Deep space communication systems</li>
+                            <li>Advanced propulsion and navigation</li>
+                        </ul>
+                        
+                        <h3>Technical Achievements</h3>
+                        <ul>
+                            <li>Co-Lead of international research team</li>
+                            <li>Presented at 74th IAC in Baku, Azerbaijan</li>
+                            <li>Published in IAC proceedings</li>
+                            <li>MBSE methodology implementation</li>
+                            <li>Systems engineering and mission design</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Deep Space Mission</span>
+                            <span class="project-tag">CubeSat Design</span>
+                            <span class="project-tag">Impactor Technology</span>
+                            <span class="project-tag">MBSE</span>
+                            <span class="project-tag">Systems Engineering</span>
+                            <span class="project-tag">SGAC</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [HOPE MISSION IMAGES]
+                        <br>Add your HOPE mission design and Uranian moon images here
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		</div>
+        <div id="project-owlbert" class="page">
+            <div class="project-detail">
+                <a href="#" onclick="showPage('projects')" class="back-btn">← Back to Projects</a>
+                <div class="project-detail-header">
+                    <h1>Owlbert AI</h1>
+                    <p>AI-Powered STEM Learning Chatbot</p>
+                </div>
+                <div class="project-detail-content">
+                    <div class="project-info">
+                        <h3>Project Overview</h3>
+                        <p>Owlbert is an AI-powered chatbot designed to help people learn astronomy and STEM subjects in a non-traditional, interactive way. Developed for NASA Space Apps Challenge 2020.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Interactive astronomy education</li>
+                            <li>AI-powered conversational learning</li>
+                            <li>Non-traditional teaching methodology</li>
+                            <li>Personalized learning experience</li>
+                            <li>STEM subject integration</li>
+                        </ul>
+                        
+                        <h3>Recognition & Awards</h3>
+                        <ul>
+                            <li>NASA Space Apps Challenge 2020 Global Nominee</li>
+                            <li>Innovative approach to STEM education</li>
+                            <li>AI chatbot technology demonstration</li>
+                            <li>Educational impact recognition</li>
+                        </ul>
+                        
+                        <h3>Technologies Used</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">AI/Machine Learning</span>
+                            <span class="project-tag">Chatbot Development</span>
+                            <span class="project-tag">Educational Technology</span>
+                            <span class="project-tag">Natural Language Processing</span>
+                            <span class="project-tag">STEM Education</span>
+                            <span class="project-tag">NASA Challenge</span>
+                        </div>
+                    </div>
+                    <div class="project-image-placeholder">
+                        [OWLBERT AI IMAGES]
+                        <br>Add your Owlbert chatbot interface and award images here
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<!-- BG -->
-		<div id="bg"></div>
 
-	<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		
-	</body>
-
+        <!-- Arts Page -->
+        <div id="arts" class="page">
+            <section class="section">
+                <h2 class="section-title">Mathematical Art & Fractals</h2>
+                <div class="arts-intro">
+                    <p class="arts-description">
+                        Four years have passed since I made my first piece of mathematical digital art, simply a fractal. 
+                        Since then, I've been obsessed with fractals and have recreated several of the most well-known fractals. 
+                        In 2021, while attempting to generalize the Collatz conjecture, I rediscovered a part of a previously published generalization. 
+                        While the generalization existed as a conjecture, I was able to generate amazing fractals from it. 
+                        Since then, I've utilized the generalization of the Collatz conjecture to construct a multitude of astounding fractals.
+                    </p>
+                    <div class="arts-actions">
+                        <a href="https://vidurangalanders.github.io/collatz-fractal/" target="_blank" class="btn btn-primary">Create Your Own Art</a>
+                        <a href="https://vidurangalanders.github.io" target="_blank" class="btn btn-secondary">View Full Gallery</a>
+                    </div>
+                </div>
+                
+                <div class="featured-arts">
+                    <h3 class="featured-title">Featured Mathematical Art</h3>
+                    <div class="arts-grid">
+                        <div class="art-item" onclick="openArtModal('collatz-feather')">
+                            <div class="art-image-placeholder">
+                                <div class="art-preview">Collatz Feather</div>
+                            </div>
+                            <div class="art-info">
+                                <h4>Collatz Feather</h4>
+                                <p>Visualizing the trajectory lengths of Collatz sequences as a feather-like structure</p>
+                                <div class="art-tags">
+                                    <span class="art-tag">JMM 2023</span>
+                                    <span class="art-tag">Featured</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="art-item" onclick="openArtModal('collatz-feather-2')">
+                            <div class="art-image-placeholder">
+                                <div class="art-preview">Collatz Feather 2.0</div>
+                            </div>
+                            <div class="art-info">
+                                <h4>Collatz Feather 2.0</h4>
+                                <p>Enhanced version with improved mathematical visualization techniques</p>
+                                <div class="art-tags">
+                                    <span class="art-tag">JMM 2023</span>
+                                    <span class="art-tag">Evolution</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="art-item" onclick="openArtModal('spiral')">
+                            <div class="art-image-placeholder">
+                                <div class="art-preview">SpiraL</div>
+                            </div>
+                            <div class="art-info">
+                                <h4>SpiraL</h4>
+                                <p>Using spiral coordinates to reveal hidden symmetries in Collatz sequences</p>
+                                <div class="art-tags">
+                                    <span class="art-tag">JMM 2023</span>
+                                    <span class="art-tag">Symmetry</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="art-item" onclick="openArtModal('springycomb')">
+                            <div class="art-image-placeholder">
+                                <div class="art-preview">Springycomb</div>
+                            </div>
+                            <div class="art-info">
+                                <h4>Springycomb Merge</h4>
+                                <p>Complex mathematical patterns forming honeycomb-like structures</p>
+                                <div class="art-tags">
+                                    <span class="art-tag">Fractal</span>
+                                    <span class="art-tag">Pattern</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="art-item" onclick="openArtModal('web-spiral')">
+                            <div class="art-image-placeholder">
+                                <div class="art-preview">Web Spiral</div>
+                            </div>
+                            <div class="art-info">
+                                <h4>Web Spiral</h4>
+                                <p>Intricate web-like patterns emerging from mathematical sequences</p>
+                                <div class="art-tags">
+                                    <span class="art-tag">Complex</span>
+                                    <span class="art-tag">Network</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="art-item" onclick="openArtModal('rainbow')">
+                            <div class="art-image-placeholder">
+                                <div class="art-preview">Collatz Rainbow</div>
+                            </div>
+                            <div class="art-info">
+                                <h4>Collatz Rainbow</h4>
+                                <p>Colorful visualization of Collatz conjecture variations</p>
+                                <div class="art-tags">
+                                    <span class="art-tag">Color</span>
+                                    <span class="art-tag">Vibrant</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Art Modal -->
+                <div id="art-modal" class="art-modal">
+                    <div class="art-modal-content">
+                        <span class="art-modal-close" onclick="closeArtModal()">&times;</span>
+                        <div id="art-modal-body">
+                            <!-- Dynamic content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Awards Page -->
+        <div id="awards" class="page">
+            <section class="section">
+                <h2 class="section-title">Recognition & Awards</h2>
+                <div class="awards-grid">
+                    <div class="award-item">
+                        <div class="icon">🏆</div>
+                        <h4>Faculty Award</h4>
+                        <p>University of Colombo School of Computing (2024)<br>Best performing student - Year 1</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🌏</div>
+                        <h4>Asia Pacific Space Leader</h4>
+                        <p>Space Generation Advisory Council (2023)<br>Regional leadership recognition</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🥇</div>
+                        <h4>Winner - Overall Category</h4>
+                        <p>NASA GLEE Lunar Deployment Challenge (2024)<br>L-SPyDer design excellence</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🎤</div>
+                        <h4>Keynote Speaker</h4>
+                        <p>15th International Conference on Global Security, Safety & Sustainability (2023)</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🥈</div>
+                        <h4>1st Runner Up</h4>
+                        <p>Predicta Data Science Hackathon (2024)<br>Team achievement in data analytics</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">💻</div>
+                        <h4>2nd - Sri Lanka (75th Global)</h4>
+                        <p>IEEE Xtreme 18.0 (2024)<br>Competitive programming excellence</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">⚛️</div>
+                        <h4>40th Global (AWS $500 Powerup)</h4>
+                        <p>QHack 2024 Quantum ML Hackathon (2024)<br>Quantum machine learning innovation</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">📜</div>
+                        <h4>Patent Holder</h4>
+                        <p>Sri Lankan Patents: LK21653 (SAWS) & LK21652 (SWORD)<br>Space technology innovations</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🌟</div>
+                        <h4>Global Nominee</h4>
+                        <p>NASA Space Apps Challenge 2020<br>Owlbert AI educational chatbot</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🏅</div>
+                        <h4>Distinction Award</h4>
+                        <p>Singapore Space Challenge 2021<br>SPIDER lunar rover concept - Runners-up</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🥉</div>
+                        <h4>Top 3 Notable Applications</h4>
+                        <p>Quantum Internet Application Challenge (2025)<br>Quantum Internet Alliance recognition</p>
+                    </div>
+                    <div class="award-item">
+                        <div class="icon">🎨</div>
+                        <h4>Mathematical Art Publication</h4>
+                        <p>Joint Mathematics Meetings 2023<br>Collatz Feather 2.0 & SpiraL exhibitions</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <section class="section">
+                <h2 class="section-title">Connect With Me</h2>
+                <div class="contact-container">
+                    <div class="contact-card">
+                        <div class="icon">📧</div>
+                        <h4>Email</h4>
+                        <p>vidurangalanders@gmail.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon">💼</div>
+                        <h4>LinkedIn</h4>
+                        <p>viduranga-landers</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon">🌐</div>
+                        <h4>Research</h4>
+                        <p>ResearchGate Profile<br>Multiple publications & preprints</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon">📍</div>
+                        <h4>Location</h4>
+                        <p>Colombo, Sri Lanka<br>Available for remote collaboration</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon">🏢</div>
+                        <h4>Organizations</h4>
+                        <p>SGAC NPoC • SEDS SL Divisional Manager<br>Nexus Aurora Project Lead</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon">📱</div>
+                        <h4>Phone</h4>
+                        <p>+94761676711<br>Available for academic opportunities</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Viduranga Shenal Landers. Pioneering the future of quantum computing and space exploration.</p>
+        <p>Faculty Award Winner • Asia Pacific Space Leader • NASA Challenge Winner • Patent Holder</p>
+    </footer>
+    
+    <script src="js/satellite-animation.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/main.js"></script>
+</body>
 </html>

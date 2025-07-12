@@ -1,0 +1,341 @@
+/* Mobile menu styles */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(10, 10, 15, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
+        padding-top: 2rem;
+        gap: 1rem;
+        overflow-y: auto;
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        padding: 1rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease; /* Smoother link transitions */
+    }
+    
+    /* Hero section mobile adjustments */
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        padding: 1rem;
+        min-height: calc(100vh - 80px);
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    
+    .hero-content .subtitle {
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+    }
+    
+    .hero-content .description {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease; /* Smoother button transitions */
+    }
+    
+    /* Grid adjustments for mobile */
+    .research-grid,
+    .projects-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .awards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* Project detail mobile */
+    .project-detail-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .project-detail {
+        padding: 1rem;
+    }
+    
+    /* CV mobile adjustments */
+    .cv-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        transition: all 0.3s ease; /* Smooth transitions */
+    }
+    
+    .cv-item-date {
+        margin-top: 0.5rem;
+    }
+    
+    /* Section padding adjustments */
+    .section {
+        padding: 3rem 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Blog detail mobile */
+    .blog-detail {
+        padding: 1rem;
+    }
+    
+    .blog-detail-header h1 {
+        font-size: 2rem;
+    }
+    
+    .blog-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .arts-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .arts-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .art-modal-content {
+        margin: 10% auto;
+        width: 95%;
+        padding: 1.5rem;
+        max-height: 70vh;
+    }
+
+    .art-modal-close {
+        font-size: 1.5rem;
+    }
+
+    .arts-intro {
+        padding: 1.5rem;
+    }
+
+    .arts-description {
+        font-size: 1rem;
+    }
+    
+    /* Card adjustments with smooth transitions */
+    .research-card,
+    .project-card,
+    .blog-card,
+    .contact-card,
+    .award-item {
+        padding: 1.5rem;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transitions */
+    }
+    
+    .research-card .icon,
+    .contact-card .icon {
+        font-size: 2.5rem;
+    }
+    
+    /* Smooth hover effects for mobile */
+    .research-card:hover,
+    .project-card:hover,
+    .blog-card:hover {
+        transform: translateY(-3px); /* Reduced movement for mobile */
+    }
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .hero-content {
+        max-width: 70%;
+    }
+    
+    .research-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+    
+    .skills-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    /* Smooth transitions for tablet */
+    .research-card,
+    .project-card,
+    .blog-card {
+        transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1400px) {
+    .section {
+        max-width: 1400px;
+    }
+    
+    .hero-content h1 {
+        font-size: 6rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .star {
+        animation: none !important;
+    }
+    
+    .satellite-canvas-container {
+        display: none !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .research-card,
+    .project-card,
+    .blog-card {
+        border: 2px solid #ff7f00;
+    }
+    
+    .btn-primary {
+        background: #ff7f00;
+        color: #000;
+        border: 2px solid #000;
+    }
+    
+    .btn-secondary {
+        border: 3px solid #ff7f00;
+    }
+}
+
+/* Print styles */
+@media print {
+    .satellite-canvas-container,
+    .space-bg,
+    .stars,
+    header,
+    footer,
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .page {
+        display: block !important;
+        page-break-after: always;
+    }
+    
+    .research-card,
+    .project-card,
+    .blog-card {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        color: black !important;
+    }
+    
+    .section-title,
+    .hero-content h1 {
+        color: #333 !important;
+    }
+}
+
+/* Focus styles for accessibility */
+.nav-links a:focus,
+.btn:focus,
+.research-card:focus,
+.project-card:focus,
+.blog-card:focus {
+    outline: 3px solid #ff7f00;
+    outline-offset: 2px;
+}
+
+/* Smooth scrolling enhancement */
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
