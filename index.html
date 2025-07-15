@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Viduranga Landers - Quantum Computing & Satellite Innovation</title>
+
     <script src="js/p5.min.js"></script>
+    <script src="js/satellite-animation.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/main.js"></script>
+
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/pages.css">
@@ -46,11 +53,10 @@
         <div id="home" class="page active">
             <section class="hero">
                 <div class="hero-content">
-                    <h1>VIDURANGA <br>SHENAL <br>LANDERS</h1>
+                    <h1>VIDURANGA LANDERS</h1>
                     <p class="subtitle">Undergraduate • Researcher • Inventor</p>
                     <p class="description">
                         CS Undergraduate at University of Colombo.
-                        Faculty Award recipient and Asia Pacific Space Leader.
                     </p>
                     <div class="cta-buttons">
                         <a href="#" onclick="showPage('research')" class="btn btn-primary">Explore Research</a>
@@ -923,9 +929,15 @@
                             <span class="project-tag">Python</span>
                         </div>
                     </div>
-                    <div class="project-image-placeholder">
-                        [SPD MISSION IMAGES]
-                        <br>Add your Soil Penetration Dart images here
+                    <div class="project-images-container">
+                        <div class="project-image-placeholder">
+                            <img src="images/Proj1_1.png" alt="SPD Mission Design" class="project-image">
+                            <div class="image-caption">SPD Mission Design</div>
+                        </div>
+                        <div class="project-image-placeholder">
+                            <img src="images/Proj1_2.png" alt="SPD Deployment System" class="project-image">
+                            <div class="image-caption">SPD Deployment System</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1331,9 +1343,12 @@
                 <div class="featured-arts">
                     <h3 class="featured-title">Featured Mathematical Art</h3>
                     <div class="arts-grid">
-                        <div class="art-item" onclick="openArtModal('collatz-feather')">
-                            <div class="art-image-placeholder">
-                                <div class="art-preview">Collatz Feather</div>
+                        <div class="art-item" onclick="openArtModal('fractal_art/images/fulls/01.jpg', 'Collatz Feather', 'Visualizing the trajectory lengths of Collatz sequences as a feather-like structure, where each strand represents a different mathematical path through the conjecture\'s landscape. Featured at Joint Mathematics Meetings 2023.')">
+                            <div class="art-image-container">
+                                <img src="fractal_art/images/thumbs/01.jpg" alt="Collatz Feather" class="art-thumbnail" loading="lazy">
+                                <div class="art-overlay">
+                                    <div class="art-title">Collatz Feather</div>
+                                </div>
                             </div>
                             <div class="art-info">
                                 <h4>Collatz Feather</h4>
@@ -1345,9 +1360,12 @@
                             </div>
                         </div>
                         
-                        <div class="art-item" onclick="openArtModal('collatz-feather-2')">
-                            <div class="art-image-placeholder">
-                                <div class="art-preview">Collatz Feather 2.0</div>
+                        <div class="art-item" onclick="openArtModal('fractal_art/images/fulls/02.jpg', 'Collatz Feather 2.0', 'An enhanced version of the original Collatz Feather with improved mathematical visualization techniques and refined aesthetic elements.')">
+                            <div class="art-image-container">
+                                <img src="fractal_art/images/thumbs/02.jpg" alt="Collatz Feather 2.0" class="art-thumbnail" loading="lazy">
+                                <div class="art-overlay">
+                                    <div class="art-title">Collatz Feather 2.0</div>
+                                </div>
                             </div>
                             <div class="art-info">
                                 <h4>Collatz Feather 2.0</h4>
@@ -1359,9 +1377,12 @@
                             </div>
                         </div>
                         
-                        <div class="art-item" onclick="openArtModal('spiral')">
-                            <div class="art-image-placeholder">
-                                <div class="art-preview">SpiraL</div>
+                        <div class="art-item" onclick="openArtModal('fractal_art/images/fulls/03.jpg', 'SpiraL', 'Using spiral coordinates to plot Collatz sequences revealed hidden symmetries and created mesmerizing patterns that bridge the gap between pure mathematics and visual art.')">
+                            <div class="art-image-container">
+                                <img src="fractal_art/images/thumbs/03.jpg" alt="SpiraL" class="art-thumbnail" loading="lazy">
+                                <div class="art-overlay">
+                                    <div class="art-title">SpiraL</div>
+                                </div>
                             </div>
                             <div class="art-info">
                                 <h4>SpiraL</h4>
@@ -1373,9 +1394,12 @@
                             </div>
                         </div>
                         
-                        <div class="art-item" onclick="openArtModal('springycomb')">
-                            <div class="art-image-placeholder">
-                                <div class="art-preview">Springycomb</div>
+                        <div class="art-item" onclick="openArtModal('fractal_art/images/fulls/04.jpg', 'Springycomb Merge', 'Complex mathematical patterns forming honeycomb-like structures through iterative mathematical processes.')">
+                            <div class="art-image-container">
+                                <img src="fractal_art/images/thumbs/04.jpg" alt="Springycomb Merge" class="art-thumbnail" loading="lazy">
+                                <div class="art-overlay">
+                                    <div class="art-title">Springycomb</div>
+                                </div>
                             </div>
                             <div class="art-info">
                                 <h4>Springycomb Merge</h4>
@@ -1387,9 +1411,12 @@
                             </div>
                         </div>
                         
-                        <div class="art-item" onclick="openArtModal('web-spiral')">
-                            <div class="art-image-placeholder">
-                                <div class="art-preview">Web Spiral</div>
+                        <div class="art-item" onclick="openArtModal('fractal_art/images/fulls/05.jpg', 'Web Spiral', 'Intricate web-like patterns emerging from mathematical sequences, creating complex network visualizations.')">
+                            <div class="art-image-container">
+                                <img src="fractal_art/images/thumbs/05.jpg" alt="Web Spiral" class="art-thumbnail" loading="lazy">
+                                <div class="art-overlay">
+                                    <div class="art-title">Web Spiral</div>
+                                </div>
                             </div>
                             <div class="art-info">
                                 <h4>Web Spiral</h4>
@@ -1401,9 +1428,12 @@
                             </div>
                         </div>
                         
-                        <div class="art-item" onclick="openArtModal('rainbow')">
-                            <div class="art-image-placeholder">
-                                <div class="art-preview">Collatz Rainbow</div>
+                        <div class="art-item" onclick="openArtModal('fractal_art/images/fulls/06.jpg', 'Collatz Rainbow', 'A colorful visualization of Collatz conjecture variations, where different mathematical properties are represented through a spectrum of colors.')">
+                            <div class="art-image-container">
+                                <img src="fractal_art/images/thumbs/06.jpg" alt="Collatz Rainbow" class="art-thumbnail" loading="lazy">
+                                <div class="art-overlay">
+                                    <div class="art-title">Collatz Rainbow</div>
+                                </div>
                             </div>
                             <div class="art-info">
                                 <h4>Collatz Rainbow</h4>
@@ -1421,8 +1451,17 @@
                 <div id="art-modal" class="art-modal">
                     <div class="art-modal-content">
                         <span class="art-modal-close" onclick="closeArtModal()">&times;</span>
-                        <div id="art-modal-body">
-                            <!-- Dynamic content will be loaded here -->
+                        <div class="art-modal-image-container">
+                            <img id="art-modal-image" src="" alt="" class="art-modal-image">
+                            <div class="art-loading">Loading...</div>
+                        </div>
+                        <div class="art-modal-info">
+                            <h3 id="art-modal-title"></h3>
+                            <p id="art-modal-description"></p>
+                            <div class="art-modal-actions">
+                                <a href="https://vidurangalanders.github.io" target="_blank" class="btn btn-primary">View Full Gallery</a>
+                                <a href="https://vidurangalanders.github.io/collatz-fractal/" target="_blank" class="btn btn-secondary">Create Similar Art</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1531,10 +1570,6 @@
     <footer>
         <p>&copy; 2025 Viduranga Shenal Landers</p>
     </footer>
-    
-    <script src="js/satellite-animation.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/effects.js"></script>
-    <script src="js/main.js"></script>
+
 </body>
 </html>

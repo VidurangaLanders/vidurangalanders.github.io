@@ -149,72 +149,45 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
-// Update URL and browser history (optional enhancement)
+// Update URL and browser history
 function updateHistory(pageId) {
     const newUrl = window.location.pathname + '?page=' + pageId;
     history.pushState({ page: pageId }, '', newUrl);
 }
 
-// Art modal functionality
-function openArtModal(artId) {
+// Simple art modal functionality
+function openArtModal(imageSrc, title, description) {
     const modal = document.getElementById('art-modal');
-    const modalBody = document.getElementById('art-modal-body');
+    const modalImage = document.getElementById('art-modal-image');
+    const modalTitle = document.getElementById('art-modal-title');
+    const modalDescription = document.getElementById('art-modal-description');
+    const loadingDiv = document.querySelector('.art-loading');
     
-    // Art content data
-    const artContent = {
-        'collatz-feather': {
-            title: 'Collatz Feather',
-            description: 'This piece visualizes the trajectory lengths of Collatz sequences as a feather-like structure, where each strand represents a different mathematical path through the conjecture\'s landscape. Featured at Joint Mathematics Meetings 2023.',
-            details: 'Created using generalized forms of the Collatz Conjecture, this artwork demonstrates how mathematical sequences can create naturally beautiful patterns. Each feather strand corresponds to different starting values and their convergence paths.',
-            techniques: 'Mathematical visualization, Algorithm art, Fractal generation'
-        },
-        'collatz-feather-2': {
-            title: 'Collatz Feather 2.0',
-            description: 'An enhanced version of the original Collatz Feather with improved mathematical visualization techniques and refined aesthetic elements.',
-            details: 'Building upon the success of the original, this version incorporates advanced rendering techniques and explores deeper mathematical relationships within the Collatz sequences.',
-            techniques: 'Enhanced algorithms, Advanced rendering, Mathematical optimization'
-        },
-        'spiral': {
-            title: 'SpiraL',
-            description: 'Using spiral coordinates to plot Collatz sequences revealed hidden symmetries and created mesmerizing patterns that bridge the gap between pure mathematics and visual art.',
-            details: 'This piece demonstrates how changing coordinate systems can reveal previously hidden mathematical beauty. The spiral representation uncovers symmetries that are invisible in traditional Cartesian plotting.',
-            techniques: 'Spiral coordinates, Symmetry analysis, Mathematical transformation'
-        },
-        'springycomb': {
-            title: 'Springycomb Merge',
-            description: 'Complex mathematical patterns forming honeycomb-like structures through iterative mathematical processes.',
-            details: 'The honeycomb patterns emerge naturally from mathematical iterations, demonstrating how complex structures can arise from simple mathematical rules.',
-            techniques: 'Iterative algorithms, Pattern emergence, Structural mathematics'
-        },
-        'web-spiral': {
-            title: 'Web Spiral',
-            description: 'Intricate web-like patterns emerging from mathematical sequences, creating complex network visualizations.',
-            details: 'This artwork explores the network properties of mathematical sequences, revealing how individual calculations can form interconnected webs of relationships.',
-            techniques: 'Network visualization, Graph theory, Mathematical networks'
-        },
-        'rainbow': {
-            title: 'Collatz Rainbow',
-            description: 'A colorful visualization of Collatz conjecture variations, where different mathematical properties are represented through a spectrum of colors.',
-            details: 'Each color represents different mathematical properties of the sequences, creating a rainbow effect that makes the underlying mathematics more accessible and beautiful.',
-            techniques: 'Color mapping, Mathematical visualization, Spectrum analysis'
-        }
+    // Show modal
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    
+    // Show loading state
+    loadingDiv.style.display = 'block';
+    modalImage.style.display = 'none';
+    
+    // Update text content
+    modalTitle.textContent = title;
+    modalDescription.textContent = description;
+    
+    // Load full-size image
+    const fullImage = new Image();
+    fullImage.onload = function() {
+        modalImage.src = imageSrc;
+        modalImage.alt = title;
+        modalImage.style.display = 'block';
+        loadingDiv.style.display = 'none';
     };
-    
-    const art = artContent[artId];
-    if (art) {
-        modalBody.innerHTML = `
-            <h3>${art.title}</h3>
-            <p><strong>Description:</strong> ${art.description}</p>
-            <p><strong>Mathematical Details:</strong> ${art.details}</p>
-            <p><strong>Techniques:</strong> ${art.techniques}</p>
-            <div style="margin-top: 2rem; text-align: center;">
-                <a href="https://vidurangalanders.github.io" target="_blank" class="btn btn-primary">View in Full Gallery</a>
-                <a href="https://vidurangalanders.github.io/collatz-fractal/" target="_blank" class="btn btn-secondary">Create Similar Art</a>
-            </div>
-        `;
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-    }
+    fullImage.onerror = function() {
+        loadingDiv.textContent = 'Error loading image';
+        loadingDiv.style.color = '#ff4444';
+    };
+    fullImage.src = imageSrc;
 }
 
 function closeArtModal() {
@@ -236,4 +209,30 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeArtModal();
     }
+});
+
+// Image loading functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const artThumbnails = document.querySelectorAll('.art-thumbnail');
+    
+    artThumbnails.forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+            
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                // Show fallback placeholder
+                const placeholder = document.createElement('div');
+                placeholder.className = 'art-image-placeholder';
+                placeholder.innerHTML = `
+                    <div class="art-preview">${this.alt}</div>
+                `;
+                this.parentNode.appendChild(placeholder);
+            });
+        }
+    });
 });
