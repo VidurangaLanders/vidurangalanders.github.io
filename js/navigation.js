@@ -1,7 +1,7 @@
 // Navigation functionality
 
 // Page navigation
-function showPage(pageId) {
+function showPage(pageId, updateBrowserHistory = true) {
     // Hide all pages
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
@@ -15,6 +15,14 @@ function showPage(pageId) {
     
     // Close mobile menu if open
     closeMobileMenu();
+    
+    // Update browser history
+    if (updateBrowserHistory) {
+        updateHistory(pageId);
+    }
+    
+    // Update active navigation
+    updateActiveNavigation();
     
     // Scroll to top of the page
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -139,20 +147,54 @@ function updateActiveNavigation() {
 
 // Initialize navigation
 document.addEventListener('DOMContentLoaded', function() {
+    // Check URL for initial page
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialPage = urlParams.get('page');
+    
+    if (initialPage) {
+        // Show page from URL parameter without updating history
+        showPage(initialPage, false);
+    } else {
+        // Default to home page and set initial history state
+        const currentPage = document.querySelector('.page.active');
+        if (currentPage) {
+            // Replace current history state with the active page
+            history.replaceState({ page: currentPage.id }, '', window.location.pathname + '?page=' + currentPage.id);
+        } else {
+            // If no page is active, default to home
+            showPage('home', false);
+            history.replaceState({ page: 'home' }, '', window.location.pathname + '?page=home');
+        }
+    }
+    
     updateActiveNavigation();
 });
 
 // Handle browser back/forward buttons
 window.addEventListener('popstate', function(event) {
     if (event.state && event.state.page) {
-        showPage(event.state.page);
+        showPage(event.state.page, false); // Don't update history when using back/forward
+    } else {
+        // If no state, check URL for page parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get('page');
+        if (page) {
+            showPage(page, false);
+        } else {
+            showPage('home', false); // Default to home page
+        }
     }
 });
 
 // Update URL and browser history
 function updateHistory(pageId) {
     const newUrl = window.location.pathname + '?page=' + pageId;
-    history.pushState({ page: pageId }, '', newUrl);
+    const title = document.title + ' - ' + pageId.charAt(0).toUpperCase() + pageId.slice(1);
+    
+    // Only push state if it's different from current state
+    if (!history.state || history.state.page !== pageId) {
+        history.pushState({ page: pageId }, title, newUrl);
+    }
 }
 
 // Simple art modal functionality

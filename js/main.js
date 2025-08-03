@@ -1,19 +1,14 @@
-// Main application initialization and logic - STABLE VERSION
+// Main application initialization and logic
 
 // Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing Viduranga Landers Portfolio...');
-    
-    // Initialize modules with error handling
+document.addEventListener('DOMContentLoaded', function() {    
+    // Initialize modules
     try {
         initializeEffects();
         updateActiveNavigation();
         initializeKeyboardNavigation();
         setupErrorHandling();
-        
-        console.log('Portfolio initialized successfully!');
     } catch (error) {
-        console.error('Initialization error:', error);
         // Continue without effects if there's an error
     }
 });
@@ -47,7 +42,7 @@ function initializeKeyboardNavigation() {
 
 // Navigate to next/previous page
 function navigateToNextPage() {
-    const pages = ['home', 'research', 'projects', 'skills', 'cv', 'blog', 'awards', 'contact'];
+    const pages = ['home', 'research', 'projects', 'cv', 'blog', 'arts', 'contact'];
     const currentPage = document.querySelector('.page.active');
     
     if (currentPage) {
@@ -58,7 +53,7 @@ function navigateToNextPage() {
 }
 
 function navigateToPreviousPage() {
-    const pages = ['home', 'research', 'projects', 'skills', 'cv', 'blog', 'awards', 'contact'];
+    const pages = ['home', 'research', 'projects', 'cv', 'blog', 'arts', 'contact'];
     const currentPage = document.querySelector('.page.active');
     
     if (currentPage) {
@@ -105,63 +100,6 @@ function showErrorMessage(message) {
     }, 5000);
 }
 
-// Analytics tracking (optional)
-function trackPageView(pageId) {
-    console.log(`Page view: ${pageId}`);
-}
-
-// Theme switching
-function toggleTheme() {
-    document.body.classList.toggle('light-theme');
-    try {
-        localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
-    } catch (error) {
-        // Ignore localStorage errors
-    }
-}
-
-function initializeTheme() {
-    try {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            document.body.classList.add('light-theme');
-        }
-    } catch (error) {
-        // Ignore localStorage errors
-    }
-}
-
-// Print functionality
-function printPage() {
-    window.print();
-}
-
-// Share functionality
-function shareProfile() {
-    if (navigator.share) {
-        navigator.share({
-            title: 'Viduranga Landers - Quantum Computing & Satellite Innovation',
-            text: 'Check out this amazing portfolio of quantum computing research and space innovation!',
-            url: window.location.href
-        }).catch(error => {
-            console.log('Share failed:', error);
-            fallbackShare();
-        });
-    } else {
-        fallbackShare();
-    }
-}
-
-function fallbackShare() {
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            showErrorMessage('Link copied to clipboard!');
-        }).catch(() => {
-            console.log('Copy to clipboard failed');
-        });
-    }
-}
-
 // Utility functions
 function debounce(func, wait) {
     let timeout;
@@ -202,10 +140,4 @@ window.portfolioApp = {
     toggleMobileMenu,
     showProjectDetail,
     showBlogDetail,
-    toggleTheme,
-    printPage,
-    shareProfile,
-    trackPageView
 };
-
-// Removed service worker registration that was causing 404 errors

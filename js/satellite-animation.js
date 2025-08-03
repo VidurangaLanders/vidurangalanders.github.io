@@ -1,47 +1,127 @@
-// Advanced Satellite Animation
-let satelliteSketch = function(p) {
-    let earthRotation = 0;
-    let satellites = [];
-    let stars = [];
-    let frameCounter = 0;
-    let isHomePage = true;
-    let globalOpacity = 1.0;
-    let offsetX = 0;
-
-    // Performance optimization: cache frequently used values
-    let cachedLuminanceChars = " .,-~:;=!*#$@";
-    let cachedPerspective = 800;
-    let cachedEarthRadius = 150;
-    let cachedTilt = p.radians(-23.5);
+class OptimizedSatelliteAnimation {
+    constructor() {
+        this.setupCanvases();
+        this.initializeState();
+        this.precomputeTables();
+        this.initializeSatellites();
+        this.initializeStars();
+        this.setupEventListeners();
+        this.startAnimation();
+    }
     
-    // Pre-calculate brightness multipliers to avoid repeated calculations
-    let brightnessMults = {
-        land: { r: 90, g: 110, b: 60 },
-        ocean: { r: 40, g: 90, b: 135 },
-        landOrange: { r: 90, g: 60, b: 40 },
-        oceanOrange: { r: 70, g: 50, b: 30 }
-    };
-    
-    p.setup = function() {
-        let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-        canvas.parent('satellite-animation');
-        p.textAlign(p.CENTER, p.CENTER);
-        p.textFont('Courier New');
+    setupCanvases() {
+        this.starsCanvas = document.getElementById('stars-canvas');
+        this.earthCanvas = document.getElementById('earth-canvas');
+        this.satellitesCanvas = document.getElementById('satellites-canvas');
         
-        // Initialize satellites with pre-calculated values
-        satellites = [
-            createSatellite(0, 280, 0.008, "QUANTUM", [255, 140, 0], 15, 0, 800),
-            createSatellite(p.PI, 350, 0.006, "SPACE", [255, 165, 0], -25, p.PI/3, 750),
-            createSatellite(p.PI/2, 420, 0.005, "CYBER-SEC", [255, 100, 0], 35, p.PI/2, 700),
-            createSatellite(3*p.PI/2, 320, 0.007, "SECURE-NET", [255, 180, 50], -18, p.PI/6, 850)
+        this.starsCtx = this.starsCanvas.getContext('2d');
+        this.earthCtx = this.earthCanvas.getContext('2d');
+        this.satellitesCtx = this.satellitesCanvas.getContext('2d');
+        
+        this.resize();
+    }
+    
+    resize() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        [this.starsCanvas, this.earthCanvas, this.satellitesCanvas].forEach(canvas => {
+            canvas.width = width;
+            canvas.height = height;
+        });
+        
+        this.width = width;
+        this.height = height;
+        this.centerX = width / 2;
+        this.centerY = height / 2;
+    }
+    
+    initializeState() {
+        this.frameCount = 0;
+        this.earthRotation = 0;
+        this.isHomePage = true;
+        this.globalOpacity = 1.0;
+        this.offsetX = 0;
+        
+        // Performance settings
+        this.EARTH_RADIUS = 150;
+        this.PERSPECTIVE = 800;
+        this.EARTH_TILT = -0.41; // -23.5 degrees in radians
+        
+        // FPS tracking
+        this.fps = 60;
+        this.lastTime = performance.now();
+        this.frameTimeSum = 0;
+        this.frameTimeCount = 0;
+    }
+    
+    precomputeTables() {
+        // Pre-compute sin/cos tables for performance
+        this.sinTable = [];
+        this.cosTable = [];
+        const tableSize = 3600; // 0.1 degree resolution
+        
+        for (let i = 0; i < tableSize; i++) {
+            const angle = (i / tableSize) * Math.PI * 2;
+            this.sinTable[i] = Math.sin(angle);
+            this.cosTable[i] = Math.cos(angle);
+        }
+        
+        // Pre-compute earth grid positions
+        this.precomputeEarthGrid();
+    }
+    
+    fastSin(angle) {
+        const normalized = ((angle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+        const index = Math.floor((normalized / (Math.PI * 2)) * this.sinTable.length);
+        return this.sinTable[index];
+    }
+    
+    fastCos(angle) {
+        const normalized = ((angle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+        const index = Math.floor((normalized / (Math.PI * 2)) * this.cosTable.length);
+        return this.cosTable[index];
+    }
+    
+    precomputeEarthGrid() {
+        this.earthPoints = [];
+        const thetaStep = 0.2;
+        const phiStep = 0.2;
+        
+        for (let theta = 0; theta < Math.PI; theta += thetaStep) {
+            for (let phi = 0; phi < Math.PI * 2; phi += phiStep) {
+                const sinTheta = Math.sin(theta);
+                const cosTheta = Math.cos(theta);
+                const sinPhi = Math.sin(phi);
+                const cosPhi = Math.cos(phi);
+                
+                this.earthPoints.push({
+                    // Original sphere coordinates
+                    x: this.EARTH_RADIUS * sinTheta * cosPhi,
+                    y: this.EARTH_RADIUS * cosTheta,
+                    z: this.EARTH_RADIUS * sinTheta * sinPhi,
+                    // Pre-computed normal for lighting
+                    nx: sinTheta * cosPhi,
+                    ny: cosTheta,
+                    nz: sinTheta * sinPhi,
+                    // Texture coordinate for land/ocean
+                    phi: phi,
+                    theta: theta
+                });
+            }
+        }
+    }
+    
+    initializeSatellites() {
+        this.satellites = [
+            this.createSatellite(0, 280, 0.008, "QUANTUM", [255, 140, 0], 15, 0),
+            this.createSatellite(Math.PI, 350, 0.006, "SPACE", [255, 165, 0], -25, Math.PI/3),
+            this.createSatellite(Math.PI/2, 370, 0.005, "CYBER-SEC", [255, 100, 0], 35, Math.PI/2),
+            this.createSatellite(3*Math.PI/2, 320, 0.007, "SECURE-NET", [255, 180, 50], -18, Math.PI/6)
         ];
-
-        // Optimized star generation
-        initializeStars();
-        
-    };
-
-    function createSatellite(angle, distance, speed, name, color, inclinationDeg, ascending, trailLength) {
+    }
+    
+    createSatellite(angle, distance, speed, name, color, inclinationDeg, ascending) {
         return {
             angle: angle,
             distance: distance,
@@ -49,120 +129,140 @@ let satelliteSketch = function(p) {
             name: name,
             color: color,
             rotZ: 0,
-            beamActive: false,
-            beamTimer: 0,
-            nextBeamTime: p.random(90, 250),
-            inclination: p.radians(inclinationDeg),
+            inclination: inclinationDeg * Math.PI / 180,
             ascending: ascending,
             trail: [],
-            maxTrailLength: trailLength
+            maxTrailLength: 50 
         };
     }
-        
-    //Create background stars
-    function initializeStars() {
-        stars = [];
-        for (let i = 0; i < 100; i++) {
-            stars.push({
-                x: p.random(p.width),
-                y: p.random(p.height),
-                char: p.random(['●']),
-                brightness: p.random(0.6, 1.0),
-                size: p.random(2, 4),
-                twinkleSpeed: p.random(0.0008, 0.002),
-                twinklePhase: p.random(p.TWO_PI),
-                currentBrightness: 1.0
+    
+    initializeStars() {
+        this.stars = [];
+        for (let i = 0; i < 60; i++) {
+            this.stars.push({
+                x: Math.random() * this.width,
+                y: Math.random() * this.height,
+                brightness: Math.random() * 0.4 + 0.6,
+                size: Math.random() * 2 + 1,
+                twinkleSpeed: Math.random() * 0.02 + 0.01,
+                twinklePhase: Math.random() * Math.PI * 2
             });
         }
     }
     
-    p.draw = function() {
-        p.clear();
-        frameCounter++;
+    setupEventListeners() {
+        window.addEventListener('resize', () => this.resize());
         
-        // Update page state and opacity once per frame
-        updatePageState();
-        
-        // Optimized star rendering - update every 8 frames
-        if (frameCounter % 8 === 0) {
-            updateAndDrawStars();
-        } else {
-            // Just draw stars with cached brightness
-            drawCachedStars();
-        }
-        
-        p.translate(p.width/2 + offsetX, p.height/2);
-        
-        // Draw the globe
-        drawGlobe3D();
-        
-        // Manage satellite beams less frequently
-        if (frameCounter % 30 === 0) {
-            manageSatelliteBeams();
-        }
-        
-        // Update and draw satellites
-        updateSatellites();
-        
-        // Slow Earth rotation
-        earthRotation += 0.004;
-    };
-
-    function updatePageState() {
-        let newHomePage = document.getElementById('home').classList.contains('active');
-        if (newHomePage !== isHomePage) {
-            isHomePage = newHomePage;
-        }
-        // Update positioning and opacity based on current page state
-        globalOpacity = isHomePage ? 1.0 : 0.4;
-        offsetX = isHomePage ? p.width * 0.25 : 0;
+        // Pause when tab is hidden
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                this.paused = true;
+            } else {
+                this.paused = false;
+                this.lastTime = performance.now();
+            }
+        });
     }
     
-    function updateAndDrawStars() {
-        for (let star of stars) {
-            // Update cached brightness
-            star.currentBrightness = 0.4 + 0.6 * (0.5 + 0.5 * p.sin(frameCounter * star.twinkleSpeed + star.twinklePhase));
-            drawStar(star);
-        }
+    startAnimation() {
+        this.animate();
     }
     
-    function drawCachedStars() {
-        for (let star of stars) {
-            drawStar(star);
-        }
-    }
-    
-    function drawStar(star) {
-        p.fill(255, 255, 255, star.currentBrightness * 80 * globalOpacity);
-        p.textSize(star.size);
-        p.text(star.char, star.x, star.y);
-    }
-    
-    function updateSatellites() {
-        for (let satellite of satellites) {
-            // Calculate 3D position
-            let pos3D = calculate3DPosition(satellite);
+    animate() {
+        if (!this.paused) {
+            const currentTime = performance.now();
+            const deltaTime = currentTime - this.lastTime;
             
-            // Update trail
-            updateTrail(satellite, pos3D);
+            // Update FPS counter
+            this.frameTimeSum += deltaTime;
+            this.frameTimeCount++;
+            if (this.frameTimeCount >= 30) {
+                this.fps = Math.round(1000 / (this.frameTimeSum / this.frameTimeCount));
+                this.frameTimeSum = 0;
+                this.frameTimeCount = 0;
+            }
             
-            // Draw components
-            draw3DTrail(satellite);
-            drawSatellite3D(satellite, pos3D);
+            this.update();
+            this.render();
             
+            this.lastTime = currentTime;
+        }
+        
+        requestAnimationFrame(() => this.animate());
+    }
+    
+    update() {
+        this.frameCount++;
+        this.earthRotation += 0.004;
+        
+        // Update page state
+        this.globalOpacity = this.isHomePage ? 1.0 : 0.4;
+        this.offsetX = this.isHomePage ? this.width * 0.25 : 0;
+        
+        // Update satellites
+        this.updateSatellites();
+    }
+    
+    updateSatellites() {
+        for (let satellite of this.satellites) {
             // Update position
             satellite.angle += satellite.speed;
-            satellite.rotZ += 0.015;
+            satellite.rotZ += 0.02;
+            
+            // Calculate 3D position using fast trig
+            const pos3D = this.calculate3DPosition(satellite);
+            satellite.currentPos = pos3D;
+            
+            // Update trail (less frequently)
+            if (this.frameCount % 3 === 0) {
+                this.updateTrail(satellite, pos3D);
+            }
         }
     }
     
-    function updateTrail(satellite, pos3D) {
+    calculate3DPosition(satellite) {
+        // Use fast trig functions
+        const cosAngle = this.fastCos(satellite.angle);
+        const sinAngle = this.fastSin(satellite.angle);
+        const cosInclination = this.fastCos(satellite.inclination);
+        const sinInclination = this.fastSin(satellite.inclination);
+        const cosAscending = this.fastCos(satellite.ascending);
+        const sinAscending = this.fastSin(satellite.ascending);
+        
+        // Basic orbital position
+        let x = cosAngle * satellite.distance;
+        let y = sinAngle * satellite.distance;
+        let z = 0;
+        
+        // Apply inclination
+        const inclinedY = y * cosInclination - z * sinInclination;
+        const inclinedZ = y * sinInclination + z * cosInclination;
+        
+        // Apply ascending node rotation
+        const finalX = x * cosAscending - inclinedY * sinAscending;
+        const finalY = x * sinAscending + inclinedY * cosAscending;
+        const finalZ = inclinedZ + this.fastSin(satellite.angle * 3) * 10;
+        
+        // Calculate screen coordinates
+        const perspective = this.PERSPECTIVE + finalZ;
+        const screenX = finalX * this.PERSPECTIVE / perspective;
+        const screenY = finalY * this.PERSPECTIVE / perspective;
+        
+        return {
+            x: finalX,
+            y: finalY,
+            z: finalZ,
+            screenX: screenX + this.centerX + this.offsetX,
+            screenY: screenY + this.centerY,
+            visible: finalZ > -this.PERSPECTIVE * 0.8
+        };
+    }
+    
+    updateTrail(satellite, pos3D) {
         satellite.trail.push({
-            x: pos3D.x,
-            y: pos3D.y,
-            z: pos3D.z,
             screenX: pos3D.screenX,
             screenY: pos3D.screenY,
+            z: pos3D.z,
             visible: pos3D.visible
         });
         
@@ -171,309 +271,261 @@ let satelliteSketch = function(p) {
         }
     }
     
-    p.windowResized = function() {
-        p.resizeCanvas(p.windowWidth, p.windowHeight);
-        
-        // Update star positions efficiently
-        for (let star of stars) {
-            if (star.x > p.width) star.x = p.random(p.width);
-            if (star.y > p.height) star.y = p.random(p.height);
+    render() {
+        // Only redraw stars occasionally
+        if (this.frameCount % 4 === 0) {
+            this.renderStars();
         }
-    };
-
-    function calculate3DPosition(satellite) {
-        // Pre-calculate trigonometric values
-        let cosAngle = p.cos(satellite.angle);
-        let sinAngle = p.sin(satellite.angle);
-        let cosInclination = p.cos(satellite.inclination);
-        let sinInclination = p.sin(satellite.inclination);
-        let cosAscending = p.cos(satellite.ascending);
-        let sinAscending = p.sin(satellite.ascending);
         
-        // Basic orbital position
-        let x = cosAngle * satellite.distance;
-        let y = sinAngle * satellite.distance;
-        let z = 0;
-        
-        // Apply inclination
-        let inclinedY = y * cosInclination - z * sinInclination;
-        let inclinedZ = y * sinInclination + z * cosInclination;
-        
-        // Apply ascending node rotation
-        let finalX = x * cosAscending - inclinedY * sinAscending;
-        let finalY = x * sinAscending + inclinedY * cosAscending;
-        let finalZ = inclinedZ + p.sin(satellite.angle * 3) * 15;
-        
-        // Calculate screen coordinates
-        let screenX = finalX * cachedPerspective / (cachedPerspective + finalZ);
-        let screenY = finalY * cachedPerspective / (cachedPerspective + finalZ);
-        
-        return {
-            x: finalX,
-            y: finalY,
-            z: finalZ,
-            screenX: screenX,
-            screenY: screenY,
-            visible: finalZ > -cachedPerspective * 0.8
-        };
+        // Always redraw earth and satellites
+        this.renderEarth();
+        this.renderSatellites();
     }
     
-    function draw3DTrail(satellite) {
+    renderStars() {
+        const ctx = this.starsCtx;
+        ctx.clearRect(0, 0, this.width, this.height);
+        ctx.fillStyle = 'white';
+        
+        for (let star of this.stars) {
+            const brightness = star.brightness * (0.7 + 0.3 * Math.sin(this.frameCount * star.twinkleSpeed + star.twinklePhase));
+            ctx.globalAlpha = brightness * 0.6 * this.globalOpacity;
+            
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.size * 0.5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        ctx.globalAlpha = 1;
+    }
+    
+    renderEarth() {
+        const ctx = this.earthCtx;
+        ctx.clearRect(0, 0, this.width, this.height);
+        
+        // Pre-compute rotation matrices
+        const cosEarthRot = this.fastCos(this.earthRotation);
+        const sinEarthRot = this.fastSin(this.earthRotation);
+        const cosTilt = this.fastCos(this.EARTH_TILT);
+        const sinTilt = this.fastSin(this.EARTH_TILT);
+        
+        const visiblePoints = [];
+        
+        // Transform all points
+        for (let point of this.earthPoints) {
+            // Apply rotations using matrix multiplication
+            const x1 = point.x * cosEarthRot - point.z * sinEarthRot;
+            const z1 = point.x * sinEarthRot + point.z * cosEarthRot;
+            const y2 = point.y * cosTilt - z1 * sinTilt;
+            const z2 = point.y * sinTilt + z1 * cosTilt;
+            
+            // Frustum culling
+            if (z2 > -this.EARTH_RADIUS * 0.3) {
+                // Transform normal for lighting
+                const nx1 = point.nx * cosEarthRot - point.nz * sinEarthRot;
+                const nz1 = point.nx * sinEarthRot + point.nz * cosEarthRot;
+                const ny2 = point.ny * cosTilt - nz1 * sinTilt;
+                const nz2 = point.ny * sinTilt + nz1 * cosTilt;
+                
+                // Simple lighting calculation
+                const luminance = Math.max(0, nx1 * (-0.4) + ny2 * (-0.3) + nz2 * 0.7);
+                
+                // Simple texture
+                const texture = Math.sin(point.phi * 3) * Math.sin(point.theta * 2) > 0.3;
+                
+                visiblePoints.push({
+                    x: x1 + this.centerX + this.offsetX,
+                    y: y2 + this.centerY,
+                    luminance: luminance,
+                    isLand: texture
+                });
+            }
+        }
+        
+        // Render points efficiently
+        this.renderEarthPoints(ctx, visiblePoints);
+    }
+    
+    renderEarthPoints(ctx, points) {
+        // Group points by color
+        const landPoints = [];
+        const oceanPoints = [];
+        
+        for (let point of points) {
+            if (point.isLand) {
+                landPoints.push(point);
+            } else {
+                oceanPoints.push(point);
+            }
+        }
+        
+        // Render ocean points
+        this.renderPointGroup(ctx, oceanPoints, false);
+        
+        // Render land points
+        this.renderPointGroup(ctx, landPoints, true);
+    }
+    
+    renderPointGroup(ctx, points, isLand) {
+        ctx.globalAlpha = this.globalOpacity;
+        
+        for (let point of points) {
+            const colors = this.getEarthColors(isLand, point.luminance);
+            ctx.fillStyle = `rgb(${colors.r}, ${colors.g}, ${colors.b})`;
+            
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, 1.5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        ctx.globalAlpha = 1;
+    }
+    
+    getEarthColors(isLand, luminance) {
+        if (this.isHomePage) {
+            if (isLand) {
+                return {
+                    r: Math.floor(70 + luminance * 80),
+                    g: Math.floor(90 + luminance * 100),
+                    b: Math.floor(40 + luminance * 60)
+                };
+            } else {
+                return {
+                    r: Math.floor(30 + luminance * 40),
+                    g: Math.floor(70 + luminance * 80),
+                    b: Math.floor(120 + luminance * 100)
+                };
+            }
+        } else {
+            if (isLand) {
+                return {
+                    r: Math.floor(90 + luminance * 80),
+                    g: Math.floor(60 + luminance * 60),
+                    b: Math.floor(30 + luminance * 40)
+                };
+            } else {
+                return {
+                    r: Math.floor(60 + luminance * 60),
+                    g: Math.floor(40 + luminance * 40),
+                    b: Math.floor(20 + luminance * 30)
+                };
+            }
+        }
+    }
+    
+    renderSatellites() {
+        const ctx = this.satellitesCtx;
+        ctx.clearRect(0, 0, this.width, this.height);
+        
+        for (let satellite of this.satellites) {
+            if (!satellite.currentPos || !satellite.currentPos.visible) continue;
+            
+            // Draw trail
+            this.drawTrail(ctx, satellite);
+            
+            // Draw satellite
+            this.drawSatellite(ctx, satellite);
+        }
+    }
+    
+    drawTrail(ctx, satellite) {
         if (satellite.trail.length < 2) return;
         
-        p.strokeWeight(1);
-        let trailLength = satellite.trail.length;
-        let baseR = satellite.color[0];
-        let baseG = satellite.color[1];
-        let baseB = satellite.color[2];
+        ctx.lineWidth = 1;
+        const trailLength = satellite.trail.length;
         
         for (let i = 1; i < trailLength; i++) {
-            let current = satellite.trail[i];
-            let previous = satellite.trail[i - 1];
+            const current = satellite.trail[i];
+            const previous = satellite.trail[i - 1];
             
             if (!current.visible && !previous.visible) continue;
             
-            // Optimized opacity calculation
-            let age = i / trailLength;
-            let ageOpacity = age * age; // Quadratic fade
-            let depthOpacity = p.constrain(p.map(current.z, -200, 200, 0.3, 1.0), 0.1, 1.0);
-            let finalOpacity = ageOpacity * depthOpacity * globalOpacity;
+            const age = i / trailLength;
+            const opacity = age * age * this.globalOpacity;
             
-            // Optimized color calculation
-            let colorVar = p.sin(i * 0.1) * 20;
-            p.stroke(baseR + colorVar, baseG + colorVar * 0.75, baseB + colorVar * 0.5, finalOpacity * 120);
-            
-            p.line(previous.screenX, previous.screenY, current.screenX, current.screenY);
-            
-            // Trail particles for newer segments
-            if (i > trailLength - 15 && finalOpacity > 0.3) {
-                p.fill(baseR + colorVar, baseG + colorVar * 0.75, baseB + colorVar * 0.5, finalOpacity * 80);
-                p.noStroke();
-                p.textSize(3);
-                p.text('·', current.screenX, current.screenY);
-            }
-        }
-        
-        p.noStroke();
-    }
-
-    function manageSatelliteBeams() {
-        let activeBeams = satellites.filter(sat => sat.beamActive).length;
-        
-        for (let satellite of satellites) {
-            if (satellite.beamActive) {
-                satellite.beamTimer++;
-                if (satellite.beamTimer > 10) {
-                    satellite.beamActive = false;
-                    satellite.beamTimer = 0;
-                    satellite.nextBeamTime = frameCounter + p.random(100, 200);
-                }
-            } else {
-                if (frameCounter >= satellite.nextBeamTime && activeBeams < 1) {
-                    satellite.beamActive = true;
-                    satellite.beamTimer = 0;
-                    activeBeams++;
-                }
-            }
+            ctx.strokeStyle = `rgba(${satellite.color[0]}, ${satellite.color[1]}, ${satellite.color[2]}, ${opacity})`;
+            ctx.beginPath();
+            ctx.moveTo(previous.screenX, previous.screenY);
+            ctx.lineTo(current.screenX, current.screenY);
+            ctx.stroke();
         }
     }
     
-    function drawGlobe3D() {
-        p.textSize(6);
-        p.noStroke();
+    drawSatellite(ctx, satellite) {
+        const pos = satellite.currentPos;
+        const scale = Math.max(0.6, Math.min(1.4, 1 + pos.z / 400));
+        const brightness = Math.max(0.4, Math.min(1.0, 0.7 + pos.z / 600));
         
-        // Pre-calculate rotation values
-        let cosEarthRot = p.cos(earthRotation);
-        let sinEarthRot = p.sin(earthRotation);
-        let cosTilt = p.cos(cachedTilt);
-        let sinTilt = p.sin(cachedTilt);
-        
-        // Optimized grid with larger steps
-        for (let theta = 0; theta < p.PI; theta += 0.175) {
-            let cosTheta = p.cos(theta);
-            let sinTheta = p.sin(theta);
-            
-            for (let phi = 0; phi < p.TWO_PI; phi += 0.15) {
-                let cosPhi = p.cos(phi);
-                let sinPhi = p.sin(phi);
-                
-                // Original sphere coordinates
-                let x = cachedEarthRadius * sinTheta * cosPhi;
-                let y = cachedEarthRadius * cosTheta;
-                let z = cachedEarthRadius * sinTheta * sinPhi;
-                
-                // Apply rotations
-                let x1 = x * cosEarthRot - z * sinEarthRot;
-                let z1 = x * sinEarthRot + z * cosEarthRot;
-                let y2 = y * cosTilt - z1 * sinTilt;
-                let z2 = y * sinTilt + z1 * cosTilt;
-                
-                // Visibility check
-                if (z2 > -cachedEarthRadius * 0.3) {
-                    // Calculate lighting more efficiently
-                    let nx = sinTheta * cosPhi;
-                    let ny = cosTheta;
-                    let nz = sinTheta * sinPhi;
-                    
-                    let nx1 = nx * cosEarthRot - nz * sinEarthRot;
-                    let nz1 = nx * sinEarthRot + nz * cosEarthRot;
-                    let ny2 = ny * cosTilt - nz1 * sinTilt;
-                    let nz2 = ny * sinTilt + nz1 * cosTilt;
-                    
-                    // Optimized lighting calculation
-                    let luminance = nx1 * (-0.4) + ny2 * (-0.3) + nz2 * 0.7;
-                    let texture = p.noise(phi * 2 + earthRotation * 0.05, theta * 2, 0);
-                    luminance = p.constrain((luminance + (texture - 0.5) * 0.25 + 1) / 2, 0, 1);
-                    
-                    let charIndex = p.floor(luminance * (cachedLuminanceChars.length - 1));
-                    let char = cachedLuminanceChars[charIndex];
-                    
-                    if (char !== ' ') {
-                        let colors = getEarthColors(texture > 0.53, luminance);
-                        p.fill(colors.r, colors.g, colors.b, 255 * globalOpacity);
-                        p.text(char, x1, y2);
-                    }
-                }
-            }
-        }
-    }
-    
-    function getEarthColors(isLand, luminance) {
-        let baseR, baseG, baseB;
-        
-        if (isHomePage) {
-            if (isLand) {
-                baseR = 70; baseG = 90; baseB = 40;
-                return {
-                    r: baseR + luminance * brightnessMults.land.r,
-                    g: baseG + luminance * brightnessMults.land.g,
-                    b: baseB + luminance * brightnessMults.land.b
-                };
-            } else {
-                baseR = 30; baseG = 70; baseB = 120;
-                return {
-                    r: baseR + luminance * brightnessMults.ocean.r,
-                    g: baseG + luminance * brightnessMults.ocean.g,
-                    b: baseB + luminance * brightnessMults.ocean.b
-                };
-            }
-        } else {
-            if (isLand) {
-                baseR = 90; baseG = 60; baseB = 30;
-                return {
-                    r: baseR + luminance * brightnessMults.landOrange.r,
-                    g: baseG + luminance * brightnessMults.landOrange.g,
-                    b: baseB + luminance * brightnessMults.landOrange.b
-                };
-            } else {
-                baseR = 60; baseG = 40; baseB = 20;
-                return {
-                    r: baseR + luminance * brightnessMults.oceanOrange.r,
-                    g: baseG + luminance * brightnessMults.oceanOrange.g,
-                    b: baseB + luminance * brightnessMults.oceanOrange.b
-                };
-            }
-        }
-    }
-
-    function drawSatellite3D(satellite, pos3D) {
-        if (!pos3D.visible) return;
-        
-        // Calculate scale and brightness based on depth
-        let scale = p.constrain(p.map(pos3D.z, -200, 200, 0.6, 1.4), 0.4, 1.6);
-        let depthBrightness = p.constrain(p.map(pos3D.z, -200, 200, 0.4, 1.0), 0.3, 1.0);
-        
-        // Pre-calculate color values
-        let r = satellite.color[0] * depthBrightness;
-        let g = satellite.color[1] * depthBrightness;
-        let b = satellite.color[2] * depthBrightness;
-        let opacity = globalOpacity;
-        
-        p.push();
-        p.translate(pos3D.screenX, pos3D.screenY);
-        p.scale(scale);
-        p.rotate(p.atan2(-pos3D.screenY, -pos3D.screenX));
-        
-        // Draw satellite components with optimized colors
-        drawSatelliteComponents(satellite, r, g, b, opacity, depthBrightness);
-        
-        p.pop();
-        
-        // Draw beam if active
-        if (satellite.beamActive) {
-            let beamOpacity = 50 * opacity * depthBrightness * (0.9 + 0.1 * p.sin(frameCounter * 0.15));
-            p.stroke(r, g, b, beamOpacity);
-            p.strokeWeight(2);
-            p.line(pos3D.screenX, pos3D.screenY, 0, 0);
-        }
-        
-        p.noStroke();
-    }
-    
-    function drawSatelliteComponents(satellite, r, g, b, opacity, brightness) {
+        ctx.save();
+        ctx.translate(pos.screenX, pos.screenY);
+        ctx.scale(scale, scale);
+        ctx.globalAlpha = this.globalOpacity * brightness;
         
         // Main body
-        p.fill(r, g, b, 230 * opacity);
-        p.textSize(12);
-        p.text('▉', 0, 0);
+        ctx.fillStyle = `rgb(${satellite.color[0]}, ${satellite.color[1]}, ${satellite.color[2]})`;
+        ctx.fillRect(-4, -4, 8, 8);
         
-        // Solar panels with animation
-        let panelOffset = p.sin(satellite.rotZ);
-        p.fill(50 * brightness, 90 * brightness, 160 * brightness, 230 * opacity);
-        p.textSize(16);
-        p.text('==', -12, panelOffset);
-        p.text('==', 12, -panelOffset);
+        // Solar panels
+        ctx.fillStyle = `rgb(50, 90, 160)`;
+        const panelOffset = Math.sin(satellite.rotZ) * 2;
+        ctx.fillRect(-12, panelOffset - 1, 6, 2);
+        ctx.fillRect(6, -panelOffset - 1, 6, 2);
         
         // Communication dish
-        p.fill(200 * brightness, 200 * brightness, 200 * brightness, 170 * opacity);
-        p.textSize(14);
-        p.text('◔', 5, -5);
+        ctx.fillStyle = `rgb(200, 200, 200)`;
+        ctx.beginPath();
+        ctx.arc(2, -2, 2, 0, Math.PI * 2);
+        ctx.fill();
         
-        // Thermal radiators
-        p.fill(60, 60, 60, 240 * opacity);
-        p.textSize(10);
-        p.text('▤', 0, 2);
-        
-        // Name display on home page only
-        if (isHomePage) {
-            // Name
-            p.fill(255, 255, 255, 80 * globalOpacity);
-            p.textSize(7);
-            p.text(satellite.name, 0, 25);
-
-            // Status lights with optimized timing
-            let lightPhase = frameCounter % 60;
-            if (lightPhase < 30) {
-                // Green Light
-                p.fill(0, 255 * brightness, 0, 255 * brightness * opacity);
-                p.textSize(6);
-                p.text('●', -6, -5);
+        // Name (only on home page)
+        if (this.isHomePage) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.font = '10px Courier New';
+            ctx.textAlign = 'center';
+            ctx.fillText(satellite.name, 0, 20);
+            
+            // Status lights
+            const lightPhase = this.frameCount % 120;
+            if (lightPhase < 60) {
+                ctx.fillStyle = 'rgb(0, 255, 0)';
+                ctx.beginPath();
+                ctx.arc(-3, -6, 1, 0, Math.PI * 2);
+                ctx.fill();
             }
-            if ((lightPhase + 30) % 60 < 30) {
-                //Red Light
-                p.fill(255 * brightness, 0, 0, 255 * brightness * opacity);
-                p.textSize(6);
-                p.text('●', 5, -5);
+            if ((lightPhase + 60) % 120 < 60) {
+                ctx.fillStyle = 'rgb(255, 0, 0)';
+                ctx.beginPath();
+                ctx.arc(3, -6, 1, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
+        
+        ctx.restore();
     }
-};
-
-// Initialize with error handling
-let satelliteAnimation;
-try {
-    satelliteAnimation = new p5(satelliteSketch);
-} catch (error) {
-    console.log('Animation disabled due to performance constraints');
 }
 
-// Optimized visibility handling
-document.addEventListener('visibilitychange', function() {
-    if (satelliteAnimation) {
-        if (document.hidden) {
-            satelliteAnimation.noLoop();
-        } else {
-            satelliteAnimation.loop();
+// Initialize animation when page loads
+let animation;
+window.addEventListener('load', () => {
+    // Check if page state detection is needed
+    const homePageCheck = () => {
+        const homeElement = document.getElementById('home');
+        if (homeElement && animation) {
+            animation.isHomePage = homeElement.classList.contains('active');
         }
+    };
+    
+    animation = new OptimizedSatelliteAnimation();
+    
+    // Monitor page changes
+    const observer = new MutationObserver(homePageCheck);
+    const homeElement = document.getElementById('home');
+    if (homeElement) {
+        observer.observe(homeElement, { attributes: true, attributeFilter: ['class'] });
     }
+    
+    // Also check other page elements
+    document.querySelectorAll('.page').forEach(page => {
+        observer.observe(page, { attributes: true, attributeFilter: ['class'] });
+    });
 });

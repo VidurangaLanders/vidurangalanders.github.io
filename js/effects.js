@@ -58,29 +58,6 @@ function createFloatingParticles() {
     }, 5000);
 }
 
-// FIXED: Remove problematic parallax effect entirely
-function updateScrollEffects() {
-    // Commenting out the parallax effect that was causing the background shift
-    // const scrolled = window.pageYOffset;
-    // const rate = scrolled * -0.2;
-    
-    // const spaceBg = document.querySelector('.space-bg');
-    // if (spaceBg) {
-    //     spaceBg.style.transform = `translateY(${rate}px)`;
-    // }
-    
-    // The background will now stay fixed and not accumulate positioning errors
-}
-
-// Keep the scroll listener but make it do nothing for now
-let ticking = false;
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        requestAnimationFrame(updateScrollEffects);
-        ticking = true;
-    }
-});
-
 // Ensure background covers full viewport on resize
 window.addEventListener('resize', () => {
     const spaceBg = document.querySelector('.space-bg');
@@ -88,7 +65,6 @@ window.addEventListener('resize', () => {
         spaceBg.style.width = '100vw';
         spaceBg.style.height = '100vh';
         spaceBg.style.minHeight = '100vh';
-        spaceBg.style.transform = 'translateY(0px)'; // Reset any transform
     }
     
     const starsContainer = document.querySelector('.stars');
@@ -144,24 +120,6 @@ function initializeScrollAnimations() {
     });
 }
 
-// Typing effect
-function typeWriter(element, text, speed = 80) {
-    if (!element) return;
-    
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
-
 // Smooth page transitions
 function addPageTransitions() {
     const pages = document.querySelectorAll('.page');
@@ -172,15 +130,13 @@ function addPageTransitions() {
 }
 
 // Initialize all effects
-function initializeEffects() {
-    console.log('Initializing visual effects...');
-    
+function initializeEffects() {    
     createStars();
     createFloatingParticles();
     initializeCardEffects();
     initializeScrollAnimations();
     addPageTransitions();
-    
+
     // Fix background positioning on initialization
     const spaceBg = document.querySelector('.space-bg');
     if (spaceBg) {
@@ -189,6 +145,4 @@ function initializeEffects() {
         spaceBg.style.height = '100vh';
         spaceBg.style.minHeight = '100vh';
     }
-    
-    console.log('Visual effects initialized successfully');
 }

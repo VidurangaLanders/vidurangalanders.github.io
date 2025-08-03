@@ -2,29 +2,22 @@
 @font-face {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 300; /* Light */
-  src: url('../fonts/Inter_28pt-Light.ttf') format('truetype'); /* */
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
   font-weight: 400; /* Regular */
-  src: url('../fonts/Inter_28pt-Regular.ttf') format('truetype'); /* */
+  src: url('../fonts/Inter_28pt-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500; /* Medium */
-  src: url('../fonts/Inter_28pt-Medium.ttf') format('truetype'); /* */
+  src: url('../fonts/Inter_28pt-Medium.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600; /* SemiBold */
-  src: url('../fonts/Inter_28pt-SemiBold.ttf') format('truetype'); /* */
+  src: url('../fonts/Inter_28pt-SemiBold.ttf') format('truetype');
 }
 
 
@@ -33,42 +26,28 @@
   font-family: 'Orbitron';
   font-style: normal;
   font-weight: 400; /* Regular */
-  src: url('../fonts/Orbitron-Regular.ttf') format('truetype'); /* */
-}
-
-@font-face {
-  font-family: 'Orbitron';
-  font-style: normal;
-  font-weight: 500; /* Medium */
-  src: url('../fonts/Orbitron-Medium.ttf') format('truetype'); /* */
+  src: url('../fonts/Orbitron-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Orbitron';
   font-style: normal;
   font-weight: 600; /* SemiBold */
-  src: url('../fonts/Orbitron-SemiBold.ttf') format('truetype'); /* */
+  src: url('../fonts/Orbitron-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Orbitron';
   font-style: normal;
   font-weight: 700; /* Bold */
-  src: url('../fonts/Orbitron-Bold.ttf') format('truetype'); /* */
-}
-
-@font-face {
-  font-family: 'Orbitron';
-  font-style: normal;
-  font-weight: 800; /* ExtraBold */
-  src: url('../fonts/Orbitron-ExtraBold.ttf') format('truetype'); /* */
+  src: url('../fonts/Orbitron-Bold.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Orbitron';
   font-style: normal;
   font-weight: 900; /* Black */
-  src: url('../fonts/Orbitron-Black.ttf') format('truetype'); /* */
+  src: url('../fonts/Orbitron-Black.ttf') format('truetype');
 }
 
 * {
@@ -89,14 +68,20 @@ body {
 }
 
 /* Background Elements */
-.satellite-canvas-container {
+#animation-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
     pointer-events: none;
+}
+
+.canvas-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .space-bg {
@@ -201,7 +186,6 @@ nav {
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
-    transition: color 0.3s;
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 4px;
