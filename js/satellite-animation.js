@@ -116,8 +116,8 @@ class OptimizedSatelliteAnimation {
         this.satellites = [
             this.createSatellite(0, 280, 0.008, "QUANTUM", [255, 140, 0], 15, 0),
             this.createSatellite(Math.PI, 350, 0.006, "SPACE", [255, 165, 0], -25, Math.PI/3),
-            this.createSatellite(Math.PI/2, 370, 0.005, "CYBER-SEC", [255, 100, 0], 35, Math.PI/2),
-            this.createSatellite(3*Math.PI/2, 320, 0.007, "SECURE-NET", [255, 180, 50], -18, Math.PI/6)
+            this.createSatellite(Math.PI/2, 370, 0.005, "CRYPTOGRAPHY", [255, 100, 0], 35, Math.PI/2),
+            this.createSatellite(3*Math.PI/2, 320, 0.007, "HARDWARE-SEC", [255, 180, 50], -18, Math.PI/6)
         ];
     }
     
