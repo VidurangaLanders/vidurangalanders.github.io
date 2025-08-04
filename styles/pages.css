@@ -1,0 +1,269 @@
+/* Blog Detail Page */
+.blog-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.blog-detail-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 127, 0, 0.3);
+}
+
+.blog-detail-header h1 {
+    font-family: 'Orbitron', monospace;
+    color: #ff7f00;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: #aaaaaa;
+    margin-bottom: 1rem;
+}
+
+.blog-detail-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cccccc;
+}
+
+.blog-detail-content h2 {
+    color: #ff7f00;
+    font-family: 'Orbitron', monospace;
+    margin: 2rem 0 1rem 0;
+}
+
+.blog-detail-content h3 {
+    color: #ffb366;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.blog-detail-content p {
+    margin-bottom: 1rem;
+}
+
+.blog-detail-content ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.blog-detail-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Project detail page */
+.project-detail {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.project-detail-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.project-detail-header h1 {
+    font-family: 'Orbitron', monospace;
+    color: #ff7f00;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.project-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.project-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 127, 0, 0.3);
+}
+
+.project-info h3 {
+    color: #ff7f00;
+    font-family: 'Orbitron', monospace;
+    margin-bottom: 1rem;
+}
+
+.project-images-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-image-placeholder {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 127, 0, 0.5);
+    border-radius: 12px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ff7f00;
+    font-family: 'Orbitron', monospace;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.project-image-placeholder .project-image {
+    max-width: 90%;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+}
+
+.project-image-placeholder .image-caption {
+    font-size: 0.9rem;
+    color: #ff7f00;
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+}
+
+/* Project detail styles for new layout */
+.project-subtitle {
+    color: #888;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+.project-link {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #ff7f00, #ffb366);
+    color: #000;
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 127, 0, 0.3);
+}
+
+.project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.project-image {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 127, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.project-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 127, 0, 0.2);
+    border-color: rgba(255, 127, 0, 0.5);
+}
+
+.project-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project-image p {
+    color: #ff7f00;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Research paper cards styling */
+.research-card {
+    cursor: pointer;
+}
+
+.research-card .paper-venue {
+    color: #6c7ce0;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.research-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.research-tag {
+    background: rgba(108, 124, 224, 0.2);
+    color: #6c7ce0;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(108, 124, 224, 0.3);
+}
+
+/* New blog-style project image containers */
+.project-image-container {
+    margin: 2rem 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 127, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.project-image-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 127, 0, 0.1);
+    border-color: rgba(255, 127, 0, 0.5);
+}
+
+.project-detail-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project-image-container .image-caption {
+    font-size: 0.9rem;
+    color: #ff7f00;
+    text-align: center;
+    font-family: 'Orbitron', monospace;
+    margin: 0;
+    font-style: italic;
+}

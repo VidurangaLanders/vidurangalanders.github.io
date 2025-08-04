@@ -1,0 +1,21 @@
+# Windows system files
+Thumbs.db
+desktop.ini
+
+# VS Code settings
+.vscode/settings.json
+.vscode/launch.json
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# GitHub Pages build cache
+.jekyll-cache/
+_site/
