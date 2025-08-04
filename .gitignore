@@ -1,90 +1,21 @@
-# Operating System Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
+# Windows system files
 Thumbs.db
 desktop.ini
 
-# IDE and Editor Files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.sublime-project
-.sublime-workspace
+# VS Code settings
+.vscode/settings.json
+.vscode/launch.json
 
-# Temporary Files
+# Temporary files
 *.tmp
 *.temp
 *.log
-*.cache
-
-# Node.js (if you add any Node.js dependencies later)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-yarn.lock
-
-# Build outputs
-dist/
-build/
-out/
-
-# Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Large media files that should be optimized or use Git LFS
-# Uncomment these if you want to exclude large images
-# *.jpg
-# *.jpeg
-# *.png
-# *.gif
-# *.webp
-# *.svg
-
-# Large documents (consider using Git LFS for these)
-# *.pdf
 
 # Backup files
 *.bak
 *.backup
 *.old
 
-# Compressed files
-*.zip
-*.rar
-*.7z
-*.tar.gz
-
-# Generated CSS from preprocessors (if you use Sass/Less)
-# *.css.map
-
-# Local configuration files
-config.local.*
-
-# Test files
-coverage/
-.nyc_output/
-
-# Deployment files
-.vercel
-.netlify
-
-# Database files
-*.sqlite
-*.db
-
-# Misc
-.sass-cache/
+# GitHub Pages build cache
 .jekyll-cache/
 _site/
