@@ -1,54 +1,4 @@
-/* --- Inter Font Family --- */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400; /* Regular */
-  src: url('../fonts/Inter_28pt-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500; /* Medium */
-  src: url('../fonts/Inter_28pt-Medium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600; /* SemiBold */
-  src: url('../fonts/Inter_28pt-SemiBold.ttf') format('truetype');
-}
-
-
-/* --- Orbitron Font Family --- */
-@font-face {
-  font-family: 'Orbitron';
-  font-style: normal;
-  font-weight: 400; /* Regular */
-  src: url('../fonts/Orbitron-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Orbitron';
-  font-style: normal;
-  font-weight: 600; /* SemiBold */
-  src: url('../fonts/Orbitron-SemiBold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Orbitron';
-  font-style: normal;
-  font-weight: 700; /* Bold */
-  src: url('../fonts/Orbitron-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Orbitron';
-  font-style: normal;
-  font-weight: 900; /* Black */
-  src: url('../fonts/Orbitron-Black.ttf') format('truetype');
-}
+/* Fonts are loaded via Google Fonts CDN in index.html */
 
 * {
     margin: 0;
@@ -78,10 +28,10 @@ body {
     pointer-events: none;
 }
 
-.canvas-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
+#webgl-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .space-bg {
