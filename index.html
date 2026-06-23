@@ -6,11 +6,15 @@
     
     <title>Viduranga Landers</title>
 
-    <script src="js/satellite-animation.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/effects.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="js/satellite-animation.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/effects.js" defer></script>
+    <script src="js/main.js" defer></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
     <link rel="stylesheet" href="styles/pages.css">
@@ -20,11 +24,9 @@
     <div class="space-bg"></div>
     <div class="stars"></div>
     
-    <!-- Advanced Satellite Animation Background -->
+    <!-- Advanced 3D Satellite Animation Background -->
     <div id="animation-container">
-        <canvas id="stars-canvas" class="canvas-layer"></canvas>
-        <canvas id="earth-canvas" class="canvas-layer"></canvas>
-        <canvas id="satellites-canvas" class="canvas-layer"></canvas>
+        <canvas id="webgl-canvas"></canvas>
     </div>
     
     <header>
@@ -919,7 +921,7 @@
                 </div>
                 <div class="blog-detail-content">
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/Journey_with_GLEE.png" alt="Journey with GLEE" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/Journey_with_GLEE.png" alt="Journey with GLEE" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Journey with GLEE</p>
                     </div>
                     <p>This is my first time writing an article describing something I've done in detail. I've recently found out that the projects I've been involved in have captured the attention of many people. At a recent event, I found myself telling parts of this story repeatedly. So, I thought, "Why not write a blog or an article?" When my team achieved another exciting milestone on the same project, I decided it was time to put finger to keyboard. This is our story of perseverance, innovation, and how programs like GLEE can inspire and empower students in countries with limited resources.</p>
@@ -935,14 +937,14 @@
                     <p>Our journey began with forming a team and establishing our institution, Aerolite. This team, consisting of <strong>Oshadha Pathirana</strong>, <strong>Jude Thidushan Peiris</strong>, <strong>Adeepa Gunathilake</strong>, <strong>Isuru Liyanawadu</strong>, and myself had collaborated on many projects before. We had used the name Aerolite for the CERN Beamline for Schools competition, where we needed an institution to represent us. With my mother as our mentor (why not?), we registered for the GLEE workshop program, excited by the opportunity yet concerned about the challenges, especially considering the Sri Lanka's economic turmoil.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/GLEE_Team_3309.jpeg" alt="GLEE Team #3309" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/GLEE_Team_3309.jpeg" alt="GLEE Team #3309" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">GLEE Team #3309 - The original Aerolite team</p>
                     </div>
                     
                     <p>Receiving our LunaSat kit, containing two LunaSat prototypes (small, chip-like satellites) and other materials, was a delighted moment amidst the uncertainty. We were initially concerned about being accepted as high school students and whether the package would even be delivered due to disrupted services.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/GLEE_LunaSat_Kit.png" alt="GLEE LunaSat Kit" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/GLEE_LunaSat_Kit.png" alt="GLEE LunaSat Kit" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">GLEE LunaSat kit containing two LunaSat prototypes and other materials</p>
                     </div>
                     
@@ -952,14 +954,14 @@
                     <p>(Visit their website for more details: <a href="https://www.glee2023.org/" target="_blank">https://www.glee2023.org/</a>)</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/GLEE_ConOps.jpeg" alt="GLEE Concept of Operations" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/GLEE_ConOps.jpeg" alt="GLEE Concept of Operations" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">GLEE ConOps (Credit: GLEE Team)</p>
                     </div>
                     
                     <p>These LunaSats, equipped with sensors to collect data from the lunar environment, became the core of our project. The LunaSats included five sensors for scientific data collection, radio communication, and solar panels for power generation. GLEE provided educational materials on each sensor, space mission design, and lunar science. Our task was to complete all the modules and design a mission of our choice, prioritizing certain sensors for our LunaSats. We would test the code on our prototypes and then send it to the GLEE team to upload it to the final space-grade LunaSat.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/LunaSat.png" alt="LunaSat Hardware Platform" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/LunaSat.png" alt="LunaSat Hardware Platform" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">LunaSat hardware platform with sensors and communication systems (Credit: GLEE)</p>
                     </div>
                     
@@ -967,14 +969,14 @@
                     <p>We conducted all the required experiments and some additional fun experiments, learning extensively about small satellite technology and lunar science. One memorable challenge was participating in the thermopile challenge, recording the highest temperatures during Sri Lanka's hottest days.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/Thermopile_Challenge.png" alt="GLEE Thermopile Challenge" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/Thermopile_Challenge.png" alt="GLEE Thermopile Challenge" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">GLEE Thermopile Challenge - Recording temperatures during Sri Lanka's hottest days</p>
                     </div>
                     
                     <p>Another memorable experiment involved placing the LunaSats in a refrigerator for thermal testing. Since we lacked sophisticated equipment, we used my home freezer. When the temperature reached about -4°C, we took them out and continued with other experiments while the LunaSats were plugged into my laptop. We quickly noticed water droplets accumulating on the LunaSats and panicked, but we managed to dry them with a hair dryer. To lighten the mood, we transmitted a popular Sri Lankan meme phrase from one Sat to the other: "Sandamali (a Sri Lankan female name), I am alive."</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/LunaSats_Surviving_Death.png" alt="LunaSats Surviving Death" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/LunaSats_Surviving_Death.png" alt="LunaSats Surviving Death" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">LunaSats surviving their freezer test - "Sandamali, I am alive"</p>
                     </div>
                     
@@ -984,7 +986,7 @@
                     <p>Hope was renewed when GLEE announced the Lunar Deployment Module Challenge (LDM). This required designing a robust deployment mechanism for delivering LunaSats to the Moon's surface. By this time, my original team members were busy with university. Determined to take on the challenge, I assembled a new team with my university friends <strong>Tharindu Deepaloka Munasinghe</strong>, <strong>Lisitha Dissanayaka</strong>, and <strong>Savith Panamgama</strong>, along with <strong>Harshith Aluvihare</strong>, my co-technical lead from the Taprobane project (Sri Lanka's first analog Mars rover project).</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/New_GLEE_3309_Team.jpeg" alt="New GLEE Team #3309" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/New_GLEE_3309_Team.jpeg" alt="New GLEE Team #3309" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">New GLEE #3309 Team for the Lunar Deployment Module Challenge</p>
                     </div>
                     
@@ -992,19 +994,19 @@
                     <p>We took on the challenge as soon as we finished our exams. Over two weeks, we immersed ourselves in the task. Interestingly, three members had computer science backgrounds with no prior space project experience. This lack of knowledge in space missions led to surprisingly creative ideas, including origami structures, fishing nets, and surface impactors.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/Some_of_the_LDM_ideas.png" alt="Lunar Deployment Module Ideas" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/Some_of_the_LDM_ideas.png" alt="Lunar Deployment Module Ideas" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Some of the creative Lunar Deployment Module ideas we explored</p>
                     </div>
                     
                     <p>We created a detailed CAD model, ran simulations, developed Model-Based Systems Engineering (MBSE) models, and built a prototype to validate our design. Out of the two weeks we had, we dedicated an entire week to explore possible ideas for the LDM and conducted thorough research on each one. We evaluated more than five different options with varying degrees of feasibility and, after two more days, agreed upon our final design. Our approach involved enhancing a method already used in orbital ChipSat deployment, adding stabilization for lunar surface conditions. The experience was both challenging and exciting, as we applied theoretical knowledge to a real-world problem.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/L-SPyDer.jpeg" alt="L-SPyDer Lunar Deployment Module" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/L-SPyDer.jpeg" alt="L-SPyDer Lunar Deployment Module" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">L-SPyDer (LunaSat Payload Deployer) - Our award-winning design</p>
                     </div>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/glee/l-spyder-deployment-module.png" alt="L-SPyDer Lunar Deployment Module" class="project-detail-image" />
+                        <img src="images/projects/glee/l-spyder-deployment-module.png" alt="L-SPyDer Lunar Deployment Module" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Our award-winning L-SPyDer Lunar Deployment Module design - Winner of the Overall Category</p>
                     </div>
                     
@@ -1012,14 +1014,14 @@
                     <p>The CAD model creation was expertly handled by <strong>Harshith Aluvihare</strong>, a seasoned CAD designer. He completed this intricate model in just a few days. While I have experience with spacecraft CAD models myself, Harshith's model was exceptionally detailed given the tight timeframe.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/L-SPyDer_CAD.png" alt="L-SPyDer CAD Model" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/L-SPyDer_CAD.png" alt="L-SPyDer CAD Model" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">L-SPyDer detailed CAD model designed by Harshith Aluvihare</p>
                     </div>
                     
                     <p>While I focused on simulations and MBSE models to add extra value to the project, it was <strong>Tharindu Deepaloka Munasinghe</strong>, <strong>Savith Panamgama</strong>, and <strong>Lisitha Dissanayaka</strong> took charge of research and documentation. We worked on the document until the last moment, submitting it right at the deadline. This was the first time I'd ever successfully submitted a project at the exact deadline minute. These people even created some cool drawings that we forgot to include in the document. So, as a justification to their effort, I thought of adding them here.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/LunaSat_Deployment.png" alt="LunaSat Deployment Illustration" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/LunaSat_Deployment.png" alt="LunaSat Deployment Illustration" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">LunaSat Deployment illustration created by our team</p>
                     </div>
                     
@@ -1027,7 +1029,7 @@
                     <p>This project highlighted the expertise I'd gained from past research. Since 2020, I've worked on various astronautics projects, from conceptual space mission designs to patented space technologies. In my first research project, designing a self-adapting wheel system for rovers, I spent countless hours on Discrete Element Method (DEM) simulations to simulate the terramechanics of a wheel on the Lunar surface. With the help of <strong>Tharindu Deepaloka Munasinghe</strong> and <strong>Lisitha Dissanayaka</strong>, I was able to run multiple simulations to make sure our not only deployed the satellites but also maintained their stable orientation after landing at a considerable speed. My experience in regolith simulations and MBSE from previous projects were invaluable in this challenge because the extra work made our submission much more professional.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/DEM_Simulations.png" alt="DEM Simulations" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/DEM_Simulations.png" alt="DEM Simulations" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">DEM simulations to validate LunaSat landing orientation and stability</p>
                     </div>
                     
@@ -1035,7 +1037,7 @@
                     <p>Learning we won the Overall category felt unreal. We knew that despite a few minor mistakes, we had a well detailed proposal, but we were really excited to see that our hard work and innovative approach were recognized.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/Experimenting_with_L-SPyDer_Prototype.png" alt="L-SPyDer Prototype Testing" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/Experimenting_with_L-SPyDer_Prototype.png" alt="L-SPyDer Prototype Testing" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Experimenting with L-SPyDer prototype to validate our design</p>
                     </div>
                     
@@ -1047,7 +1049,7 @@
                     <p>A highlight was meeting another LDM team led by <strong>Navindu Jayawardhane</strong>. Though they hadn't participated in the GLEE workshop, we shared our experiences and guided them. Witnessing their enthusiasm and helping them succeed was incredibly rewarding. Their recognition as the Most Creative category winner was a testament to the collaborative spirit fostered by GLEE.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/blogs/2024_06_14/GLEE_Team_3309_at_AISSA_Expo.png" alt="GLEE Team at AISSA Expo" class="project-detail-image" />
+                        <img src="images/blogs/2024_06_14/GLEE_Team_3309_at_AISSA_Expo.png" alt="GLEE Team at AISSA Expo" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">GLEE Team #3309 at AISSA Expo sharing our achievements with the community</p>
                     </div>
                     
@@ -1736,7 +1738,7 @@
                     <p>A Soil Penetration Dart (SPD) is a planetary penetrator developed to collect soil samples from the lunar surface's deep layers. Nexus Aurora Corp, DE, USA, is actively developing the project with a team of six members. The research findings were presented during the 73rd and 75th International Astronautical Congresses and were published in the congress proceedings.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/spd/exploded-view.gif" alt="SPD Exploded View" class="project-detail-image">
+                        <img src="images/projects/spd/exploded-view.gif" alt="SPD Exploded View" class="project-detail-image" loading="lazy">
                         <div class="image-caption">SPD Exploded View</div>
                     </div>
                     
@@ -1753,7 +1755,7 @@
                     </ul>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/spd/parts-breakdown.jpg" alt="SPD Parts Breakdown" class="project-detail-image">
+                        <img src="images/projects/spd/parts-breakdown.jpg" alt="SPD Parts Breakdown" class="project-detail-image" loading="lazy">
                         <div class="image-caption">SPD Components Breakdown</div>
                     </div>
                     
@@ -1761,7 +1763,7 @@
                     <p>The SPD mission architecture may incorporate multiple deployment strategies, ranging from orbital release to lander-based deployment. However, this project only explores orbital deployment. Each dart is equipped with sophisticated instrumentation for real-time analysis and sample preservation during the high-impact collection process. It is also equipped with a specialized drill auger to climb to the surface through the impact hole, an ascent that is further assisted by a solid rocket booster with a slow burn rate. Upon arrival at the surface, a second propulsion stage could deliver the sample collector to Lunar orbit, or a rover could collect it and perform further analysis onboard.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/spd/mission-conops.png" alt="SPD Mission ConOps" class="project-detail-image">
+                        <img src="images/projects/spd/mission-conops.png" alt="SPD Mission ConOps" class="project-detail-image" loading="lazy">
                         <div class="image-caption">SPD Mission Concept of Operations</div>
                     </div>
                     
@@ -1806,7 +1808,7 @@
                     <p>Lunarbot, a research team of four Sri Lankan students, created the Self-Adapting Wheel System. It was first conceptualized as part of the SPIDER lunar rover proposal for the Singapore Space Challenge 2021. It was later improved as a customizable wheel system for any space exploration rover. The outcomes of the research were presented at the 72nd International Astronautical Congress in Dubai and published in the congress proceedings.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/saws/wheel-system.png" alt="SAWS Wheel" class="project-detail-image">
+                        <img src="images/projects/saws/wheel-system.png" alt="SAWS Wheel" class="project-detail-image" loading="lazy">
                         <div class="image-caption">SAWS Adaptive Wheel System Design</div>
                     </div>
                     
@@ -1823,7 +1825,7 @@
                     </ul>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/saws/iac-presentation.png" alt="Presentation at IAC 2021" class="project-detail-image">
+                        <img src="images/projects/saws/iac-presentation.png" alt="Presentation at IAC 2021" class="project-detail-image" loading="lazy">
                         <div class="image-caption">SAWS Presentation at IAC 2021</div>
                     </div>
                     
@@ -1832,7 +1834,7 @@
                     <P>Testing in Utah was cancelled and postponed due to a funding opportunity from NASA JPL to test the SSAM rover along with SAWS wheels in Arctic. The project has since been in hold.</P>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/saws/integrated-rover.jpeg" alt="SAWS Integrated SSAM Rover" class="project-detail-image">
+                        <img src="images/projects/saws/integrated-rover.jpeg" alt="SAWS Integrated SSAM Rover" class="project-detail-image" loading="lazy">
                         <div class="image-caption">SAWS Integrated SSAM Rover (Credits: Nexus Aurora)</div>
                     </div>
                     
@@ -1877,7 +1879,7 @@
                     <p>This research was conducted under the guidance of the Space Exploration Project Group (SEPG) of the Space Generation Advisory Council (SGAC) as part of the ACHIEVED Initiative, which stands for Assembly for Concepts in Human Interplanetary Exploration with Various Extraterrestrial Designations. As the Structures and Thermal Subsystems lead, I contributed to designing a comprehensive Mercury sample return mission architecture.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/mercury/lander-ascent-segment.jpg" alt="Mercury Lander with Ascent Segment" class="project-detail-image">
+                        <img src="images/projects/mercury/lander-ascent-segment.jpg" alt="Mercury Lander with Ascent Segment" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Mercury Lander with Ascent Segment Configuration</div>
                     </div>
                     
@@ -1894,7 +1896,7 @@
                     </ul>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/mercury/orbiter.jpg" alt="Mercury Orbiter" class="project-detail-image">
+                        <img src="images/projects/mercury/orbiter.jpg" alt="Mercury Orbiter" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Mercury Orbiter System Design</div>
                     </div>
                     
@@ -1912,7 +1914,7 @@
                     </ul>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/mercury/spacecraft-exploded-view.jpg" alt="Spacecraft Exploded View" class="project-detail-image">
+                        <img src="images/projects/mercury/spacecraft-exploded-view.jpg" alt="Spacecraft Exploded View" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Complete Spacecraft Systems Architecture</div>
                     </div>
                     
@@ -1956,7 +1958,7 @@
                     <p>The High-technology Operation for Planetary Exploration - Uranian Moons Impactor (HOPE-ROAR) mission represents an ambitious deep space exploration initiative targeting the icy moons of Uranus. As one of two co-leads for this SGAC ACHIEVED project, I helped design an innovative mission architecture to study these distant and mysterious worlds through advanced impactor technology.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/hope/mission-conops.png" alt="Mission ConOps" class="project-detail-image">
+                        <img src="images/projects/hope/mission-conops.png" alt="Mission ConOps" class="project-detail-image" loading="lazy">
                         <div class="image-caption">HOPE-ROAR Mission Concept of Operations</div>
                     </div>
                     
@@ -1972,7 +1974,7 @@
                     </ul>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/hope/impactor-mission-conops.png" alt="Impactor Mission ConOps" class="project-detail-image">
+                        <img src="images/projects/hope/impactor-mission-conops.png" alt="Impactor Mission ConOps" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Impactor Mission Operations and Deployment Strategy</div>
                     </div>
                     
@@ -1989,7 +1991,7 @@
                     </ul>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/hope/impactor-cad-model.png" alt="Impactor CAD Model" class="project-detail-image">
+                        <img src="images/projects/hope/impactor-cad-model.png" alt="Impactor CAD Model" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Detailed Impactor Spacecraft CAD Model</div>
                     </div>
                     
@@ -2043,7 +2045,7 @@
                     <p>This innovative approach leverages the buoyancy characteristics of expandable helium balloons to provide extended mission duration and enhanced scientific capabilities for small-scale planetary exploration missions.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/balloon-drones/concept.png" alt="Balloon Drones Concept" class="project-detail-image" />
+                        <img src="images/projects/balloon-drones/concept.png" alt="Balloon Drones Concept" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Balloon Drones mission concept design</p>
                     </div>
                     
@@ -2051,7 +2053,7 @@
                     <p>The Balloon Drone mission architecture integrates proven CubeSat technologies with balloon deployment systems to create a cost-effective platform for planetary atmospheric studies and surface observations.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/balloon-drones/mission-overview.png" alt="Mission Overview" class="project-detail-image" />
+                        <img src="images/projects/balloon-drones/mission-overview.png" alt="Mission Overview" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Comprehensive mission overview and operational phases</p>
                     </div>
                     
@@ -2088,33 +2090,33 @@
                     <p>The research explores various generalizations of the classical Collatz sequence through parametric variations, examining the behavior of modified recurrence relations under different constraints.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/collatz/equation-1-m1.png" alt="Equation 1 (m=1)" class="project-detail-image" />
+                        <img src="images/projects/collatz/equation-1-m1.png" alt="Equation 1 (m=1)" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Equation 1 (m=1) - The classic Collatz Conjecture formulation</p>
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/collatz/equation-2-m1.png" alt="Equation 2 (m=1)" class="project-detail-image" />
+                        <img src="images/projects/collatz/equation-2-m1.png" alt="Equation 2 (m=1)" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Equation 2 (m=1) - First generalization variant</p>
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/collatz/equation-3-m1.png" alt="Equation 3 (m=1)" class="project-detail-image" />
+                        <img src="images/projects/collatz/equation-3-m1.png" alt="Equation 3 (m=1)" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Equation 3 (m=1) - Extended generalization form</p>
                     </div>                    <h2>Pattern Analysis</h2>
                     <p>Through computational exploration and visualization, the research reveals complex chaotic behaviors emerging from seemingly simple modifications to the original conjecture. These patterns suggest deeper mathematical structures that require further investigation.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/collatz/chaotic-graph-patterns.png" alt="Chaotic Graph Patterns" class="project-detail-image" />
+                        <img src="images/projects/collatz/chaotic-graph-patterns.png" alt="Chaotic Graph Patterns" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Chaotic graph patterns emerging from generalized equations</p>
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/collatz/complex-chaotic-behaviors.png" alt="Complex Chaotic Behaviors" class="project-detail-image" />
+                        <img src="images/projects/collatz/complex-chaotic-behaviors.png" alt="Complex Chaotic Behaviors" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Complex chaotic behaviors in modified Collatz sequences</p>
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/collatz/pattern-structure.png" alt="Underlying Pattern Structure" class="project-detail-image" />
+                        <img src="images/projects/collatz/pattern-structure.png" alt="Underlying Pattern Structure" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Small underlying patterns within chaotic graph structures</p>
                     </div>                    <h2>Interactive Tools</h2>
                     <p>To support further exploration and validation of these mathematical patterns, an interactive visualization tool has been developed to allow real-time exploration of the Collatz sequences and their generalizations.</p>
@@ -2146,7 +2148,7 @@
                     <p>This research explores the distribution patterns of prime numbers across different interval sizes, seeking to establish predictable bounds on prime density within arbitrary segments of the number line.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/prime-patterns/count-analysis-20k.png" alt="Prime Count Analysis 20000+" class="project-detail-image" />
+                        <img src="images/projects/prime-patterns/count-analysis-20k.png" alt="Prime Count Analysis 20000+" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Minimum prime count analysis for intervals of 20,000+ numbers</p>
                     </div>
                     
@@ -2154,7 +2156,7 @@
                     <p>The research compares theoretical minimum prime counts with actual observed distributions, revealing linear relationships between interval size and prime density that could have significant implications for number theory.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/prime-patterns/count-comparison-10k.png" alt="Prime Count Comparison 10000" class="project-detail-image" />
+                        <img src="images/projects/prime-patterns/count-comparison-10k.png" alt="Prime Count Comparison 10000" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Comparison of actual and minimum prime counts for 10,000-number intervals</p>
                     </div>
                 </div>
@@ -2181,23 +2183,23 @@
                     <p>This research explores novel applications of the Deutsch-Jozsa algorithm in the context of quantum cryptography, specifically focusing on how symmetric entanglement can enhance the security and efficiency of key distribution protocols.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/sedj/fully-entangled-oracle-results.png" alt="Fully Entangled Oracle Results" class="project-detail-image" />
+                        <img src="images/projects/sedj/fully-entangled-oracle-results.png" alt="Fully Entangled Oracle Results" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Key generation results for fully entangled oracle implementation</p>
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/sedj/semi-entangled-oracle-results.png" alt="Semi Entangled Oracle Results" class="project-detail-image" />
+                        <img src="images/projects/sedj/semi-entangled-oracle-results.png" alt="Semi Entangled Oracle Results" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Key generation results for semi entangled oracle implementation</p>
                     </div>                    <h2>Protocol Architecture</h2>
                     <p>The implementation demonstrates two distinct approaches to quantum entanglement in key distribution: fully symmetrical and semi-symmetrical entanglement schemes, each offering different trade-offs in security and computational complexity.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/sedj/fully-entangled-qkd-schematic.png" alt="Fully Entangled QKD Schematic" class="project-detail-image" />
+                        <img src="images/projects/sedj/fully-entangled-qkd-schematic.png" alt="Fully Entangled QKD Schematic" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">QKD protocol schematic for fully entangled oracle (based on Ampatzis & Andronikos, 2021)</p>
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/sedj/semi-entangled-qkd-schematic.png" alt="Semi Entangled QKD Schematic" class="project-detail-image" />
+                        <img src="images/projects/sedj/semi-entangled-qkd-schematic.png" alt="Semi Entangled QKD Schematic" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">QKD protocol schematic for semi entangled oracle (based on Ampatzis & Andronikos, 2021)</p>
                     </div>                    <h2>Research Publication</h2>
                     <p>The findings and methodology have been documented in a comprehensive research paper exploring the theoretical foundations and practical implementations of symmetrically entangled quantum oracles for secure key distribution.</p>
@@ -2229,7 +2231,7 @@
                     <p>This implementation explores the application of Simon's quantum algorithm in cryptographic contexts, demonstrating how the oracle's unique properties can be leveraged for secure key generation through symmetric entanglement schemes.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/sesp/fully-entangled-simon-oracle-results.png" alt="Fully Entangled Simon Oracle Results" class="project-detail-image" />
+                        <img src="images/projects/sesp/fully-entangled-simon-oracle-results.png" alt="Fully Entangled Simon Oracle Results" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Key generation results for fully entangled Simon's oracle</p>
                     </div>
                     
@@ -2237,7 +2239,7 @@
                     <p>The research examines the performance differences between fully and semi-symmetrical entanglement approaches in the context of Simon's problem, providing insights into optimal configurations for quantum key distribution applications.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/sesp/semi-entangled-simon-oracle-results.png" alt="Semi Entangled Simon Oracle Results" class="project-detail-image" />
+                        <img src="images/projects/sesp/semi-entangled-simon-oracle-results.png" alt="Semi Entangled Simon Oracle Results" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Key generation results for semi entangled Simon's oracle</p>
                     </div>
                     
@@ -2267,7 +2269,7 @@
                     <p>Quantegrity represents a groundbreaking approach to electronic voting by integrating quantum cryptographic protocols with proven e-voting methodologies, ensuring unprecedented security and verifiability in democratic processes.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/quantegrity/system-architecture.png" alt="Quantegrity System Architecture" class="project-detail-image" />
+                        <img src="images/projects/quantegrity/system-architecture.png" alt="Quantegrity System Architecture" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Complete Quantegrity system architecture design</p>
                     </div>
                     
@@ -2275,7 +2277,7 @@
                     <p>The system builds upon the established Scantegrity e-voting framework, enhancing its security through quantum key distribution protocols that provide information-theoretic security guarantees.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/quantegrity/scantegrity-ballot-system.png" alt="Scantegrity Ballot System" class="project-detail-image" />
+                        <img src="images/projects/quantegrity/scantegrity-ballot-system.png" alt="Scantegrity Ballot System" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Scantegrity e-voting ballot system implementation</p>
                     </div>
                     
@@ -2283,7 +2285,7 @@
                     <p>The core innovation lies in the integration of the SEDJ (Symmetrically Entangled Deutsch-Jozsa) oracle-based quantum key distribution protocol, providing cryptographic security that is fundamentally protected by the laws of quantum mechanics.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/quantegrity/sedj-qkd-implementation.png" alt="SEDJ QKD Implementation" class="project-detail-image" />
+                        <img src="images/projects/quantegrity/sedj-qkd-implementation.png" alt="SEDJ QKD Implementation" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">SEDJ oracle-based quantum key distribution protocol</p>
                     </div>
                     
@@ -2319,7 +2321,7 @@
                     <p>The Global Lunar Expedition for Everyone represents an unprecedented opportunity for international student collaboration in lunar science and engineering. Our team's participation showcases Sri Lankan capabilities in space technology development and international scientific cooperation.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/glee/lunasat-hardware.png" alt="LunaSat Hardware" class="project-detail-image" />
+                        <img src="images/projects/glee/lunasat-hardware.png" alt="LunaSat Hardware" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">LunaSat hardware platform (Credit: GLEE)</p>
                     </div>
                     
@@ -2327,7 +2329,7 @@
                     <p>Our team's innovative approach to the Lunar Deployment Module Challenge resulted in an overall winning design, demonstrating creative engineering solutions for lunar surface operations and scientific data collection.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/glee/l-spyder-deployment-module.png" alt="L-SPyDer Deployment Module" class="project-detail-image" />
+                        <img src="images/projects/glee/l-spyder-deployment-module.png" alt="L-SPyDer Deployment Module" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Lunar Deployment Module - L-SPyDer design</p>
                     </div>
                     
@@ -2362,7 +2364,7 @@
                     <p>Taprobane represents a historic milestone as Sri Lanka's first analog Mars rover, developed by SEDS Sri Lanka. This six-wheeled autonomous rover features advanced rocker-boggie suspension, a precision robotic arm, and specialized sampling equipment designed for challenging planetary exploration missions.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/taprobane/mission-patch.png" alt="Taprobane Mission Patch" class="project-detail-image">
+                        <img src="images/projects/taprobane/mission-patch.png" alt="Taprobane Mission Patch" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Taprobane Mission Patch (Credit: SEDS SL)</div>
                     </div>
                     
@@ -2380,7 +2382,7 @@
                     </ul>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/taprobane/t4-rover.png" alt="Taprobane v4.0" class="project-detail-image">
+                        <img src="images/projects/taprobane/t4-rover.png" alt="Taprobane v4.0" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Taprobane v4.0 Rover Design (Credit: SEDS SL)</div>
                     </div>
                     
@@ -2407,7 +2409,7 @@
                     </ul>
 
                     <div class="project-image-container">
-                        <img src="images/projects/taprobane/team-leads.png" alt="Taprobane Team Leads" class="project-detail-image">
+                        <img src="images/projects/taprobane/team-leads.png" alt="Taprobane Team Leads" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Taprobane Team Leadership (Credit: SEDS SL)</div>
                     </div>
                     
@@ -2441,7 +2443,7 @@
                     <p>SWORD represents a breakthrough in autonomous lunar drilling systems, designed specifically for selenography studies and water detection in lunar regolith. The extendable drill architecture provides unprecedented flexibility for deep subsurface exploration.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/sword/drilling-system.png" alt="SWORD Drilling System" class="project-detail-image" />
+                        <img src="images/projects/sword/drilling-system.png" alt="SWORD Drilling System" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">SWORD autonomous regolith drilling system</p>
                     </div>
                     
@@ -2449,7 +2451,7 @@
                     <p>The innovative drill bit design allows for modular extension during operation, enabling deeper penetration into lunar regolith while maintaining structural integrity and precision control throughout the drilling process.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/sword/extendable-drill-bits.png" alt="Extendable Drill Bits" class="project-detail-image" />
+                        <img src="images/projects/sword/extendable-drill-bits.png" alt="Extendable Drill Bits" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Modular extendable drill bit system design</p>
                     </div>
                     
@@ -2483,7 +2485,7 @@
                     <p>SPIDER is made up of two detachable independent systems. SPIDER is also where Lunarbot's future projects Self Adapting Wheel System(SAWS) and Selenography & Water Observatory Regolith Drill(SWORD) were born.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/spider/rover-design.png" alt="SPIDER Rover Design" class="project-detail-image" />
+                        <img src="images/projects/spider/rover-design.png" alt="SPIDER Rover Design" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">SPIDER lunar rover complete system design</p>
                     </div>
                     
@@ -2491,7 +2493,7 @@
                     <p>The rover design incorporates advanced drilling capabilities for subsurface exploration and comprehensive surface mapping systems for detailed lunar terrain analysis. The modular approach allows for flexible mission configurations and component redundancy.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/spider/operational-mode.png" alt="SPIDER Operational Mode" class="project-detail-image" />
+                        <img src="images/projects/spider/operational-mode.png" alt="SPIDER Operational Mode" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">SPIDER rover in operational configuration</p>
                     </div>
                     
@@ -2499,7 +2501,7 @@
                     <p>One of SPIDER's key innovations is its ability to separate into independent operational units, allowing for parallel exploration activities and enhanced mission flexibility in challenging lunar environments.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/spider/separation-sequence.png" alt="Rover Separation Sequence" class="project-detail-image" />
+                        <img src="images/projects/spider/separation-sequence.png" alt="Rover Separation Sequence" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">SPIDER rover detaching sequence demonstration</p>
                     </div>
                     
@@ -2531,7 +2533,7 @@
                     <p>Owlbert is an AI-powered chatbot that revolutionizes STEM education by helping people learn astronomy and space science in a non-traditional, interactive way. This innovative educational technology was developed for the NASA Space Apps Challenge 2020, where it earned the prestigious Global Nominee Award, recognizing its potential to transform how students engage with complex scientific concepts.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/owlbert/flyer.png" alt="Owlbert Flyer" class="project-detail-image">
+                        <img src="images/projects/owlbert/flyer.png" alt="Owlbert Flyer" class="project-detail-image" loading="lazy">
                         <div class="image-caption">Owlbert Educational Platform Overview</div>
                     </div>
                     
@@ -2552,7 +2554,7 @@
                     <p>Owlbert's selection as a Global Nominee in the NASA Space Apps Challenge 2020 highlights its innovative approach to solving real-world educational challenges. The project stood out among thousands of submissions worldwide for its practical application and potential to democratize space science education.</p>
                     
                     <div class="project-image-container">
-                        <img src="images/projects/owlbert/global-nominee-award.jpeg" alt="Global Nominee Award" class="project-detail-image">
+                        <img src="images/projects/owlbert/global-nominee-award.jpeg" alt="Global Nominee Award" class="project-detail-image" loading="lazy">
                         <div class="image-caption">NASA Space Apps Challenge 2020 Global Nominee Award</div>
                     </div>
                     
@@ -2639,7 +2641,7 @@
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/qcns/quantum-simulator.png" alt="Quantum Circuit Simulator Interface" class="project-detail-image" />
+                        <img src="images/projects/qcns/quantum-simulator.png" alt="Quantum Circuit Simulator Interface" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Quantum Circuit Simulator with drag-and-drop interface</p>
                     </div>
 
@@ -2653,7 +2655,7 @@
                     </ul>
 
                     <div class="project-image-container">
-                        <img src="images/projects/qcns/quantum-network-simulator.png" alt="Quantum Network Simulator" class="project-detail-image" />
+                        <img src="images/projects/qcns/quantum-network-simulator.png" alt="Quantum Network Simulator" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Quantum Network Simulator with multi-node entanglement</p>
                     </div>
 
@@ -2691,7 +2693,7 @@
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/ha-fpga/ha-fpga-architecture.png" alt="HA-FPGA Architecture Diagram" class="project-detail-image" />
+                        <img src="images/projects/ha-fpga/ha-fpga-architecture.png" alt="HA-FPGA Architecture Diagram" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Hybrid Analog-FPGA Architecture Overview</p>
                     </div>
 
@@ -2705,7 +2707,7 @@
                     </ul>
 
                     <div class="project-image-container">
-                        <img src="images/projects/ha-fpga/satellite-processing.png" alt="Satellite Data Processing" class="project-detail-image" />
+                        <img src="images/projects/ha-fpga/satellite-processing.png" alt="Satellite Data Processing" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Satellite data processing implementation</p>
                     </div>
 
@@ -2738,7 +2740,7 @@
                     </div>
 
                     <div class="project-image-container">
-                        <img src="images/projects/adhyana/adhyana-erp-dashboard.png" alt="Adhyana ERP Dashboard" class="project-detail-image" />
+                        <img src="images/projects/adhyana/adhyana-erp-dashboard.png" alt="Adhyana ERP Dashboard" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Adhyana ERP System Dashboard</p>
                     </div>
 
@@ -2752,7 +2754,7 @@
                     </ul>
 
                     <div class="project-image-container">
-                        <img src="images/projects/adhyana/microservices-architecture.png" alt="Microservices Architecture" class="project-detail-image" />
+                        <img src="images/projects/adhyana/microservices-architecture.png" alt="Microservices Architecture" class="project-detail-image" loading="lazy" />
                         <p class="image-caption">Java-based microservices architecture diagram (Placeholder Image)</p>
                     </div>
 
