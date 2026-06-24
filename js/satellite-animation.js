@@ -36,21 +36,22 @@ class OptimizedSatelliteAnimation {
     
     initializeState() {
         this.frameCount = 0;
-        this.isHomePage = true;
-        this.globalOpacity = 1.0;
-        
+        const homeElement = document.getElementById('home');
+        this.isHomePage = homeElement ? homeElement.classList.contains('active') : true;
+        this.globalOpacity = this.isHomePage ? 1.0 : 0.04;
+
         this.mouseX = 0;
         this.mouseY = 0;
         this.targetMouseX = 0;
         this.targetMouseY = 0;
-        
+
         // Scale values (reduced to match the original proportions and fit the view)
         this.EARTH_RADIUS = 1.55;
-        
+
         // Target positioning for layouts (sliding Earth system between center and right)
-        this.targetGlobeX = 3.2;
+        this.targetGlobeX = 3.8;
         this.targetCameraZ = 10.0;
-        
+
         // Handle responsive offsets
         this.updateLayoutTargets();
     }
@@ -63,7 +64,7 @@ class OptimizedSatelliteAnimation {
             this.targetCameraZ = 12.0;
         } else {
             // Desktop
-            this.targetGlobeX = this.isHomePage ? 3.2 : 0;
+            this.targetGlobeX = this.isHomePage ? 3.8 : 0;
             this.targetCameraZ = this.isHomePage ? 10.0 : 11.0;
         }
     }
@@ -483,7 +484,8 @@ window.addEventListener('load', () => {
     };
     
     animation = new OptimizedSatelliteAnimation();
-    
+    checkHomePage(); // sync in case DOM changed between DOMContentLoaded and load
+
     const observer = new MutationObserver(checkHomePage);
     const homeElement = document.getElementById('home');
     if (homeElement) {
